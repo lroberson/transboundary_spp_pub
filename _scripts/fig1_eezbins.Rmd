@@ -21,14 +21,11 @@ Explore phyla/ taxonomic groupings
 
 ```{tax explore}
 
-## Load species summary
-spp_summary <- fread("R://TRANSSPP-A2259//tb_spp_v04//combined_spp_summary.csv")
-names(spp_summary)
+here()
 
-# make bins
-spp_summary$eez_bins_2 <- cut(spp_summary$num_eez, 
-                              breaks = c(1,2,3,10,25,51,221), 
-                            include.lowest = TRUE, right = FALSE, ordered_result = TRUE)
+## Load species summary
+spp_summary <- fread(here("_data/combined_spp_summary.csv"))
+names(spp_summary)
 
 ## <><><>< Mutate new groupings for plot dat
 
@@ -59,13 +56,10 @@ plot_dat <- spp_summary %>%
 # check
 table(plot_dat$tax_group_2)
 plot_dat %>% filter(tax_group_2 == "Other") # none
-print(object.size(plot_dat), units = "Mb") # 6 Mb
 
-fwrite(plot_dat, "_data/figs/phyla_bins/spp_summary_bins_taxgrps.csv")
 
 ## get totals across all THREATENED spp 
 
-names(plot_dat)
 n_distinct(plot_dat$species_id)
 
 plot_dat %>%
@@ -78,14 +72,6 @@ plot_dat %>%
          n_spp = sum(n_spp)) %>% # count species per species gorup
   ungroup()
 
-#eez_bins_2 perc_eez n_spp
-# [1,2)         29.3    907     ## (29.3/100)*274.4 = 80.3992
-# [2,3)          7.17   907     ## (7.1/100)*274.4 = 19.4824
-# [3,10)        21.7    907     ## (21.7/100)*274.4 = 59.5448
-# [10,25)       19.6    907     ## (19.6/100)*274.4 = 53.7824
-# [25,51)       15.0    907     ## (15/100)*274.4 = 41.16
-# [51,221]       7.17   907     ##  (7.1/100)*274.4 = 19.4824
-
 plot_dat %>%
   filter(category %in% c("CR","EN","VU")) %>%
   group_by(category) %>%
@@ -95,10 +81,7 @@ plot_dat %>%
   mutate(perc_eez = round(perc_eez/sum(perc_eez)*100,2),
          n_spp = sum(n_spp)) %>% # count species per species gorup
   ungroup()
-##category perc_eez n_spp
-## CR           9.04   907  ## (9.04/100)*274.4 = 24.80576
-## EN          22.4    907  ## (22.4/100)*274.4 = 61.4656
-## VU          68.6    907  ## (68.6/100)*274.4 = 188.2384
+
 
 #<><>>< make plot dat csvs for eez bins and rl cats
 
@@ -110,9 +93,6 @@ eez_dat <- plot_dat %>%
   mutate(perc_eez = round(perc_eez/sum(perc_eez)*100,2),
          n_spp = sum(n_spp)) %>% # count species per species gorup
   ungroup()
-
-write_csv(eez_dat, "_data/figs/phyla_bins/taxgrp2_eez_dat.csv")
-
 
 
 redlist_dat <- plot_dat %>% 
@@ -128,70 +108,30 @@ redlist_dat$category = forcats::as_factor(redlist_dat$category)
 levels(redlist_dat$category)
 redlist_dat$category <- fct_relevel(redlist_dat$category, "CR","EN","VU","NT","LC","DD","None")
 
-write_csv(redlist_dat, "_data/figs/phyla_bins/taxgrp2_redlist_dat.csv")
-
 ```
 
-## explore tax gorups 2
+##  butterfly barplot with manual species groupings
 
-```{explore tax gorup 2}
+Here I make the left and right panels separately, and add/format the group names in the middle in Adobe Illustrator
 
-## explore categories
-
-redlist_dat <- read_csv("_data/figs/phyla_bins/taxgrp2_redlist_dat.csv")
-
-redlist_dat %>%
-  ggplot() +
-  geom_bar(aes(x= fct_rev(tax_group_2), y=perc_cat, fill=category), 
-           position="stack", stat="identity",) +
-  scale_y_continuous('',labels = percent, expand = c(0,0)) +
-  coord_flip() + 
-  labs(x = NULL, fill = NULL) +
-  theme(panel.grid.minor = element_blank(),
-         panel.grid.major = element_blank(),
-         panel.background = element_blank(),
-         axis.title.y = element_blank(),
-         axis.title.x = element_blank(),
-         axis.ticks = element_blank(),
-         axis.text.y = element_text(size = 5),
-         legend.position = "right",
-         # legend.title = element_text(size = 3),
-         legend.text = element_text(size = 5),
-         legend.key.size = unit(0.5, "line"), # decrease legend key size
-         plot.margin= unit(c(1, 1, 1, 1), "lines")
-        ) 
-
-## With these new groupings there are a lot more groups with assessed species
-  ## > go back to the butterfly plot idea 
-
-```
-
-##  butterfly barplot with new groupings
-
-NB in ggplot2 3.3 you no longer need to do coord_flip(), can just switch the x and y axes, but threw position errors so here I use the old coord_flip() approach 
-
-```{butterfly new groups}
+```{butterfly spp groups}
 
 library(RColorBrewer)
 library(ggpubr)
 
-#### 1. "eez bins" plot - to appear on the LEFT (mentioned first in text)
+#### 1. "eez bins" plot - to appear on the LEFT 
 
-eez_dat <- read_csv("_data/figs/phyla_bins/taxgrp2_eez_dat.csv")
 names(eez_dat)
 
 eez_dat %>% distinct(tax_group_2, n_spp) %>% arrange(desc(n_spp))
 
 eez_pal <- c("orchid","lightblue1","skyblue1","deepskyblue1","dodgerblue1","mediumblue")
-#eez_pal <- c("mediumblue","dodgerblue1","deepskyblue1","skyblue1","lightblue1","orchid")
 eez_labs <- c("1","2","3-9","10-24","25-50","51-220")
-
 barwidth = 0.4
 
 gg_eezs <- ggplot(data = eez_dat) +
   geom_bar(aes(x= reorder(tax_group_2, n_spp), y=perc_eez,
                fill = eez_bins_2
-               #fill = forcats::fct_rev(eez_bins_2) 
                ),
            position = "fill", stat = "identity", 
            colour = "black", width = barwidth, size = 0.1) +
@@ -212,11 +152,10 @@ gg_eezs <- ggplot(data = eez_dat) +
          legend.position = "none",
          legend.title = element_text(size = 8),
          legend.text = element_text(size = 8),
-         legend.key.size = unit(1, "line"), # decrease legend key size
+         legend.key.size = unit(1, "line"), 
          plot.margin= unit(c(1, 1, 1, 1), "lines")
         ) 
 gg_eezs
-  # guides(fill = guide_legend(nrow = 1))
 
 # extract legend
 leg_eezs <- get_legend(gg_eezs)
@@ -227,16 +166,10 @@ as_ggplot(leg_eezs)
 
 ## <><><>< 2.  redlist categories (to appear on left)
 
-redlist_dat <- read_csv("_data/figs/phyla_bins/taxgrp2_redlist_dat.csv")
-
-redlist_dat$category <- as_factor(redlist_dat$category)
-levels(redlist_dat$category)
-redlist_dat$category <- fct_relevel(redlist_dat$category, "CR","EN","VU","NT","LC","DD","None")
+names(redlist_dat)
 
 threats_pal <- c("white","#bdbdbd","#fef0d9","#fdcc8a","#fc8d59","#e34a33","#b30000")
 threats_labs = c("None","DD","LC","NT","VU","EN","CR")
-#threats_pal <- c("#b30000","#e34a33","#fc8d59","#fdcc8a","#fef0d9","#bdbdbd","white")
-#threats_labs = c("CR","EN","VU","NT","LC","DD","None")
 
 barwidth = 0.4 
 
@@ -283,7 +216,6 @@ fontsize = 3
 gg_tax_group <- ggplot(data = eez_dat, aes(x= fct_rev(tax_group_2))) +
    geom_bar(stat = "identity", aes(y = 0)) +
    geom_text(aes(y = 0,  label = tax_group_2), size = fontsize) +
-   # ggtitle("Phylum") +
    coord_flip() + 
    theme_bw() +
    theme(panel.border = element_rect(colour = NA),
@@ -301,11 +233,9 @@ gg_tax_group <- ggplot(data = eez_dat, aes(x= fct_rev(tax_group_2))) +
 
 ## <><><>< Summary bar
 
-names(redlist_dat)
+# Get number of species per species group (to add under group names in Illustrator)
 
-
-
-eez_dat <- plot_dat %>% 
+plot_dat %>% 
   group_by(tax_group_2, eez_bins_2) %>%
   summarise(perc_eez = n(),
             n_spp = n_distinct(species_id)) %>%
@@ -313,4 +243,5 @@ eez_dat <- plot_dat %>%
   mutate(perc_eez = round(perc_eez/sum(perc_eez)*100,2),
          n_spp = sum(n_spp)) %>% # count species per species gorup
   ungroup()
+
 ```
