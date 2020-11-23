@@ -1,0 +1,65 @@
+---
+title: "fig_countries_scatter"
+output: html_document
+---
+
+## Summary
+
+This country summary uses a 10 cell cutoff (or >10% of the species total range) as a cutoff of occurrence
+
+
+```{r setup, include=FALSE}
+
+library(data.table)
+library(tidyverse)
+library(here)
+library(ggrepel)
+library(scales)
+library(viridis)
+
+```
+
+## scatterplot with top countries labeled
+
+```{fig2}
+
+countries <- fread(here("_data/combined_eez_summary_areas.csv"))
+names(countries)
+
+##<><><> Plot 
+## x = number sc species, y = number tb species, color = number Thr tb species, size = EEZ size
+
+summary(countries$rgn_area_km2) 
+
+p <- countries %>%
+  mutate(label = case_when(rgn_nam_2 %in% top_n(countries, 25, num_spp_tb)$rgn_nam_2 ~ rgn_nam_2,
+                           rgn_nam_2 %in% top_n(countries, 25, num_spp_sc)$rgn_nam_2 ~ rgn_nam_2, 
+                           TRUE ~ "")) %>%
+  ggplot() +
+  geom_point(alpha = 0.6, 
+             #shape = 1,
+             aes(x = num_spp_sc, y = num_spp_tb, color = num_spp_tb_th, size = rgn_area_km2)) +
+  # geom_jitter(mapping = aes(size = rgn_area_km2), alpha = 0.75) +
+  scale_colour_viridis() +
+  geom_text_repel(aes(x = num_spp_sc, y = num_spp_tb, color = num_spp_tb_th, label = label), 
+                  size = 2.5, point.padding = 0.4) +
+  scale_size("EEZ area km2",
+             range = c(1,20), # range of dot size not values
+             guide = "none") + 
+  scale_x_continuous(trans = "pseudo_log", breaks = c(0,10,50,100,200,500,750)) + 
+  scale_y_continuous(limits = c(-5, 11250), breaks = seq(0,11000,1000)) +
+  labs(x = "Single jurisdiction species (log scale)",
+       y = "Transboundary species",
+       colour = "Threatened \nspecies",
+       size = "EEZ area (km2)") +
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(), 
+        axis.line = element_line(colour = "black"),
+        legend.title = element_text(size = 8),
+        legend.text = element_text(size = 8),
+        #legend.position = "right",
+        legend.position = c(0.92, 0.5)) 
+p
+
+```

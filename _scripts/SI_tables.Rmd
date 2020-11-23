@@ -1,0 +1,48 @@
+---
+title: "SI_table_species"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+library(data.table)
+library(tidyverse)
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Supporting table 1: SPECIES
+
+```{r si t1}
+
+```
+
+## Supporting table 2: COUNTRIES 
+
+```{r si t2}
+
+## wgi scores
+wdi_scores <- fread(here("_data/combined_eez_summary_wdi_scores.csv"))
+names(wdi_scores)
+wdi <- wdi_scores %>%  dplyr::select(c(score,rgn_id_2,rgn_name_short))
+
+## get country area info
+dat_area <- fread(here("_data/combined_eez_summary_areas.csv"))
+names(dat_area)
+
+## add ranks
+dat_all <- dat_area %>%
+  mutate(tb_km2 = num_spp_tb/rgn_area_km2,
+         rank_tb_km2 = dense_rank(-tb_km2),
+         rank_tb = dense_rank(-num_spp_tb)) 
+
+dat_all %>% arrange(rank_tb_km2)
+
+dat_all <- left_join(dat_all, wdi, by = "rgn_id_2")
+
+names(dat_all)
+
+dat_all <- dat_all %>% dplyr::select(-c(rgn_id_2, num_spp_sc_th)) %>% arrange(num_spp_tb)
+
+```
+
