@@ -1,0 +1,22 @@
+---
+title: "tb_maps"
+output: html_document
+---
+
+## Summary
+
+two-panel figure showing a map of A) the density of transboundary species PER CELL and B) the density of transboundary threatened species PER JURISDICTION
+
+The data was wrangled in R, rasterized, converted to Mollweide projection, and then the rasters were mapped/formatted into Figures in ArcMap 10.8
+
+panel A) tb_cells_rich_rast_mollpac.tif
+
+panel B) tb_rich_eez_mollpac.tif
+
+
+```{r setup, include=FALSE}
+
+
+```
+
+

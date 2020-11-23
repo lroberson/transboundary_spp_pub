@@ -15,6 +15,40 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r si t1}
 
+## Load species summary
+spp_summary <- fread(here("_data/combined_spp_summary.csv"))
+names(spp_summary)
+
+## make spp groups
+spp_summary <- spp_summary %>%
+  mutate(tax_group_2 = case_when(
+    phylum %in% c("CHLOROPHYTA", "RHODOPHYTA") ~ "Algae",
+    phylum == "ARTHROPODA" ~ "Arthropods",
+    phylum %in% c("CNIDARIA","CTENOPHORA") ~ "Cnidarians & Ctenophores",
+    phylum == "ECHINODERMATA" ~ "Echinoderms",
+    class %in% c("ACTINOPTERYGII","SARCOPTERYGII") ~ "Fish (ray & lobe-finned)",
+    class %in% c("CEPHALASPIDOMORPHI","CEPHALOCHORDATA","MYXINI") ~ 
+      "Jawless fish & Lancelets",
+    phylum %in% c("BRACHIOPODA","BRYOZOA","KAMPTOZOA","PHORONIDA") ~ "Lophophores",
+    class == "MAMMALIA" ~ "Mammals",
+    class == "REPTILIA" ~ "Reptiles",
+    phylum == "MOLLUSCA" ~ "Mollusks",
+    class == "AVES" ~ "Seabirds",
+    class %in% c("CHONDRICHTHYES","ELASMOBRANCHII","HOLOCEPHALI") ~ "Sharks, Rays, Chimaeras",
+    phylum == "PORIFERA" ~ "Sponges",
+    class %in% c("APPENDICULARIA","ASCIDIACEA","THALIACEA") ~ "Tunicates",
+    phylum == "TRACHEOPHYTA" ~ "Vascular plants",
+    phylum %in% c("ACANTHOCEPHALA","ANNELIDA","CHAETOGNATHA","CYCLIOPHORA","ECHIURA",
+    "GASTROTRICHA","GNATHOSTOMULIDA","HEMICHORDATA","LORICIFERA","NEMERTEA","PLATYHELMINTHES",
+    "PRIAPULIDA","ROTIFERA","SIPUNCULA") ~ "Worms & microscopic animals",
+    TRUE ~ "Other"
+    ))
+
+spp_tbl <- spp_summary %>%
+  dplyr::select(c("sciname", "class", "num_eez", "category", "tax_group_2")) %>%
+  arrange(desc(num_eez)) %>%
+  top_n(100, num_eez)
+
 ```
 
 ## Supporting table 2: COUNTRIES 
