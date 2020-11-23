@@ -1,0 +1,89 @@
+---
+title: "WDI_lm"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+library(tidyverse)
+library(ggpubr) #install.packages("ggpubr")
+
+```
+
+## load eez summary with wgi results
+
+
+```{load data}
+
+eez_results_wgi <- read_csv("_data/WDI/combined_eez_summary_wdi_scores.csv")
+names(eez_results_wgi)
+
+# remove the non sovereign countries and NAs
+
+eez_results_sub <- eez_results_wgi %>% 
+  filter(!is.na(score)) %>%
+  filter(!is.na(gap_fill)) %>%
+  filter(!gap_fill == "sub_country") %>%
+  dplyr::select(-c("ant_typ","rgn_name_short","year","score_wgi_scale")) # remove extra columns
+
+```
+
+## Test correlation between number of transboundary species and governance
+
+Here I do a simple correlation test to test the correlation between TB species richness and governance score
+
+Are TB species associated with countries with low or high governence scores, or is there no pattern?
+
+```{correlation test}
+
+## explore data
+
+# plot wgi score v. tb species richness 
+
+ggpubr::ggscatter(eez_results_sub, x = "num_spp_tb", y = "score", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "tb spp richness", ylab = "WGI scaled cumulative score")
+
+# test for normality
+shapiro.test(eez_results_sub$score) # W = 0.9858, p-value = 0.09567
+shapiro.test(eez_results_sub$num_spp_tb) # W = 0.89557, p-value = 2.474e-09 >> not normal dist
+
+# Q-Q plots
+ggpubr::ggqqplot(eez_results_sub$score, ylab = "WGI score") 
+ggpubr::ggqqplot(eez_results_sub$num_spp_tb, ylab = "num tb spp") # not normal 
+
+# * Pearson's tests 
+
+pearsons_res <- cor.test(eez_results_sub$num_spp_tb, eez_results_sub$score, 
+                         method = "pearson")
+pearsons_res 
+# t = 0.014046, df = 161, p-value = 0.9888
+# alternative hypothesis: true correlation is not equal to 0
+# 95 percent confidence interval: -0.1526395  0.1548011
+# sample estimates:  0.001106959
+
+
+
+#<><><><> test all countries except the NA scores
+
+eez_results_all <- eez_results_wgi %>% 
+  filter(!is.na(score)) %>%
+  dplyr::select(-c("ant_typ","rgn_name_short","year","score_wgi_scale"))
+
+ggpubr::ggscatter(eez_results_all, x = "num_spp_tb", y = "score", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "tb spp richness", ylab = "WGI scaled cumulative score")
+    # looks like no correlation
+
+pearsons_res <- cor.test(eez_results_all$num_spp_tb, eez_results_all$score, 
+                         method = "pearson")
+pearsons_res
+# t = -0.69414, df = 209, p-value = 0.4884
+# alternative hypothesis: true correlation is not equal to 0
+# 95 percent confidence interval: -0.18185010  0.08767699
+# sample estimates: -0.04795953
+
+```
+

@@ -1,0 +1,243 @@
+ant_typ,rgn_id_2,rgn_nam_2,rgn_name_short,year,score_wgi_scale,score,gap_fill,sovereignty
+eez,2,Christmas Island,Christmas Isl,2018,1.575330017,0.815066003,sub_country,Australia
+eez,1,Cocos Islands,Cocos Isl,2018,1.575330017,0.815066003,sub_country,Australia
+eez,94,Heard and McDonald Islands,Heard & McDonald Isl,2018,1.575330017,0.815066003,sub_country,Australia
+eez,4,Macquarie Island,Macquarie Isl,2018,1.575330017,0.815066003,sub_country,Australia
+eez,3,Norfolk Island,Norfolk Isl,2018,1.575330017,0.815066003,sub_country,Australia
+eez,237,Oecussi Ambeno,Oecussi Ambeno,2018,-0.455331217,0.408933757,sub_country,East Timor
+eez,93,Kerguelen Islands,Kerguelen Isl,2018,1.116519633,0.723303927,sub_country,France
+eez,92,Amsterdam Island and Saint Paul Island,Amsterdam Isl & St Paul Isl,2018,1.116519633,0.723303927,sub_country,France
+eez,34,Bassas da India,Bassas da India,2018,1.116519633,0.723303927,sub_country,France
+eez,91,Crozet Islands,Crozet Isl,2018,1.116519633,0.723303927,sub_country,France
+eez,147,French Polynesia,French Polynesia,2018,1.116519633,0.723303927,sub_country,France
+eez,30,Glorioso Islands,Glorioso Isl,2018,1.116519633,0.723303927,sub_country,France
+eez,140,Guadeloupe and Martinique,Guadeloupe & Martinique,2018,1.116519633,0.723303927,sub_country,France
+eez,35,Ile Europa,Ile Europa,2018,1.116519633,0.723303927,sub_country,France
+eez,36,Ile Tromelin,Ile Tromelin,2018,1.116519633,0.723303927,sub_country,France
+eez,33,Juan de Nova Island,Juan de Nova Isl,2018,1.116519633,0.723303927,sub_country,France
+eez,29,Mayotte,Mayotte,2018,1.116519633,0.723303927,sub_country,France
+eez,221,Northern Saint-Martin,N St-Martin,2018,1.116519633,0.723303927,sub_country,France
+eez,5,New Caledonia,New Caledonia,2018,1.116519633,0.723303927,sub_country,France
+eez,219,Saint Pierre and Miquelon,St Pierre & Miquelon,2018,1.116519633,0.723303927,sub_country,France
+eez,161,Wallis and Futuna,Wallis & Futuna,2018,1.116519633,0.723303927,sub_country,France
+eez,26,Andaman and Nicobar,Andaman & Nicobar,2018,-0.106395183,0.478720963,sub_country,India
+eez,157,Phoenix Group,Phoenix Group,2018,0.327124733,0.565424947,sub_country,Kiribati
+eez,245,Bonaire,Bonaire,2018,1.6931384,0.83862768,sub_country,Netherlands
+eez,244,Curacao,Curacao,2018,1.6931384,0.83862768,sub_country,Netherlands
+eez,156,Tokelau,Tokelau,2018,1.810841,0.8621682,sub_country,New Zealand
+eez,105,Bouvet Island,Bouvet Isl,2018,1.764574667,0.852914933,sub_country,Norway
+eez,144,Jan Mayen,Jan Mayen,2018,1.764574667,0.852914933,sub_country,Norway
+eez,55,Azores,Azores,2018,1.072386683,0.714477337,sub_country,Portugal
+eez,57,Madeira,Madeira,2018,1.072386683,0.714477337,sub_country,Portugal
+eez,90,Prince Edward Islands,Prince Edward Isl,2018,0.1281571,0.52563142,sub_country,S Africa
+eez,58,Canary Islands,Canary Isl,2018,0.808154283,0.661630857,sub_country,Spain
+eez,38,British Indian Ocean Territory,British Indian Ocean Terr,2018,1.333609083,0.766721817,sub_country,United Kingdom
+eez,117,British Virgin Islands,British Virgin Isl,2018,1.333609083,0.766721817,sub_country,United Kingdom
+eez,141,Faeroe Islands,Faeroe Isl,2018,1.333609083,0.766721817,sub_country,United Kingdom
+eez,95,Falkland Islands,Falkland Isl,2018,1.333609083,0.766721817,sub_country,United Kingdom
+eez,60,Gibraltar,Gibraltar,2018,1.333609083,0.766721817,sub_country,United Kingdom
+eez,121,Montserrat,Montserrat,2018,1.333609083,0.766721817,sub_country,United Kingdom
+eez,146,Pitcairn,Pitcairn,2018,1.333609083,0.766721817,sub_country,United Kingdom
+eez,89,South Georgia and the South Sandwich Islands,S Georgia & the S Sandwich Isl,2018,1.333609083,0.766721817,sub_country,United Kingdom
+eez,86,Saint Helena,St Helena,2018,1.333609083,0.766721817,sub_country,United Kingdom
+eez,88,Tristan da Cunha,Tristan da Cunha,2018,1.333609083,0.766721817,sub_country,United Kingdom
+eez,111,Turks and Caicos Islands,Turks & Caicos Isl,2018,1.333609083,0.766721817,sub_country,United Kingdom
+eez,158,Howland Island and Baker Island,Howland & Baker Isl,2018,1.24137465,0.74827493,sub_country,United States
+eez,149,Jarvis Island,Jarvis Isl,2018,1.24137465,0.74827493,sub_country,United States
+eez,13,Northern Mariana Islands and Guam,N Mariana Isl & Guam,2018,1.24137465,0.74827493,sub_country,United States
+eez,150,Palmyra Atoll,Palmyra Atoll,2018,1.24137465,0.74827493,sub_country,United States
+eez,116,Puerto Rico and Virgin Islands of the United States,Puerto Rico & Virgin Isl of US,2018,1.24137465,0.74827493,sub_country,United States
+eez,12,Wake Island,Wake Isl,2018,1.24137465,0.74827493,sub_country,United States
+eez,82,Albania,Albania,2018,0.011809667,0.502361933,0,
+eez,84,Algeria,Algeria,2018,-0.8157032,0.33685936,0,
+eez,200,Angola,Angola,2018,-0.913848583,0.317230283,0,
+eez,120,Antigua and Barbuda,Antigua & Barbuda,2018,0.403362833,0.580672567,0,
+eez,172,Argentina,Argentina,2018,0.007446033,0.501489207,0,
+eez,250,Aruba,Aruba,2018,1.188863667,0.737772733,0,
+eez,16,Australia,Australia,2018,1.575330017,0.815066003,0,
+eez,110,Bahamas,Bahamas,2018,0.5976843,0.61953686,0,
+eez,52,Bahrain,Bahrain,2018,-0.2258304,0.45483392,0,
+eez,204,Bangladesh,Bangladesh,2018,-0.8134706,0.33730588,0,
+eez,124,Barbados,Barbados,2018,0.803243967,0.660648793,0,
+eez,59,Belgium,Belgium,2018,1.182232833,0.736446567,0,
+eez,164,Belize,Belize,2018,-0.2914891,0.44170218,0,
+eez,99,Benin,Benin,2018,-0.304775767,0.439044847,0,
+eez,171,Brazil,Brazil,2018,-0.237750067,0.452449987,0,
+eez,247,Brunei,Brunei,2018,0.620056767,0.624011353,0,
+eez,71,Bulgaria,Bulgaria,2018,0.2350627,0.54701254,0,
+eez,56,Cape Verde,Cabo Verde,2018,0.506123317,0.601224663,0,
+eez,24,Cambodia,Cambodia,2018,-0.771144467,0.345771107,0,
+eez,197,Cameroon,Cameroon,2018,-1.05140365,0.28971927,0,
+eez,218,Canada,Canada,2018,1.589625933,0.817925187,0,
+eez,113,Cayman Islands,Cayman Isl,2018,0.849155033,0.669831007,0,
+eez,224,Chile,Chile,2018,1.005884483,0.701176897,0,
+eez,209,China,China,2018,-0.306858533,0.438628293,0,
+eez,132,Colombia,Colombia,2018,-0.181457367,0.463708527,0,
+eez,130,Costa Rica,Costa Rica,2018,0.586524317,0.617304863,0,
+eez,187,Croatia,Croatia,2018,0.438588683,0.587717737,0,
+eez,112,Cuba,Cuba,2018,-0.462036983,0.407592603,0,
+eez,81,Cyprus,Cyprus,2018,0.818842433,0.663768487,0,
+eez,199,Democratic Republic of the Congo,Dem Rep of Congo,2018,-1.657509333,0.168498133,0,
+eez,175,Denmark,Denmark,2018,1.683452967,0.836690593,0,
+eez,46,Djibouti,Djibouti,2018,-0.788405167,0.342318967,0,
+eez,123,Dominica,Dominica,2018,0.479059167,0.595811833,0,
+eez,115,Dominican Republic,Dominican Rep,2018,-0.241812817,0.451637437,0,
+eez,231,East Timor,East Timor,2018,-0.455331217,0.408933757,0,
+eez,137,Ecuador,Ecuador,2018,-0.398648533,0.420270293,0,
+eez,214,Egypt,Egypt,2018,-0.816694717,0.336661057,0,
+eez,134,El Salvador,El Salvador,2018,-0.365807817,0.426838437,0,
+eez,104,Equatorial Guinea,Equatorial Guinea,2018,-1.290404367,0.241919127,0,
+eez,45,Eritrea,Eritrea,2018,-1.607151033,0.178569793,0,
+eez,70,Estonia,Estonia,2018,1.219087967,0.743817593,0,
+eez,18,Fiji,Fiji,2018,0.208593067,0.541718613,0,
+eez,174,Finland,Finland,2018,1.7611282,0.85222564,0,
+eez,179,France,France,2018,1.116519633,0.723303927,0,
+eez,169,French Guiana,French Guiana,2018,1.116860517,0.723372103,0,
+eez,198,Gabon,Gabon,2018,-0.741513667,0.351697267,0,
+eez,65,Gambia,Gambia,2018,-0.395964983,0.420807003,0,
+eez,74,Georgia,Georgia,2018,0.432257483,0.586451497,0,
+eez,176,Germany,Germany,2018,1.495528017,0.799105603,0,
+eez,106,Ghana,Ghana,2018,0.04587915,0.50917583,0,
+eez,80,Greece,Greece,2018,0.278355367,0.555671073,0,
+eez,145,Greenland,Greenland,2018,1.395914283,0.779182857,0,
+eez,125,Grenada,Grenada,2018,0.278829717,0.555765943,0,
+eez,136,Guatemala,Guatemala,2018,-0.6058319,0.37883362,0,
+eez,228,Guernsey,Guernsey,2018,1.23300185,0.74660037,0,
+eez,194,Guinea,Guinea,2018,-0.938748017,0.312250397,0,
+eez,193,Guinea Bissau,Guinea Bissau,2018,-1.13172935,0.27365413,0,
+eez,167,Guyana,Guyana,2018,-0.210972083,0.457805583,0,
+eez,114,Haiti,Haiti,2018,-1.133138283,0.273372343,0,
+eez,133,Honduras,Honduras,2018,-0.63138385,0.37372323,0,
+eez,143,Iceland,Iceland,2018,1.545318333,0.809063667,0,
+eez,203,India,India,2018,-0.106395183,0.478720963,0,
+eez,216,Indonesia,Indonesia,2018,-0.135259433,0.472948113,0,
+eez,191,Iran,Iran,2018,-1.000625167,0.299874967,0,
+eez,191,Iran,Iran,2018,-1.000625167,0.299874967,0,
+eez,192,Iraq,Iraq,2018,-1.5402035,0.1919593,0,
+eez,181,Ireland,Ireland,2018,1.396105833,0.779221167,0,
+eez,79,Israel,Israel,2018,0.659117783,0.631823557,0,
+eez,184,Italy,Italy,2018,0.487411733,0.597482347,0,
+eez,195,Ivory Coast,Ivory Coast,2018,-0.497884933,0.400423013,0,
+eez,166,Jamaica,Jamaica,2018,0.246455817,0.549291163,0,
+eez,210,Japan,Japan,2018,1.34104,0.768208,0,
+eez,227,Jersey,Jersey,2018,1.23300185,0.74660037,0,
+eez,215,Jordan,Jordan,2018,-0.083611033,0.483277793,0,
+eez,43,Kenya,Kenya,2018,-0.570881467,0.385823707,0,
+eez,212,Kiribati,Kiribati,2018,0.327124733,0.565424947,0,
+eez,51,Kuwait,Kuwait,2018,-0.113502233,0.477299553,0,
+eez,69,Latvia,Latvia,2018,0.7922963,0.65845926,0,
+eez,78,Lebanon,Lebanon,2018,-0.833200967,0.333359807,0,
+eez,97,Liberia,Liberia,2018,-0.731310717,0.353737857,0,
+eez,67,Libya,Libya,2018,-1.9044645,0.1191071,0,
+eez,148,Line Group,Line Group,2018,0.327124733,0.565424947,0,
+eez,189,Lithuania,Lithuania,2018,0.886182283,0.677236457,0,
+eez,42,Madagascar,Madagascar,2018,-0.7549598,0.34900804,0,
+eez,206,Malaysia,Malaysia,2018,0.474806333,0.594961267,0,
+eez,39,Maldives,Maldives,2018,-0.496577283,0.400684543,0,
+eez,68,Malta,Malta,2018,1.0594933,0.71189866,0,
+eez,11,Marshall Islands,Marshall Isl,2018,-0.1342393,0.47315214,0,
+eez,64,Mauritania,Mauritania,2018,-0.75875625,0.34824875,0,
+eez,37,Mauritius,Mauritius,2018,0.764335217,0.652867043,0,
+eez,135,Mexico,Mexico,2018,-0.3528875,0.4294225,0,
+eez,9,Micronesia,Micronesia,2018,0.342016667,0.568403333,0,
+eez,186,Montenegro,Montenegro,2018,0.133898467,0.526779693,0,
+eez,62,Morocco,Morocco,2018,-0.300342067,0.439931587,0,
+eez,41,Mozambique,Mozambique,2018,-0.7794679,0.34410642,0,
+eez,205,Myanmar,Myanmar,2018,-0.939838633,0.312032273,0,
+eez,101,Namibia,Namibia,2018,0.29648915,0.55929783,0,
+eez,10,Nauru,Nauru,2018,-0.032448317,0.493510337,0,
+eez,177,Netherlands,Netherlands,2018,1.6931384,0.83862768,0,
+eez,162,New Zealand,New Zealand,2018,1.810841,0.8621682,0,
+eez,131,Nicaragua,Nicaragua,2018,-0.9127236,0.31745528,0,
+eez,196,Nigeria,Nigeria,2018,-1.0719269,0.28561462,0,
+eez,21,North Korea,North Korea,2018,-1.611969267,0.177606147,0,
+eez,223,Norway,Norway,2018,1.764574667,0.852914933,0,
+eez,48,Oman,Oman,2018,0.139336417,0.527867283,0,
+eez,53,Pakistan,Pakistan,2018,-0.968361633,0.306327673,0,
+eez,8,Palau,Palau,2018,0.289605433,0.557921087,0,
+eez,129,Panama,Panama,2018,0.102261333,0.520452267,0,
+eez,17,Papua New Guinea,Papua New Guinea,2018,-0.5810573,0.38378854,0,
+eez,138,Peru,Peru,2018,-0.134862267,0.473027547,0,
+eez,15,Philippines,Philippines,2018,-0.3351534,0.43296932,0,
+eez,178,Poland,Poland,2018,0.64712365,0.62942473,0,
+eez,183,Portugal,Portugal,2018,1.072386683,0.714477337,0,
+eez,190,Qatar,Qatar,2018,0.348208867,0.569641773,0,
+eez,100,Republique du Congo,Congo Rep,2018,-1.657509333,0.168498133,0,
+eez,72,Romania,Romania,2018,0.152142983,0.530428597,0,
+eez,73,Russia,Russia,2018,-0.637255417,0.372548917,0,
+eez,102,South Africa,S Africa,2018,0.1281571,0.52563142,0,
+eez,20,South Korea,S Korea,2018,0.909884,0.6819768,0,
+eez,152,Samoa,Samoa,2018,0.648858567,0.629771713,0,
+eez,103,Sao Tome and Principe,Sao Tome & Principe,2018,-0.21598405,0.45680319,0,
+eez,50,Saudi Arabia,Saudi Arabia,2018,-0.230552417,0.453889517,0,
+eez,66,Senegal,Senegal,2018,-0.076200667,0.484759867,0,
+eez,31,Seychelles,Seychelles,2018,0.360793433,0.572158687,0,
+eez,96,Sierra Leone,Sierra Leone,2018,-0.5866189,0.38267622,0,
+eez,208,Singapore,Singapore,2018,1.63894735,0.82778947,0,
+eez,188,Slovenia,Slovenia,2018,0.941888083,0.688377617,0,
+eez,7,Solomon Islands,Solomon Isl,2018,-0.215576567,0.456884687,0,
+eez,44,Somalia,Somalia,2018,-2.115269333,0.076946133,0,
+eez,182,Spain,Spain,2018,0.808154283,0.661630857,0,
+eez,40,Sri Lanka,Sri Lanka,2018,-0.145209033,0.470958193,0,
+eez,119,Saint Kitts and Nevis,St Kitts & Nevis,2018,0.60923885,0.62184777,0,
+eez,122,Saint Lucia,St Lucia,2018,0.5749873,0.61499746,0,
+eez,127,Saint Vincent and the Grenadines,St Vincent & the Grenadines,2018,0.56417015,0.61283403,0,
+eez,49,Sudan,Sudan,2018,-1.578974333,0.184205133,0,
+eez,168,Suriname,Suriname,2018,-0.19486075,0.46102785,0,
+eez,222,Sweden,Sweden,2018,1.698549933,0.839709987,0,
+eez,77,Syria,Syria,2018,-1.973291333,0.105341733,0,
+eez,14,Taiwan,Taiwan,2018,1.1147758,0.72295516,0,
+eez,202,Tanzania,Tanzania,2018,-0.549282717,0.390143457,0,
+eez,25,Thailand,Thailand,2018,-0.27543265,0.44491347,0,
+eez,98,Togo,Togo,2018,-0.791940983,0.341611803,0,
+eez,155,Tonga,Tonga,2018,0.25781145,0.55156229,0,
+eez,126,Trinidad and Tobago,Trinidad & Tobago,2018,0.090914517,0.518182903,0,
+eez,61,Tunisia,Tunisia,2018,-0.203575817,0.459284837,0,
+eez,76,Turkey,Turkey,2018,-0.4762975,0.4047405,0,
+eez,19,Tuvalu,Tuvalu,2018,0.311164683,0.562232937,0,
+eez,75,Ukraine,Ukraine,2018,-0.677782333,0.364443533,0,
+eez,54,United Arab Emirates,United Arab Emirates,2018,0.65914465,0.63182893,0,
+eez,180,United Kingdom,United Kingdom,2018,1.333609083,0.766721817,0,
+eez,163,United States,United States,2018,1.24137465,0.74827493,0,
+eez,173,Uruguay,Uruguay,2018,0.863498283,0.672699657,0,
+eez,6,Vanuatu,Vanuatu,2018,0.096984133,0.519396827,0,
+eez,139,Venezuela,Venezuela,2018,-1.746654667,0.150669067,0,
+eez,207,Vietnam,Vietnam,2018,-0.353361833,0.429327633,0,
+eez,47,Yemen,Yemen,2018,-1.993694833,0.101261033,0,
+eez,151,American Samoa,Am Samoa,2018,0.923980492,0.684796098,1,
+eez,118,Anguilla,Anguilla,2018,0.842925835,0.668585167,1,
+eez,108,Bermuda,Bermuda,2018,1.090108383,0.718021677,1,
+eez,185,Monaco,Monaco,2018,1.054946447,0.710989289,1,
+eez,32,Reunion,Reunion,2018,0.925490033,0.685098007,1,
+eez,245,Bonaire,Bonaire,2018,0.815659318,0.663131864,6,
+eez,153,Cook Islands,Cook Isl,2018,0.07904758,0.515809516,6,
+eez,244,Curacao,Curacao,2018,0.815659318,0.663131864,6,
+eez,154,Niue,Niue,2018,-0.3909326,0.42181348,6,
+eez,248,Saba,Saba,2018,0.815659318,0.663131864,6,
+eez,249,Sint Eustatius,Sint Eustatius,2018,0.815659318,0.663131864,6,
+eez,220,Sint Maarten,Sint Maarten,2018,0.815659318,0.663131864,6,
+fao,999,abnj,ABNJ,NA,NA,NA,NA,
+eez-ccamlr,213,Antarctica,Antarctica,NA,NA,NA,NA,
+eez,85,Ascension,Ascension,NA,NA,NA,NA,
+eez,63,Western Sahara,Western Sahara,NA,NA,NA,NA,
+eez-disputed,25508,XD_AUS_IND_TLS,XD_AUS_IND_TLS,NA,NA,NA,NA,
+eez-disputed,25509,XD_AUS_PNG,XD_AUS_PNG,NA,NA,NA,NA,
+land-disputed,25509,XD_AUS_PNG,XD_AUS_PNG,NA,NA,NA,NA,
+eez-disputed,25502,XD_COL_JAM,XD_COL_JAM,NA,NA,NA,NA,
+land-disputed,25502,XD_COL_JAM,XD_COL_JAM,NA,NA,NA,NA,
+eez-disputed,25504,XD_EGY_SDN,XD_EGY_SDN,NA,NA,NA,NA,
+land-disputed,25504,XD_EGY_SDN,XD_EGY_SDN,NA,NA,NA,NA,
+eez-disputed,25512,XD_ESH_MAR,XD_ESH_MAR,NA,NA,NA,NA,
+eez-disputed,25505,XD_JPN_CHN_TWN,XD_JPN_CHN_TWN,NA,NA,NA,NA,
+land-disputed,25505,XD_JPN_CHN_TWN,XD_JPN_CHN_TWN,NA,NA,NA,NA,
+eez-disputed,25501,XD_JPN_KOR,XD_JPN_KOR,NA,NA,NA,NA,
+eez-disputed,25507,XD_JPN_KOR_2,XD_JPN_KOR_2,NA,NA,NA,NA,
+land-disputed,25507,XD_JPN_KOR_2,XD_JPN_KOR_2,NA,NA,NA,NA,
+eez-disputed,25511,XD_JPN_RUS,XD_JPN_RUS,NA,NA,NA,NA,
+land-disputed,25511,XD_JPN_RUS,XD_JPN_RUS,NA,NA,NA,NA,
+eez-disputed,25510,XD_KEN_SOM,XD_KEN_SOM,NA,NA,NA,NA,
+eez-disputed,25503,XD_NGA_STP,XD_NGA_STP,NA,NA,NA,NA,
+eez-disputed,25506,XD_SOUTHCHINASEA,XD_SOUTHCHINASEA,NA,NA,NA,NA,
+land-disputed,25506,XD_SOUTHCHINASEA,XD_SOUTHCHINASEA,NA,NA,NA,NA,
+eez-disputed,25513,XD_TTO_VEN_GUY,XD_TTO_VEN_GUY,NA,NA,NA,NA,
+eez,28,Comoros,Comoros,2018,-0.882416133,0.323516773,0,

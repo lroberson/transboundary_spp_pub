@@ -1,0 +1,376 @@
+---
+title: "WDI_countries"
+author: "Leslie Roberson"
+date: "1/27/2020"
+output: html_document
+---
+
+## Summary
+
+Here I pull world governance indicators for all countries to add to the plot data:
+
+
+```{r setup, include=FALSE}
+
+library(ohicore) # devtools::install_github('ohi-science/ohicore@dev')
+library(tools)
+library(tidyverse)
+library(WDI) # install.packages("WDI")
+library(wbstats) # install.packages("wbstats")
+library(stringr)
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. Access WGI data
+
+Reference: http://info.worldbank.org/governance/wgi/index.aspx#home
+
+Downloaded: 27 Jan 2020 
+
+Description:
+The Worldwide Governance Indicators (WGI) project reports aggregate and individual governance indicators for 215 economies over the period 1996–2018, for six dimensions of governance:
+
+Voice and Accountability
+Political Stability and Absence of Violence
+Government Effectiveness
+Regulatory Quality
+Rule of Law
+Control of Corruption
+
+Time range: 1996-2018
+
+```{r access WGI data}
+
+## check website to see what years are available: http://info.worldbank.org/governance/wgi/index.aspx#home
+yr_start = 1996
+yr_end   = 2018
+
+## get description of variables:
+indicators <-  data.frame(WDI_data[[1]])
+indicators[grep("VA.EST", indicators$indicator), ]
+indicators[grep("PV.EST", indicators$indicator), ]
+indicators[grep("GE.EST", indicators$indicator), ]
+indicators[grep("RQ.EST", indicators$indicator), ]
+indicators[grep("RL.EST", indicators$indicator), ]
+indicators[grep("CC.EST", indicators$indicator), ]
+
+## identify the six indicators
+key_voice = WDI(
+  indicator = WDIsearch('Voice and Accountability: Estimate', field='name')['indicator'],
+  country = 'all', start = yr_start, end=yr_end)
+key_voice <- key_voice %>% rename(voice = indicator)
+
+key_polst = WDI(
+  WDIsearch('Political Stability and Absence of Violence/Terrorism: Estimate', field='name')['indicator'],
+  country='all',start = yr_start, end=yr_end)
+key_polst <- key_polst %>% rename(polst = indicator)
+
+key_gvtef = WDI(
+  WDIsearch('Government Effectiveness: Estimate', field='name')['indicator'],
+  country='all',start = yr_start, end=yr_end)
+key_gvtef <- key_gvtef %>% rename(gvtef = indicator)
+
+key_regqt = WDI(
+  WDIsearch('Regulatory Quality: Estimate', field='name')['indicator'],
+  country='all',start = yr_start, end=yr_end)
+key_regqt <- key_regqt %>% rename(regqt = indicator)
+
+key_rolaw = WDI(
+  WDIsearch('Rule of Law: Estimate', field='name')['indicator'],
+  country='all',start = yr_start, end=yr_end)
+key_rolaw <- key_rolaw %>% rename(rolaw = indicator)
+
+key_corrp = WDI(
+  WDIsearch('Control of Corruption: Estimate', field='name')['indicator'],
+  country='all',start = yr_start, end=yr_end)
+key_corrp <- key_corrp %>% rename(corrp = indicator)
+
+## Combine the indicators into a single table, with a column for each indicator, and rows for each country-year pair.
+d = key_voice %>% 
+  select(country, year, voice) %>%
+  left_join(key_polst %>% select(-iso2c), by=(c('country', 'year'))) %>%
+  left_join(key_gvtef %>% select(-iso2c), by=(c('country', 'year'))) %>%
+  left_join(key_regqt %>% select(-iso2c), by=(c('country', 'year'))) %>%
+  left_join(key_rolaw %>% select(-iso2c), by=(c('country', 'year'))) %>%
+  left_join(key_corrp %>% select(-iso2c), by=(c('country', 'year'))); head(d); summary(d); sapply(d, class)
+
+summary(d)
+```
+
+## 2. Gapfill, part 1: filling missing years of data for indicators, within countries
+
+The first gapfilling occurs when we use the average of previous years data within each region/indicator. This occurs when a region has data for an indicator, but not for all years
+
+```{r gapfill 1}
+
+head(d)
+
+d_long <- pivot_longer(d, cols = 3:8, names_to = "indicator")
+
+d_gap_fill  <- d_long %>%
+  group_by(country, year) %>%
+  mutate(NA_count_c_y = sum(is.na(value))) %>% # gf record: NA values within a region/year prior to gapfilling, max value is 6
+  ungroup() %>%
+  group_by(country, indicator) %>% # gapfill missing data with mean of values across years within the same region/indicator
+  mutate(ind_mean_c_i = mean(value, na.rm=TRUE)) %>%
+  ungroup() %>%
+  mutate(value = ifelse(is.na(value), ind_mean_c_i, value)) %>%
+  group_by(country, year) %>% 
+  mutate(NA_count_post_gf1 = sum(is.na(value))) # gf record: NA values within a region/year after within region/indicator gapfilling (i.e. indicator is gapfilled by other years of data), used to cut regions <4 indicators (below)
+
+summary(d_gap_fill)
+
+```
+
+## 3. Gapfill part 2: Safeguard - cut regions with < 4 indicators (if any) to calculate score.
+
+Once gapfilling is complete, the WGI scores are calculated as an average of the 6 indicators. However, if a country is missing 4 or more of the indicators within a year the average would be very biased. In these cases, a different method should be used to gapfill these data
+
+```{r gapfill 2}
+
+countries_no_data <- d_gap_fill %>%
+  filter(NA_count_post_gf1 > 3)
+
+countries_no_data <- unique(countries_no_data$country)
+countries_no_data # none have <4 indicators, good
+
+## In this case, the countries with minimal data (< 4 indicators ever calculated) are deleted.  
+## These will be gap-filled later on if they are deleted now.
+d_gap_fill <- d_gap_fill %>%
+  filter(!(country %in% countries_no_data))
+
+```
+
+## 4.Calculate overall WGI score for each country
+
+This involves:
+
+taking the average of the 6 indicators (assuming there are at least 4 of the 6 indicators)
+rescaling the data from 0 to 1
+
+```{r overall WGI score}
+
+d_calcs  <-  d_gap_fill %>%
+  group_by(country, year) %>%
+  summarize(score_wgi_scale = mean(value, na.rm=T),
+            NA_start = mean(NA_count_c_y), # initial mean number of NA across indicators, pre-gapfill 
+            NA_post_gf_1 = mean(NA_count_post_gf1)) %>% # number of NA across indicators, post-gapfill across year gapfill within region/indicator
+  ungroup()
+
+```
+
+## 5. Check that the values in scores_wgi_scale fall within the wgi range specified below:
+
+```{r check scores range}
+
+# summary(d_calcs)
+wgi_range = c(-2.5, 2.5) # historic values have been between -2.5 and 2.5
+
+d_calcs <- d_calcs %>%
+  mutate(score =  (score_wgi_scale - wgi_range[1]) / (wgi_range[2] - wgi_range[1])) %>%
+  ungroup(); head(d_calcs); summary(d_calcs)
+
+# document gapfilling
+d_calcs <- d_calcs %>%
+  mutate(gap_fill = NA_start - NA_post_gf_1,   # if there are values in NA_post_gf_1, it means these weren't gapfilled
+         gap_fill = ifelse(is.na(score), 0, gap_fill)) %>% # number of values that were gapfilled
+  select(-NA_start, -NA_post_gf_1)
+```
+
+## 6. Explore & check intermediate d_calcs data table
+
+```{r check intermed dcalcs}
+
+d_calcs[d_calcs$gap_fill>0, ]     
+d_calcs[d_calcs$country == "New Caledonia", ]  # no data, was deleted earlier
+d_calcs[d_calcs$country == "Niue", ] # should have gap-fill values between 0-6
+```
+
+## 7 Save intermediate file
+
+```{r save intermed file}
+
+## save intermediate file of wgi scores pre-gapfilling 
+write_csv(d_calcs %>%
+            select(country, year, score_wgi_scale, score_ohi_scale = score), 
+          file.path('_data/WDI/wgi_intermed_1.csv'))
+```
+
+## Select most recent WGI score
+
+yr_end = 2018
+
+```{r}
+
+n_distinct(d_calcs$country) # n = 219
+
+## select 2018 scores
+d_calcs_2018 <- d_calcs %>% filter(year == 2018)
+
+# dbl check all countries had a 2018 score
+n_distinct(d_calcs_2018$country) # n = 219
+summary(d_calcs_2018) 
+
+```
+
+## 9 Convert country names 
+
+```{r convert country names}
+
+## Aruba is part of the Netherlands Antilles, but it is reported separately
+country_split_1 <- data.frame(country = "Netherlands Antilles", region = c('Bonaire', 'Curacao', 'Saba', 'Sint Maarten', 'Sint Eustatius'))
+country_split_2 <- data.frame(country = "Jersey, Channel Islands", region = c('Jersey', 'Guernsey'))
+country_split <- rbind(country_split_1, country_split_2)
+
+country_split_data <- country_split %>%
+  left_join(d_calcs_2018) %>%
+  select(-country) %>%
+  rename(country = region)
+
+d_calcs_2018 <- d_calcs_2018 %>%
+  filter(!(country %in% c("Netherlands Antilles", "Jersey, Channel Islands"))) %>%
+  rbind(country_split_data)  %>%
+  mutate(country = as.character(country))
+
+d_calcs_2018$country[grep("Korea, Dem.", d_calcs_2018$country)] <- "North Korea"
+
+n_distinct(d_calcs_2018$country) # n = 219
+
+
+## Get region names and IDs, with adjusted region labels (has abnj)
+
+## load regions lookup
+rgn_lookup <- fread(here("_data/rgn_lookup.csv"))
+head(rgn_lookup)
+
+rgn_lookup %>% arrange(rgn_nam_2)
+n_distinct(rgn_lookup$rgn_nam_2) # n = 233 (combined some into ABNJ)
+
+head(d_calcs_2018)
+
+non_match <- anti_join(rgn_lookup, d_calcs_2018, by = c("rgn_nam_2" = "country")) %>%
+  arrange(rgn_nam_2)
+head(non_match, 20)
+
+wgi_scores_rgns <- full_join(rgn_lookup, d_calcs_2018, by = c("rgn_nam_2" = "country"))
+
+summary(wgi_scores_rgns)
+
+## save this intermediate file - still has NAs and unmatched regions
+
+write_csv(wgi_scores_rgns, "_data/WDI/wgi_intermed_2.csv")
+
+```
+
+## Match to WGI scores
+
+```{match to WGI names}
+
+## Load WGI results
+
+wgi <- read_csv("_data/WDI/wgi_intermed_2.csv")
+names(wgi)
+
+wgi <- wgi %>%
+    mutate(rgn_name_short = rgn_label_2, 
+         rgn_name_short = gsub("Islands", "Isl", rgn_name_short),
+         rgn_name_short = gsub("Island", "Isl", rgn_name_short),
+         rgn_name_short = gsub("Democratic", "Dem", rgn_name_short),
+         rgn_name_short = gsub("Republic", "Rep", rgn_name_short),
+         rgn_name_short = gsub("South", "S", rgn_name_short),
+         rgn_name_short = gsub("American", "Am", rgn_name_short),
+         rgn_name_short = gsub("the United States", "US", rgn_name_short),
+         rgn_name_short = gsub("Territory", "Terr", rgn_name_short),
+         rgn_name_short = gsub("Saint", "St", rgn_name_short),
+         rgn_name_short = gsub(" and ", " & ", rgn_name_short),
+         rgn_name_short = gsub("Republique", "Rep", rgn_name_short),
+         rgn_name_short = gsub("Dem Rep of the", "Dem Rep of", rgn_name_short),
+         rgn_name_short = gsub("Georgia and the", "Georgia &", rgn_name_short),
+         rgn_name_short = gsub("St Vincent and the", "St Vincent &", rgn_name_short),
+         rgn_name_short = gsub("Howland Isl & Baker Isl", "Howland & Baker Isl", rgn_name_short),
+         rgn_name_short = gsub("Northern", "N", rgn_name_short), 
+         rgn_name_short = gsub("R_union", "Reunion", rgn_name_short),
+         rgn_name_short = gsub("Micronesia, Fed. Sts", "Micronesia", rgn_name_short),
+         rgn_name_short = gsub("Korea, Rep.", "South Korea", rgn_name_short),
+         rgn_name_short = gsub("Iran, Islamic Rep.", "Iran", rgn_name_short),
+         rgn_name_short = gsub("Brunei Darussalam", "Brunei", rgn_name_short),
+         rgn_name_short = gsub("Gambia, The", "Gambia", rgn_name_short),
+         rgn_name_short = gsub("Egypt, Arab Rep.", "Egypt", rgn_name_short),
+         rgn_name_short = gsub("Congo, Dem. Rep.", "Dem Rep of Congo", rgn_name_short),
+         rgn_name_short = gsub("Guinea-Bissau", "Guinea Bissau", rgn_name_short),
+         rgn_name_short = gsub("Bahamas, The", "Bahamas", rgn_name_short,
+         rgn_name_short = gsub("Russian Federation", "Russia", rgn_name_short))
+
+## Join 
+
+names(wgi)
+wgi <- wgi %>% dplyr::select(-c("r0_label","r1_label","r2_label","rgn_label"))
+View(wgi)
+
+names(rgn_lookup)
+
+wgi_xbd_rgns <- left_join(rgn_lookup, wgi, by = "rgn_name_short") # some won't match bc of edited rgn_id_2
+View(wgi_xbd_rgns)
+
+wgi_xbd_rgns <- wgi_xbd_rgns %>% dplyr::select(-c(rgn_id, rgn_label_2))
+
+write_csv(wgi_xbd_rgns, "_data/WDI/wgi_intermed_3.csv") 
+
+```
+
+## Fill missing WGI scores
+
+gap_fill == "sub_country" means took score from a protectorate/sovereign state (usually in the case of territories)
+col "sovereignty" has the name of the sovereign country, if different from the region name (NA == disputed, no power (e.g. ABNJ), or sovereign state)
+
+
+```{r}
+
+## Load manually filled WGI scores
+
+wgi_man <- read_csv(here("_data/WDI/wgi_manual_fill.csv"))
+
+summary(wgi_man)
+# score is the scaled score
+
+## check NAs
+View(wgi_man %>% filter(is.na(score)))
+# ABNJ, Antarctica, Ascension, Western Sahara, and the 13 disputed regions have no WGI score
+
+## remove the disputed land (other land was already removed) 
+unique(wgi_man$ant_typ)
+
+wgi_man <- wgi_man %>% filter(ant_typ != "land-disputed")
+
+write_csv(wgi_man, "_data/WDI/wgi_manual_fill.csv")
+  
+```
+
+## Make df for lms  
+
+```{combined country summary}
+
+eez_results <- fread(here("_data/combined_eez_summary.csv"))
+
+names(eez_results)
+
+eez_results_wgi <- left_join(eez_results, wgi_man, by = c("rgn_id_2", "rgn_nam_2"))
+
+eez_results_wgi %>% filter(is.na(score))
+
+## a few checks 
+
+# remove disputed land areas
+eez_results_wgi %>% filter(ant_typ != "land-disputed")
+
+library(hablar)
+
+eez_results_wgi %>% find_duplicates(rgn_name_short) # Bonaire (sub country & gap filled), Curacao (sub country & gap filled), and Iran
+  # manually double checked and removed - kept gap filled score for Curacao and Bonaire
+
+## save
+write_csv(eez_results_wgi, "_data/WDI/combined_eez_summary_wdi_scores.csv")
+
+```
+

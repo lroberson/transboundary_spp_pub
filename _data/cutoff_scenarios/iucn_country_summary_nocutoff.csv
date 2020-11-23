@@ -1,0 +1,223 @@
+rgn_name,num_spp_sc,num_spp_tb
+abnj,30,1276
+Amsterdam Island and Saint Paul Island,1,193
+Andaman and Nicobar,3,1326
+Angola,23,807
+Argentina,2,484
+Aruba,1,1162
+Ascension,9,417
+Australia,429,2879
+Azores,1,543
+Bahamas,11,1405
+Barbados,2,1031
+Belize,6,1167
+Bermuda,8,718
+Brazil,62,1163
+British Indian Ocean Territory,2,1122
+Cape Verde,43,747
+Cayman Islands,2,963
+Chile,49,720
+China,11,1625
+Christmas Island,1,845
+Clipperton Island,8,313
+Cocos Islands,1,751
+Colombia,19,1964
+Comoro Islands,1,1282
+Cook Islands,3,958
+Costa Rica,13,1809
+Croatia,1,416
+Cuba,2,1305
+Curacao,2,1114
+disputed,1,3853
+Ecuador,48,940
+Egypt,3,1328
+Eritrea,1,1145
+Falkland Islands,3,201
+Fiji,19,1710
+France,1,781
+French Polynesia,54,1129
+Guadeloupe and Martinique,1,1112
+Guinea,1,848
+Haiti,4,1137
+Honduras,1,1718
+Iceland,2,285
+India,11,1927
+Indonesia,73,3206
+Israel,1,400
+Italy,2,559
+Japan,50,2526
+Kenya,2,1444
+Kerguelen Islands,2,127
+Macquarie Island,1,138
+Madagascar,20,1591
+Madeira,3,749
+Maldives,2,1214
+Marshall Islands,3,1322
+Mauritius,8,1380
+Mexico,155,2170
+Micronesia,3,1626
+Mozambique,7,1714
+Myanmar,2,1630
+Namibia,1,676
+New Caledonia,39,1991
+New Zealand,78,693
+Nigeria,1,798
+Niue,2,900
+Norfolk Island,4,586
+Northern Mariana Islands and Guam,6,1256
+Oman,15,1088
+Pakistan,2,772
+Panama,26,1875
+Papua New Guinea,15,2585
+Peru,4,778
+Philippines,38,2795
+Pitcairn,1,530
+R_union,3,1217
+Republique du Congo,1,729
+Russia,2,570
+Saint Helena,7,376
+Samoa,1,1256
+Sao Tome and Principe,5,668
+Saudi Arabia,3,1228
+Senegal,9,978
+Seychelles,5,1401
+Sierra Leone,2,838
+Solomon Islands,5,2078
+Somalia,1,1517
+South Africa,91,1427
+South Georgia and the South Sandwich Islands,1,119
+Spain,2,874
+Sri Lanka,2,1547
+Taiwan,13,2389
+Tanzania,2,1471
+Thailand,4,2003
+Tonga,11,1302
+Trinidad and Tobago,2,1244
+Tristan da Cunha,1,223
+United States,107,2416
+Vanuatu,4,1745
+Venezuela,8,1406
+Vietnam,1,1783
+Wallis and Futuna,1,1256
+Yemen,2,1480
+"",0,419
+Albania,0,418
+Algeria,0,474
+American Samoa,0,1269
+Anguilla,0,1104
+Antigua and Barbuda,0,1076
+Bahrain,0,467
+Bangladesh,0,689
+Bassas da India,0,338
+Belgium,0,239
+Benin,0,764
+Bonaire,0,1084
+Bouvet Island,0,88
+British Virgin Islands,0,1153
+Brunei,0,1737
+Bulgaria,0,188
+Cambodia,0,1290
+Cameroon,0,726
+Canada,0,711
+Canary Islands,0,822
+Crozet Islands,0,139
+Cyprus,0,368
+Democratic Republic of the Congo,0,702
+Denmark,0,256
+Djibouti,0,1216
+Dominica,0,1053
+Dominican Republic,0,1195
+East Timor,0,2174
+El Salvador,0,808
+Equatorial Guinea,0,828
+Estonia,0,110
+Faeroe Islands,0,265
+Finland,0,112
+French Guiana,0,858
+Gabon,0,801
+Gambia,0,890
+Georgia,0,149
+Germany,0,238
+Ghana,0,813
+Gibraltar,0,405
+Glorioso Islands,0,1318
+Greece,0,477
+Greenland,0,205
+Grenada,0,1193
+Guatemala,0,1538
+Guernsey,0,254
+Guinea Bissau,0,875
+Guyana,0,898
+Heard and McDonald Islands,0,103
+Howland Island and Baker Island,0,280
+Ile Europa,0,953
+Ile Tromelin,0,739
+Iran,0,809
+Iraq,0,496
+Ireland,0,520
+Ivory Coast,0,793
+Jamaica,0,1069
+Jan Mayen,0,55
+Jarvis Island,0,623
+Jersey,0,275
+Johnston Atoll,0,551
+Jordan,0,948
+Juan de Nova Island,0,1295
+Kiribati,0,1185
+Kuwait,0,497
+Latvia,0,105
+Lebanon,0,348
+Liberia,0,813
+Libya,0,404
+Line Group,0,926
+Lithuania,0,97
+Malaysia,0,2588
+Malta,0,368
+Mauritania,0,943
+Mayotte,0,1271
+Monaco,0,202
+Montenegro,0,381
+Montserrat,0,981
+Morocco,0,940
+Nauru,0,1146
+Netherlands,0,246
+Nicaragua,0,1748
+North Korea,0,360
+Northern Saint-Martin,0,994
+Norway,0,298
+Oecussi Ambeno,0,2087
+Palau,0,1845
+Palmyra Atoll,0,695
+Phoenix Group,0,954
+Poland,0,113
+Portugal,0,755
+Prince Edward Islands,0,145
+Puerto Rico and Virgin Islands of the United States,0,1257
+Qatar,0,495
+Romania,0,178
+Saba,0,1055
+Saint Kitts and Nevis,0,1029
+Saint Lucia,0,1037
+Saint Pierre and Miquelon,0,320
+Saint Vincent and the Grenadines,0,1068
+Singapore,0,1602
+Sint Eustatius,0,979
+Sint Maarten,0,957
+Slovenia,0,344
+South Korea,0,675
+Sudan,0,1015
+Suriname,0,874
+Sweden,0,225
+Syria,0,325
+Togo,0,761
+Tokelau,0,921
+Tunisia,0,486
+Turkey,0,478
+Turks and Caicos Islands,0,1064
+Tuvalu,0,1225
+Ukraine,0,184
+United Arab Emirates,0,699
+United Kingdom,0,552
+Uruguay,0,494
+Wake Island,0,476
+Western Sahara,0,870

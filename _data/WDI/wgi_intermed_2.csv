@@ -1,0 +1,320 @@
+rgn_id,r0_label,r1_label,r2_label,rgn_label,rgn_label_2,year,score_wgi_scale,score,gap_fill
+1,World,Oceania,Australia and New Zealand,Cocos Islands,Cocos Islands,NA,NA,NA,NA
+2,World,Oceania,Australia and New Zealand,Christmas Island,Christmas Island,NA,NA,NA,NA
+3,World,Oceania,Australia and New Zealand,Norfolk Island,Norfolk Island,NA,NA,NA,NA
+4,World,Oceania,Australia and New Zealand,Macquarie Island,Macquarie Island,NA,NA,NA,NA
+5,World,Oceania,Melanesia,New Caledonia,New Caledonia,NA,NA,NA,NA
+6,World,Oceania,Melanesia,Vanuatu,Vanuatu,2018,0.096984133,0.519396827,0
+7,World,Oceania,Melanesia,Solomon Islands,Solomon Islands,2018,-0.215576567,0.456884687,0
+8,World,Oceania,Micronesia,Palau,Palau,2018,0.289605433,0.557921087,0
+9,World,Oceania,Micronesia,Micronesia,Micronesia,NA,NA,NA,NA
+10,World,Oceania,Micronesia,Nauru,Nauru,2018,-0.032448317,0.493510337,0
+11,World,Oceania,Micronesia,Marshall Islands,Marshall Islands,2018,-0.1342393,0.47315214,0
+12,World,Oceania,Micronesia,Wake Island,Wake Island,NA,NA,NA,NA
+13,World,Oceania,Micronesia,Northern Mariana Islands and Guam,Northern Mariana Islands and Guam,NA,NA,NA,NA
+14,World,Asia,Eastern Asia,Taiwan,Taiwan,NA,NA,NA,NA
+15,World,Asia,South-Eastern Asia,Philippines,Philippines,2018,-0.3351534,0.43296932,0
+16,World,Oceania,Australia and New Zealand,Australia,Australia,2018,1.575330017,0.815066003,0
+17,World,Oceania,Melanesia,Papua New Guinea,Papua New Guinea,2018,-0.5810573,0.38378854,0
+18,World,Oceania,Melanesia,Fiji,Fiji,2018,0.208593067,0.541718613,0
+19,World,Oceania,Polynesia,Tuvalu,Tuvalu,2018,0.311164683,0.562232937,0
+20,World,Asia,Eastern Asia,South Korea,South Korea,NA,NA,NA,NA
+21,World,Asia,Eastern Asia,North Korea,North Korea,2018,-1.611969267,0.177606147,0
+24,World,Asia,South-Eastern Asia,Cambodia,Cambodia,2018,-0.771144467,0.345771107,0
+25,World,Asia,South-Eastern Asia,Thailand,Thailand,2018,-0.27543265,0.44491347,0
+26,World,Asia,South-Eastern Asia,Andaman and Nicobar,Andaman and Nicobar,NA,NA,NA,NA
+28,World,Africa,Eastern Africa,Comoro Islands,Comoro Islands,NA,NA,NA,NA
+29,World,Africa,Eastern Africa,Mayotte,Mayotte,NA,NA,NA,NA
+30,World,Africa,Eastern Africa,Glorioso Islands,Glorioso Islands,NA,NA,NA,NA
+31,World,Africa,Eastern Africa,Seychelles,Seychelles,2018,0.360793433,0.572158687,0
+32,World,Africa,Eastern Africa,R_union,R_union,NA,NA,NA,NA
+33,World,Africa,Eastern Africa,Juan de Nova Island,Juan de Nova Island,NA,NA,NA,NA
+34,World,Africa,Eastern Africa,Bassas da India,Bassas da India,NA,NA,NA,NA
+35,World,Africa,Eastern Africa,Ile Europa,Ile Europa,NA,NA,NA,NA
+36,World,Africa,Eastern Africa,Ile Tromelin,Ile Tromelin,NA,NA,NA,NA
+37,World,Africa,Eastern Africa,Mauritius,Mauritius,2018,0.764335217,0.652867043,0
+38,World,Asia,Southern Asia,British Indian Ocean Territory,British Indian Ocean Territory,NA,NA,NA,NA
+39,World,Asia,Southern Asia,Maldives,Maldives,2018,-0.496577283,0.400684543,0
+40,World,Asia,Southern Asia,Sri Lanka,Sri Lanka,2018,-0.145209033,0.470958193,0
+41,World,Africa,Eastern Africa,Mozambique,Mozambique,2018,-0.7794679,0.34410642,0
+42,World,Africa,Eastern Africa,Madagascar,Madagascar,2018,-0.7549598,0.34900804,0
+43,World,Africa,Eastern Africa,Kenya,Kenya,2018,-0.570881467,0.385823707,0
+44,World,Africa,Eastern Africa,Somalia,Somalia,2018,-2.115269333,0.076946133,0
+45,World,Africa,Eastern Africa,Eritrea,Eritrea,2018,-1.607151033,0.178569793,0
+46,World,Africa,Eastern Africa,Djibouti,Djibouti,2018,-0.788405167,0.342318967,0
+47,World,Asia,Western Asia,Yemen,Yemen,NA,NA,NA,NA
+48,World,Asia,Western Asia,Oman,Oman,2018,0.139336417,0.527867283,0
+49,World,Africa,Northern Africa,Sudan,Sudan,2018,-1.578974333,0.184205133,0
+50,World,Asia,Western Asia,Saudi Arabia,Saudi Arabia,2018,-0.230552417,0.453889517,0
+51,World,Asia,Western Asia,Kuwait,Kuwait,2018,-0.113502233,0.477299553,0
+52,World,Asia,Western Asia,Bahrain,Bahrain,2018,-0.2258304,0.45483392,0
+53,World,Asia,Southern Asia,Pakistan,Pakistan,2018,-0.968361633,0.306327673,0
+54,World,Asia,Western Asia,United Arab Emirates,United Arab Emirates,2018,0.65914465,0.63182893,0
+55,World,Europe,Southern Europe,Azores,Azores,NA,NA,NA,NA
+56,World,Africa,Western Africa,Cape Verde,Cape Verde,NA,NA,NA,NA
+57,World,Europe,Southern Europe,Madeira,Madeira,NA,NA,NA,NA
+58,World,Europe,Southern Europe,Canary Islands,Canary Islands,NA,NA,NA,NA
+59,World,Europe,Western Europe,Belgium,Belgium,2018,1.182232833,0.736446567,0
+60,World,Europe,Southern Europe,Gibraltar,Gibraltar,NA,NA,NA,NA
+61,World,Africa,Northern Africa,Tunisia,Tunisia,2018,-0.203575817,0.459284837,0
+62,World,Africa,Northern Africa,Morocco,Morocco,2018,-0.300342067,0.439931587,0
+63,World,Africa,Northern Africa,Western Sahara,Western Sahara,NA,NA,NA,NA
+64,World,Africa,Western Africa,Mauritania,Mauritania,2018,-0.75875625,0.34824875,0
+65,World,Africa,Western Africa,Gambia,Gambia,NA,NA,NA,NA
+66,World,Africa,Western Africa,Senegal,Senegal,2018,-0.076200667,0.484759867,0
+67,World,Africa,Northern Africa,Libya,Libya,2018,-1.9044645,0.1191071,0
+68,World,Europe,Southern Europe,Malta,Malta,2018,1.0594933,0.71189866,0
+69,World,Europe,Northern Europe,Latvia,Latvia,2018,0.7922963,0.65845926,0
+70,World,Europe,Northern Europe,Estonia,Estonia,2018,1.219087967,0.743817593,0
+71,World,Europe,Eastern Europe,Bulgaria,Bulgaria,2018,0.2350627,0.54701254,0
+72,World,Europe,Eastern Europe,Romania,Romania,2018,0.152142983,0.530428597,0
+73,World,Europe,Eastern Europe,Russia,Russia,NA,NA,NA,NA
+74,World,Asia,Western Asia,Georgia,Georgia,2018,0.432257483,0.586451497,0
+75,World,Europe,Eastern Europe,Ukraine,Ukraine,2018,-0.677782333,0.364443533,0
+76,World,Asia,Western Asia,Turkey,Turkey,2018,-0.4762975,0.4047405,0
+77,World,Asia,Western Asia,Syria,Syria,NA,NA,NA,NA
+78,World,Asia,Western Asia,Lebanon,Lebanon,2018,-0.833200967,0.333359807,0
+79,World,Asia,Western Asia,Israel,Israel,2018,0.659117783,0.631823557,0
+80,World,Europe,Southern Europe,Greece,Greece,2018,0.278355367,0.555671073,0
+81,World,Asia,Western Asia,Cyprus,Cyprus,2018,0.818842433,0.663768487,0
+82,World,Europe,Southern Europe,Albania,Albania,2018,0.011809667,0.502361933,0
+84,World,Africa,Northern Africa,Algeria,Algeria,2018,-0.8157032,0.33685936,0
+85,World,Europe,Northern Europe,Ascension,Ascension,NA,NA,NA,NA
+86,World,Europe,Northern Europe,Saint Helena,Saint Helena,NA,NA,NA,NA
+88,World,Europe,Northern Europe,Tristan da Cunha,Tristan da Cunha,NA,NA,NA,NA
+89,World,Southern Islands,Southern Islands,South Georgia and the South Sandwich Islands,South Georgia and the South Sandwich Islands,NA,NA,NA,NA
+90,World,Southern Islands,Southern Islands,Prince Edward Islands,Prince Edward Islands,NA,NA,NA,NA
+91,World,Southern Islands,Southern Islands,Crozet Islands,Crozet Islands,NA,NA,NA,NA
+92,World,Southern Islands,Southern Islands,Amsterdam Island and Saint Paul Island,Amsterdam Island and Saint Paul Island,NA,NA,NA,NA
+93,World,Southern Islands,Southern Islands,Kerguelen Islands,Kerguelen Islands,NA,NA,NA,NA
+94,World,Southern Islands,Southern Islands,Heard and McDonald Islands,Heard and McDonald Islands,NA,NA,NA,NA
+95,World,Europe,Northern Europe,Falkland Islands,Falkland Islands,NA,NA,NA,NA
+96,World,Africa,Western Africa,Sierra Leone,Sierra Leone,2018,-0.5866189,0.38267622,0
+97,World,Africa,Western Africa,Liberia,Liberia,2018,-0.731310717,0.353737857,0
+98,World,Africa,Western Africa,Togo,Togo,2018,-0.791940983,0.341611803,0
+99,World,Africa,Western Africa,Benin,Benin,2018,-0.304775767,0.439044847,0
+100,World,Africa,Middle Africa,Republique du Congo,Republique du Congo,NA,NA,NA,NA
+101,World,Africa,Southern Africa,Namibia,Namibia,2018,0.29648915,0.55929783,0
+102,World,Africa,Southern Africa,South Africa,South Africa,2018,0.1281571,0.52563142,0
+103,World,Africa,Middle Africa,Sao Tome and Principe,Sao Tome and Principe,2018,-0.21598405,0.45680319,0
+104,World,Africa,Middle Africa,Equatorial Guinea,Equatorial Guinea,2018,-1.290404367,0.241919127,0
+105,World,Southern Islands,Southern Islands,Bouvet Island,Bouvet Island,NA,NA,NA,NA
+106,World,Africa,Western Africa,Ghana,Ghana,2018,0.04587915,0.50917583,0
+107,World,Latin America and the Caribbean,Central America,Clipperton Island,Clipperton Island,NA,NA,NA,NA
+108,World,Latin America and the Caribbean,Caribbean,Bermuda,Bermuda,2018,1.090108383,0.718021677,1
+110,World,Latin America and the Caribbean,Caribbean,Bahamas,Bahamas,NA,NA,NA,NA
+111,World,Latin America and the Caribbean,Caribbean,Turks and Caicos Islands,Turks and Caicos Islands,NA,NA,NA,NA
+112,World,Latin America and the Caribbean,Caribbean,Cuba,Cuba,2018,-0.462036983,0.407592603,0
+113,World,Latin America and the Caribbean,Caribbean,Cayman Islands,Cayman Islands,2018,0.849155033,0.669831007,0
+114,World,Latin America and the Caribbean,Caribbean,Haiti,Haiti,2018,-1.133138283,0.273372343,0
+115,World,Latin America and the Caribbean,Caribbean,Dominican Republic,Dominican Republic,2018,-0.241812817,0.451637437,0
+116,World,Latin America and the Caribbean,Caribbean,Puerto Rico and Virgin Islands of the United States,Puerto Rico and Virgin Islands of the United States,NA,NA,NA,NA
+117,World,Latin America and the Caribbean,Caribbean,British Virgin Islands,British Virgin Islands,NA,NA,NA,NA
+118,World,Latin America and the Caribbean,Caribbean,Anguilla,Anguilla,2018,0.842925835,0.668585167,1
+119,World,Latin America and the Caribbean,Caribbean,Saint Kitts and Nevis,Saint Kitts and Nevis,NA,NA,NA,NA
+120,World,Latin America and the Caribbean,Caribbean,Antigua and Barbuda,Antigua and Barbuda,2018,0.403362833,0.580672567,0
+121,World,Latin America and the Caribbean,Caribbean,Montserrat,Montserrat,NA,NA,NA,NA
+122,World,Latin America and the Caribbean,Caribbean,Saint Lucia,Saint Lucia,NA,NA,NA,NA
+123,World,Latin America and the Caribbean,Caribbean,Dominica,Dominica,2018,0.479059167,0.595811833,0
+124,World,Latin America and the Caribbean,Caribbean,Barbados,Barbados,2018,0.803243967,0.660648793,0
+125,World,Latin America and the Caribbean,Caribbean,Grenada,Grenada,2018,0.278829717,0.555765943,0
+126,World,Latin America and the Caribbean,Caribbean,Trinidad and Tobago,Trinidad and Tobago,2018,0.090914517,0.518182903,0
+127,World,Latin America and the Caribbean,Caribbean,Saint Vincent and the Grenadines,Saint Vincent and the Grenadines,NA,NA,NA,NA
+129,World,Latin America and the Caribbean,Central America,Panama,Panama,2018,0.102261333,0.520452267,0
+130,World,Latin America and the Caribbean,Central America,Costa Rica,Costa Rica,2018,0.586524317,0.617304863,0
+131,World,Latin America and the Caribbean,Central America,Nicaragua,Nicaragua,2018,-0.9127236,0.31745528,0
+132,World,Latin America and the Caribbean,South America,Colombia,Colombia,2018,-0.181457367,0.463708527,0
+133,World,Latin America and the Caribbean,Central America,Honduras,Honduras,2018,-0.63138385,0.37372323,0
+134,World,Latin America and the Caribbean,Central America,El Salvador,El Salvador,2018,-0.365807817,0.426838437,0
+135,World,Latin America and the Caribbean,Central America,Mexico,Mexico,2018,-0.3528875,0.4294225,0
+136,World,Latin America and the Caribbean,Central America,Guatemala,Guatemala,2018,-0.6058319,0.37883362,0
+137,World,Latin America and the Caribbean,South America,Ecuador,Ecuador,2018,-0.398648533,0.420270293,0
+138,World,Latin America and the Caribbean,South America,Peru,Peru,2018,-0.134862267,0.473027547,0
+139,World,Latin America and the Caribbean,South America,Venezuela,Venezuela,NA,NA,NA,NA
+140,World,Latin America and the Caribbean,Caribbean,Guadeloupe and Martinique,Guadeloupe and Martinique,NA,NA,NA,NA
+141,World,Europe,Northern Europe,Faeroe Islands,Faeroe Islands,NA,NA,NA,NA
+143,World,Europe,Northern Europe,Iceland,Iceland,2018,1.545318333,0.809063667,0
+144,World,Europe,Northern Europe,Jan Mayen,Jan Mayen,NA,NA,NA,NA
+145,World,Europe,Northern Europe,Greenland,Greenland,2018,1.395914283,0.779182857,0
+146,World,Oceania,Polynesia,Pitcairn,Pitcairn,NA,NA,NA,NA
+147,World,Oceania,Polynesia,French Polynesia,French Polynesia,NA,NA,NA,NA
+148,World,Oceania,Micronesia,Line Group,Line Group,NA,NA,NA,NA
+149,World,Oceania,Micronesia,Jarvis Island,Jarvis Island,NA,NA,NA,NA
+150,World,Oceania,Micronesia,Palmyra Atoll,Palmyra Atoll,NA,NA,NA,NA
+151,World,Oceania,Polynesia,American Samoa,American Samoa,2018,0.923980492,0.684796098,1
+152,World,Oceania,Polynesia,Samoa,Samoa,2018,0.648858567,0.629771713,0
+153,World,Oceania,Polynesia,Cook Islands,Cook Islands,2018,0.07904758,0.515809516,6
+154,World,Oceania,Polynesia,Niue,Niue,2018,-0.3909326,0.42181348,6
+155,World,Oceania,Polynesia,Tonga,Tonga,2018,0.25781145,0.55156229,0
+156,World,Oceania,Polynesia,Tokelau,Tokelau,NA,NA,NA,NA
+157,World,Oceania,Micronesia,Phoenix Group,Phoenix Group,NA,NA,NA,NA
+158,World,Oceania,Micronesia,Howland Island and Baker Island,Howland Island and Baker Island,NA,NA,NA,NA
+159,World,Oceania,Micronesia,Johnston Atoll,Johnston Atoll,NA,NA,NA,NA
+161,World,Oceania,Polynesia,Wallis and Futuna,Wallis and Futuna,NA,NA,NA,NA
+162,World,Oceania,Australia and New Zealand,New Zealand,New Zealand,2018,1.810841,0.8621682,0
+163,World,Americas,Northern America,United States,United States,2018,1.24137465,0.74827493,0
+164,World,Latin America and the Caribbean,Central America,Belize,Belize,2018,-0.2914891,0.44170218,0
+166,World,Latin America and the Caribbean,Caribbean,Jamaica,Jamaica,2018,0.246455817,0.549291163,0
+167,World,Latin America and the Caribbean,South America,Guyana,Guyana,2018,-0.210972083,0.457805583,0
+168,World,Latin America and the Caribbean,South America,Suriname,Suriname,2018,-0.19486075,0.46102785,0
+169,World,Latin America and the Caribbean,South America,French Guiana,French Guiana,2018,1.116860517,0.723372103,0
+171,World,Latin America and the Caribbean,South America,Brazil,Brazil,2018,-0.237750067,0.452449987,0
+172,World,Latin America and the Caribbean,South America,Argentina,Argentina,2018,0.007446033,0.501489207,0
+173,World,Latin America and the Caribbean,South America,Uruguay,Uruguay,2018,0.863498283,0.672699657,0
+174,World,Europe,Northern Europe,Finland,Finland,2018,1.7611282,0.85222564,0
+175,World,Europe,Northern Europe,Denmark,Denmark,2018,1.683452967,0.836690593,0
+176,World,Europe,Western Europe,Germany,Germany,2018,1.495528017,0.799105603,0
+177,World,Europe,Western Europe,Netherlands,Netherlands,2018,1.6931384,0.83862768,0
+178,World,Europe,Eastern Europe,Poland,Poland,2018,0.64712365,0.62942473,0
+179,World,Europe,Western Europe,France,France,2018,1.116519633,0.723303927,0
+180,World,Europe,Northern Europe,United Kingdom,United Kingdom,2018,1.333609083,0.766721817,0
+181,World,Europe,Northern Europe,Ireland,Ireland,2018,1.396105833,0.779221167,0
+182,World,Europe,Southern Europe,Spain,Spain,2018,0.808154283,0.661630857,0
+183,World,Europe,Southern Europe,Portugal,Portugal,2018,1.072386683,0.714477337,0
+184,World,Europe,Southern Europe,Italy,Italy,2018,0.487411733,0.597482347,0
+185,World,Europe,Western Europe,Monaco,Monaco,2018,1.054946447,0.710989289,1
+186,World,Europe,Southern Europe,Montenegro,Montenegro,2018,0.133898467,0.526779693,0
+187,World,Europe,Southern Europe,Croatia,Croatia,2018,0.438588683,0.587717737,0
+188,World,Europe,Southern Europe,Slovenia,Slovenia,2018,0.941888083,0.688377617,0
+189,World,Europe,Northern Europe,Lithuania,Lithuania,2018,0.886182283,0.677236457,0
+190,World,Asia,Western Asia,Qatar,Qatar,2018,0.348208867,0.569641773,0
+191,World,Asia,Southern Asia,Iran,Iran,NA,NA,NA,NA
+192,World,Asia,Western Asia,Iraq,Iraq,2018,-1.5402035,0.1919593,0
+193,World,Africa,Western Africa,Guinea Bissau,Guinea Bissau,NA,NA,NA,NA
+194,World,Africa,Western Africa,Guinea,Guinea,2018,-0.938748017,0.312250397,0
+195,World,Africa,Western Africa,Ivory Coast,Ivory Coast,NA,NA,NA,NA
+196,World,Africa,Western Africa,Nigeria,Nigeria,2018,-1.0719269,0.28561462,0
+197,World,Africa,Middle Africa,Cameroon,Cameroon,2018,-1.05140365,0.28971927,0
+198,World,Africa,Middle Africa,Gabon,Gabon,2018,-0.741513667,0.351697267,0
+199,World,Africa,Middle Africa,Democratic Republic of the Congo,Democratic Republic of the Congo,NA,NA,NA,NA
+200,World,Africa,Middle Africa,Angola,Angola,2018,-0.913848583,0.317230283,0
+202,World,Africa,Eastern Africa,Tanzania,Tanzania,2018,-0.549282717,0.390143457,0
+203,World,Asia,Southern Asia,India,India,2018,-0.106395183,0.478720963,0
+204,World,Asia,Southern Asia,Bangladesh,Bangladesh,2018,-0.8134706,0.33730588,0
+205,World,Asia,South-Eastern Asia,Myanmar,Myanmar,2018,-0.939838633,0.312032273,0
+206,World,Asia,South-Eastern Asia,Malaysia,Malaysia,2018,0.474806333,0.594961267,0
+207,World,Asia,South-Eastern Asia,Vietnam,Vietnam,2018,-0.353361833,0.429327633,0
+208,World,Asia,South-Eastern Asia,Singapore,Singapore,2018,1.63894735,0.82778947,0
+209,World,Asia,Eastern Asia,China,China,2018,-0.306858533,0.438628293,0
+210,World,Asia,Eastern Asia,Japan,Japan,2018,1.34104,0.768208,0
+212,World,Oceania,Micronesia,Kiribati,Kiribati,2018,0.327124733,0.565424947,0
+213,World,Antarctica,Antarctica,Antarctica,abnj,NA,NA,NA,NA
+214,World,Africa,Northern Africa,Egypt,Egypt,NA,NA,NA,NA
+215,World,Asia,Western Asia,Jordan,Jordan,2018,-0.083611033,0.483277793,0
+216,World,Asia,South-Eastern Asia,Indonesia,Indonesia,2018,-0.135259433,0.472948113,0
+218,World,Americas,Northern America,Canada,Canada,2018,1.589625933,0.817925187,0
+219,World,Americas,Northern America,Saint Pierre and Miquelon,Saint Pierre and Miquelon,NA,NA,NA,NA
+220,World,Latin America and the Caribbean,Caribbean,Sint Maarten,Sint Maarten,2018,0.815659318,0.663131864,6
+220,World,Latin America and the Caribbean,Caribbean,Sint Maarten,Sint Maarten,NA,NA,NA,NA
+221,World,Latin America and the Caribbean,Caribbean,Northern Saint-Martin,Northern Saint-Martin,NA,NA,NA,NA
+222,World,Europe,Northern Europe,Sweden,Sweden,2018,1.698549933,0.839709987,0
+223,World,Europe,Northern Europe,Norway,Norway,2018,1.764574667,0.852914933,0
+224,World,Latin America and the Caribbean,South America,Chile,Chile,2018,1.005884483,0.701176897,0
+227,World,Europe,Northern Europe,Jersey,Jersey,2018,1.23300185,0.74660037,0
+227,World,Europe,Northern Europe,Jersey,Jersey,NA,NA,NA,NA
+228,World,Europe,Northern Europe,Guernsey,Guernsey,2018,1.23300185,0.74660037,0
+228,World,Europe,Northern Europe,Guernsey,Guernsey,NA,NA,NA,NA
+231,World,Asia,South-Eastern Asia,East Timor,East Timor,NA,NA,NA,NA
+232,World,Europe,Southern Europe,Bosnia and Herzegovina,NA,NA,NA,NA,NA
+237,World,Asia,South-Eastern Asia,Oecussi Ambeno,Oecussi Ambeno,NA,NA,NA,NA
+244,World,Latin America and the Caribbean,Caribbean,Curacao,Curacao,2018,0.815659318,0.663131864,6
+244,World,Latin America and the Caribbean,Caribbean,Curacao,Curacao,NA,NA,NA,NA
+245,World,Latin America and the Caribbean,Caribbean,Bonaire,Bonaire,2018,0.815659318,0.663131864,6
+245,World,Latin America and the Caribbean,Caribbean,Bonaire,Bonaire,NA,NA,NA,NA
+247,World,Asia,South-Eastern Asia,Brunei,Brunei,NA,NA,NA,NA
+248,World,Latin America and the Caribbean,Caribbean,Saba,Saba,2018,0.815659318,0.663131864,6
+248,World,Latin America and the Caribbean,Caribbean,Saba,Saba,NA,NA,NA,NA
+249,World,Latin America and the Caribbean,Caribbean,Sint Eustatius,Sint Eustatius,2018,0.815659318,0.663131864,6
+249,World,Latin America and the Caribbean,Caribbean,Sint Eustatius,Sint Eustatius,NA,NA,NA,NA
+250,World,Latin America and the Caribbean,Caribbean,Aruba,Aruba,2018,1.188863667,0.737772733,0
+255,World,disputed,disputed,disputed,disputed,NA,NA,NA,NA
+260,World,Arctic Sea,Arctic Sea,Arctic Sea,abnj,NA,NA,NA,NA
+261,World,Atlantic Ocean,Atlantic Northwest,Atlantic Northwest,abnj,NA,NA,NA,NA
+262,World,Atlantic Ocean,Atlantic Northeast,Atlantic Northeast,abnj,NA,NA,NA,NA
+263,World,Atlantic Ocean,Atlantic Western Central,Atlantic Western Central,abnj,NA,NA,NA,NA
+264,World,Atlantic Ocean,Atlantic Eastern Central,Atlantic Eastern Central,abnj,NA,NA,NA,NA
+266,World,Atlantic Ocean,Atlantic Southwest,Atlantic Southwest,abnj,NA,NA,NA,NA
+267,World,Atlantic Ocean,Atlantic Southeast,Atlantic Southeast,abnj,NA,NA,NA,NA
+269,World,Indian Ocean,Indian Ocean Western,Indian Ocean Western,abnj,NA,NA,NA,NA
+270,World,Indian Ocean,Indian Ocean Eastern,Indian Ocean Eastern,abnj,NA,NA,NA,NA
+272,World,Pacific Ocean,Pacific Northwest,Pacific Northwest,abnj,NA,NA,NA,NA
+273,World,Pacific Ocean,Pacific Northeast,Pacific Northeast,abnj,NA,NA,NA,NA
+274,World,Pacific Ocean,Pacific Western Central,Pacific Western Central,abnj,NA,NA,NA,NA
+275,World,Pacific Ocean,Pacific Eastern Central,Pacific Eastern Central,abnj,NA,NA,NA,NA
+276,World,Pacific Ocean,Pacific Southwest,Pacific Southwest,abnj,NA,NA,NA,NA
+277,World,Pacific Ocean,Pacific Southeast,Pacific Southeast,abnj,NA,NA,NA,NA
+NA,NA,NA,NA,NA,Afghanistan,2018,-1.582749117,0.183450177,0
+NA,NA,NA,NA,NA,Andorra,2018,1.412378333,0.782475667,0
+NA,NA,NA,NA,NA,Armenia,2018,-0.13107685,0.47378463,0
+NA,NA,NA,NA,NA,Austria,2018,1.4613917,0.79227834,0
+NA,NA,NA,NA,NA,Azerbaijan,2018,-0.684123233,0.363175353,0
+NA,NA,NA,NA,NA,"Bahamas, The",2018,0.5976843,0.61953686,0
+NA,NA,NA,NA,NA,Belarus,2018,-0.497261117,0.400547777,0
+NA,NA,NA,NA,NA,Bhutan,2018,0.564670617,0.612934123,0
+NA,NA,NA,NA,NA,Bolivia,2018,-0.546261717,0.390747657,0
+NA,NA,NA,NA,NA,Bosnia and Herzegovina,2018,-0.377651067,0.424469787,0
+NA,NA,NA,NA,NA,Botswana,2018,0.57653965,0.61530793,0
+NA,NA,NA,NA,NA,Brunei Darussalam,2018,0.620056767,0.624011353,0
+NA,NA,NA,NA,NA,Burkina Faso,2018,-0.434460533,0.413107893,0
+NA,NA,NA,NA,NA,Burundi,2018,-1.433220833,0.213355833,0
+NA,NA,NA,NA,NA,Cabo Verde,2018,0.506123317,0.601224663,0
+NA,NA,NA,NA,NA,Central African Republic,2018,-1.5798095,0.1840381,0
+NA,NA,NA,NA,NA,Chad,2018,-1.381715667,0.223656867,0
+NA,NA,NA,NA,NA,Comoros,2018,-0.882416133,0.323516773,0
+NA,NA,NA,NA,NA,"Congo, Dem. Rep.",2018,-1.657509333,0.168498133,0
+NA,NA,NA,NA,NA,"Congo, Rep.",2018,-1.11053785,0.27789243,0
+NA,NA,NA,NA,NA,Cote d'Ivoire,2018,-0.497884933,0.400423013,0
+NA,NA,NA,NA,NA,Czech Republic,2018,0.951259367,0.690251873,0
+NA,NA,NA,NA,NA,"Egypt, Arab Rep.",2018,-0.816694717,0.336661057,0
+NA,NA,NA,NA,NA,Eswatini,2018,-0.562986883,0.387402623,0
+NA,NA,NA,NA,NA,Ethiopia,2018,-0.83294785,0.33341043,0
+NA,NA,NA,NA,NA,"Gambia, The",2018,-0.395964983,0.420807003,0
+NA,NA,NA,NA,NA,Guam,2018,0.72919221,0.645838442,1
+NA,NA,NA,NA,NA,Guinea-Bissau,2018,-1.13172935,0.27365413,0
+NA,NA,NA,NA,NA,"Hong Kong SAR, China",2018,1.470067717,0.794013543,0
+NA,NA,NA,NA,NA,Hungary,2018,0.4619788,0.59239576,0
+NA,NA,NA,NA,NA,"Iran, Islamic Rep.",2018,-1.000625167,0.299874967,0
+NA,NA,NA,NA,NA,Kazakhstan,2018,-0.32373875,0.43525225,0
+NA,NA,NA,NA,NA,"Korea, Rep.",2018,0.909884,0.6819768,0
+NA,NA,NA,NA,NA,Kosovo,2018,-0.38677195,0.42264561,0
+NA,NA,NA,NA,NA,Kyrgyz Republic,2018,-0.62995335,0.37400933,0
+NA,NA,NA,NA,NA,Lao PDR,2018,-0.769035017,0.346192997,0
+NA,NA,NA,NA,NA,Lesotho,2018,-0.321885367,0.435622927,0
+NA,NA,NA,NA,NA,Liechtenstein,2018,1.626961833,0.825392367,0
+NA,NA,NA,NA,NA,Luxembourg,2018,1.729063,0.8458126,0
+NA,NA,NA,NA,NA,"Macao SAR, China",2018,0.95860245,0.69172049,0
+NA,NA,NA,NA,NA,Malawi,2018,-0.484384467,0.403123107,0
+NA,NA,NA,NA,NA,Mali,2018,-0.901308367,0.319738327,0
+NA,NA,NA,NA,NA,Martinique,2018,1.004000196,0.700800039,1
+NA,NA,NA,NA,NA,"Micronesia, Fed. Sts.",2018,0.342016667,0.568403333,0
+NA,NA,NA,NA,NA,Moldova,2018,-0.351920233,0.429615953,0
+NA,NA,NA,NA,NA,Mongolia,2018,0.015644083,0.503128817,0
+NA,NA,NA,NA,NA,Nepal,2018,-0.592799817,0.381440037,0
+NA,NA,NA,NA,NA,Niger,2018,-0.735270067,0.352945987,0
+NA,NA,NA,NA,NA,North Macedonia,2018,-0.03989155,0.49202169,0
+NA,NA,NA,NA,NA,Paraguay,2018,-0.34925615,0.43014877,0
+NA,NA,NA,NA,NA,Puerto Rico,2018,0.381670433,0.576334087,0
+NA,NA,NA,NA,NA,Reunion,2018,0.925490033,0.685098007,1
+NA,NA,NA,NA,NA,Russian Federation,2018,-0.637255417,0.372548917,0
+NA,NA,NA,NA,NA,Rwanda,2018,-0.004438233,0.499112353,0
+NA,NA,NA,NA,NA,San Marino,2018,0.966844547,0.693368909,1
+NA,NA,NA,NA,NA,Serbia,2018,-0.052207483,0.489558503,0
+NA,NA,NA,NA,NA,Slovak Republic,2018,0.673152117,0.634630423,0
+NA,NA,NA,NA,NA,South Sudan,2018,-2.102796167,0.079440767,0
+NA,NA,NA,NA,NA,St. Kitts and Nevis,2018,0.60923885,0.62184777,0
+NA,NA,NA,NA,NA,St. Lucia,2018,0.5749873,0.61499746,0
+NA,NA,NA,NA,NA,St. Vincent and the Grenadines,2018,0.56417015,0.61283403,0
+NA,NA,NA,NA,NA,Switzerland,2018,1.787040667,0.857408133,0
+NA,NA,NA,NA,NA,Syrian Arab Republic,2018,-1.973291333,0.105341733,0
+NA,NA,NA,NA,NA,"Taiwan, China",2018,1.1147758,0.72295516,0
+NA,NA,NA,NA,NA,Tajikistan,2018,-1.209619133,0.258076173,0
+NA,NA,NA,NA,NA,Timor-Leste,2018,-0.455331217,0.408933757,0
+NA,NA,NA,NA,NA,Turkmenistan,2018,-1.333923117,0.233215377,0
+NA,NA,NA,NA,NA,Uganda,2018,-0.59123285,0.38175343,0
+NA,NA,NA,NA,NA,Uzbekistan,2018,-0.948617633,0.310276473,0
+NA,NA,NA,NA,NA,"Venezuela, RB",2018,-1.746654667,0.150669067,0
+NA,NA,NA,NA,NA,Virgin Islands (U.S.),2018,0.865674915,0.673134983,1
+NA,NA,NA,NA,NA,West Bank and Gaza,2018,-0.670833083,0.365833383,0
+NA,NA,NA,NA,NA,"Yemen, Rep.",2018,-1.993694833,0.101261033,0
+NA,NA,NA,NA,NA,Zambia,2018,-0.36356075,0.42728785,0
+NA,NA,NA,NA,NA,Zimbabwe,2018,-1.188968467,0.262206307,0

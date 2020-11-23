@@ -1,0 +1,240 @@
+ant_typ,rgn_id_2,rgn_nam_2,rgn_name_short
+fao,999,abnj,ABNJ
+eez,145,Greenland,Greenland
+eez,218,Canada,Canada
+eez,73,Russia,Russia
+eez,223,Norway,Norway
+eez,163,United States,United States
+eez,144,Jan Mayen,Jan Mayen
+eez,143,Iceland,Iceland
+eez,222,Sweden,Sweden
+eez,141,Faeroe Islands,Faeroe Isl
+eez,174,Finland,Finland
+eez,180,United Kingdom,United Kingdom
+eez,70,Estonia,Estonia
+eez,175,Denmark,Denmark
+eez,69,Latvia,Latvia
+eez,181,Ireland,Ireland
+eez,189,Lithuania,Lithuania
+eez,178,Poland,Poland
+eez,176,Germany,Germany
+eez,177,Netherlands,Netherlands
+eez,59,Belgium,Belgium
+eez,179,France,France
+eez,228,Guernsey,Guernsey
+eez,227,Jersey,Jersey
+eez-disputed,25511,XD_JPN_RUS,XD_JPN_RUS
+land-disputed,25511,XD_JPN_RUS,XD_JPN_RUS
+eez,219,Saint Pierre and Miquelon,St Pierre & Miquelon
+eez,75,Ukraine,Ukraine
+eez,182,Spain,Spain
+eez,210,Japan,Japan
+eez,184,Italy,Italy
+eez,188,Slovenia,Slovenia
+eez,187,Croatia,Croatia
+eez,72,Romania,Romania
+eez,71,Bulgaria,Bulgaria
+eez,185,Monaco,Monaco
+eez,76,Turkey,Turkey
+eez,74,Georgia,Georgia
+eez,55,Azores,Azores
+eez,186,Montenegro,Montenegro
+eez,21,North Korea,North Korea
+eez,183,Portugal,Portugal
+eez,82,Albania,Albania
+eez,80,Greece,Greece
+eez,209,China,China
+eez-disputed,25507,XD_JPN_KOR_2,XD_JPN_KOR_2
+land-disputed,25507,XD_JPN_KOR_2,XD_JPN_KOR_2
+eez,20,South Korea,S Korea
+eez,84,Algeria,Algeria
+eez,61,Tunisia,Tunisia
+eez,68,Malta,Malta
+eez,57,Madeira,Madeira
+eez,81,Cyprus,Cyprus
+eez,60,Gibraltar,Gibraltar
+eez,77,Syria,Syria
+eez,62,Morocco,Morocco
+eez,108,Bermuda,Bermuda
+eez,67,Libya,Libya
+eez,78,Lebanon,Lebanon
+eez,214,Egypt,Egypt
+eez,79,Israel,Israel
+eez-disputed,25501,XD_JPN_KOR,XD_JPN_KOR
+eez,58,Canary Islands,Canary Isl
+eez,135,Mexico,Mexico
+eez,191,Iran,Iran
+eez,110,Bahamas,Bahamas
+eez,51,Kuwait,Kuwait
+eez,192,Iraq,Iraq
+eez,215,Jordan,Jordan
+eez,50,Saudi Arabia,Saudi Arabia
+eez-disputed,25505,XD_JPN_CHN_TWN,XD_JPN_CHN_TWN
+land-disputed,25505,XD_JPN_CHN_TWN,XD_JPN_CHN_TWN
+eez,63,Western Sahara,Western Sahara
+eez,52,Bahrain,Bahrain
+eez,190,Qatar,Qatar
+eez,14,Taiwan,Taiwan
+eez,48,Oman,Oman
+eez,54,United Arab Emirates,United Arab Emirates
+eez,53,Pakistan,Pakistan
+eez,112,Cuba,Cuba
+eez,111,Turks and Caicos Islands,Turks & Caicos Isl
+eez,203,India,India
+eez,13,Northern Mariana Islands and Guam,N Mariana Isl & Guam
+eez-disputed,25504,XD_EGY_SDN,XD_EGY_SDN
+land-disputed,25504,XD_EGY_SDN,XD_EGY_SDN
+eez,204,Bangladesh,Bangladesh
+eez,12,Wake Island,Wake Isl
+eez,115,Dominican Republic,Dominican Rep
+eez,15,Philippines,Philippines
+eez,117,British Virgin Islands,British Virgin Isl
+eez,118,Anguilla,Anguilla
+eez,49,Sudan,Sudan
+eez,116,Puerto Rico and Virgin Islands of the United States,Puerto Rico & Virgin Isl of US
+eez,207,Vietnam,Vietnam
+eez,64,Mauritania,Mauritania
+eez,120,Antigua and Barbuda,Antigua & Barbuda
+eez-disputed,25512,XD_ESH_MAR,XD_ESH_MAR
+eez,205,Myanmar,Myanmar
+eez,114,Haiti,Haiti
+eez,113,Cayman Islands,Cayman Isl
+eez,56,Cape Verde,Cabo Verde
+eez,133,Honduras,Honduras
+eez,166,Jamaica,Jamaica
+eez-disputed,25506,XD_SOUTHCHINASEA,XD_SOUTHCHINASEA
+land-disputed,25506,XD_SOUTHCHINASEA,XD_SOUTHCHINASEA
+eez,164,Belize,Belize
+eez,140,Guadeloupe and Martinique,Guadeloupe & Martinique
+eez,221,Northern Saint-Martin,N St-Martin
+eez,220,Sint Maarten,Sint Maarten
+eez,45,Eritrea,Eritrea
+eez,248,Saba,Saba
+eez,11,Marshall Islands,Marshall Isl
+eez,249,Sint Eustatius,Sint Eustatius
+eez,119,Saint Kitts and Nevis,St Kitts & Nevis
+eez,121,Montserrat,Montserrat
+eez,139,Venezuela,Venezuela
+eez,47,Yemen,Yemen
+eez,123,Dominica,Dominica
+eez,131,Nicaragua,Nicaragua
+eez-disputed,25502,XD_COL_JAM,XD_COL_JAM
+land-disputed,25502,XD_COL_JAM,XD_COL_JAM
+eez,136,Guatemala,Guatemala
+eez,66,Senegal,Senegal
+eez,124,Barbados,Barbados
+eez,26,Andaman and Nicobar,Andaman & Nicobar
+eez,250,Aruba,Aruba
+eez,244,Curacao,Curacao
+eez,132,Colombia,Colombia
+eez,245,Bonaire,Bonaire
+eez,122,Saint Lucia,St Lucia
+eez,127,Saint Vincent and the Grenadines,St Vincent & the Grenadines
+eez,134,El Salvador,El Salvador
+eez,65,Gambia,Gambia
+eez,25,Thailand,Thailand
+eez,44,Somalia,Somalia
+eez,125,Grenada,Grenada
+eez,9,Micronesia,Micronesia
+eez,46,Djibouti,Djibouti
+eez,129,Panama,Panama
+eez,193,Guinea Bissau,Guinea Bissau
+eez,126,Trinidad and Tobago,Trinidad & Tobago
+eez,130,Costa Rica,Costa Rica
+eez,24,Cambodia,Cambodia
+eez,40,Sri Lanka,Sri Lanka
+eez,8,Palau,Palau
+eez-disputed,25513,XD_TTO_VEN_GUY,XD_TTO_VEN_GUY
+eez,194,Guinea,Guinea
+eez,167,Guyana,Guyana
+eez,150,Palmyra Atoll,Palmyra Atoll
+eez,168,Suriname,Suriname
+eez,96,Sierra Leone,Sierra Leone
+eez,169,French Guiana,French Guiana
+eez,39,Maldives,Maldives
+eez,148,Line Group,Line Group
+eez,216,Indonesia,Indonesia
+eez,206,Malaysia,Malaysia
+eez,171,Brazil,Brazil
+eez,97,Liberia,Liberia
+eez,196,Nigeria,Nigeria
+eez,99,Benin,Benin
+eez,247,Brunei,Brunei
+eez,98,Togo,Togo
+eez,106,Ghana,Ghana
+eez,212,Kiribati,Kiribati
+eez,195,Ivory Coast,Ivory Coast
+eez,137,Ecuador,Ecuador
+eez,197,Cameroon,Cameroon
+eez,158,Howland Island and Baker Island,Howland & Baker Isl
+eez,104,Equatorial Guinea,Equatorial Guinea
+eez-disputed,25503,XD_NGA_STP,XD_NGA_STP
+eez,103,Sao Tome and Principe,Sao Tome & Principe
+eez,10,Nauru,Nauru
+eez,17,Papua New Guinea,Papua New Guinea
+eez,149,Jarvis Island,Jarvis Isl
+eez,208,Singapore,Singapore
+eez,198,Gabon,Gabon
+eez,157,Phoenix Group,Phoenix Group
+eez,31,Seychelles,Seychelles
+eez-disputed,25510,XD_KEN_SOM,XD_KEN_SOM
+eez,43,Kenya,Kenya
+eez,38,British Indian Ocean Territory,British Indian Ocean Terr
+eez,138,Peru,Peru
+eez,100,Republique du Congo,Congo Rep
+eez,19,Tuvalu,Tuvalu
+eez,7,Solomon Islands,Solomon Isl
+eez,147,French Polynesia,French Polynesia
+eez,85,Ascension,Ascension
+eez,202,Tanzania,Tanzania
+eez,200,Angola,Angola
+eez,199,Democratic Republic of the Congo,Dem Rep of Congo
+eez,153,Cook Islands,Cook Isl
+eez,156,Tokelau,Tokelau
+eez,231,East Timor,East Timor
+eez,28,Comoros,Comoros
+eez,37,Mauritius,Mauritius
+eez,1,Cocos Islands,Cocos Isl
+eez,2,Christmas Island,Christmas Isl
+eez,237,Oecussi Ambeno,Oecussi Ambeno
+eez-disputed,25508,XD_AUS_IND_TLS,XD_AUS_IND_TLS
+eez,16,Australia,Australia
+eez-disputed,25509,XD_AUS_PNG,XD_AUS_PNG
+land-disputed,25509,XD_AUS_PNG,XD_AUS_PNG
+eez,18,Fiji,Fiji
+eez,161,Wallis and Futuna,Wallis & Futuna
+eez,151,American Samoa,Am Samoa
+eez,41,Mozambique,Mozambique
+eez,42,Madagascar,Madagascar
+eez,30,Glorioso Islands,Glorioso Isl
+eez,152,Samoa,Samoa
+eez,29,Mayotte,Mayotte
+eez,6,Vanuatu,Vanuatu
+eez,86,Saint Helena,St Helena
+eez,36,Ile Tromelin,Ile Tromelin
+eez,155,Tonga,Tonga
+eez,5,New Caledonia,New Caledonia
+eez,33,Juan de Nova Island,Juan de Nova Isl
+eez,154,Niue,Niue
+eez,101,Namibia,Namibia
+eez,32,Reunion,Reunion
+eez,224,Chile,Chile
+eez,34,Bassas da India,Bassas da India
+eez,146,Pitcairn,Pitcairn
+eez,35,Ile Europa,Ile Europa
+eez,162,New Zealand,New Zealand
+eez,3,Norfolk Island,Norfolk Isl
+eez,102,South Africa,S Africa
+eez,172,Argentina,Argentina
+eez,173,Uruguay,Uruguay
+eez,88,Tristan da Cunha,Tristan da Cunha
+eez,92,Amsterdam Island and Saint Paul Island,Amsterdam Isl & St Paul Isl
+eez,91,Crozet Islands,Crozet Isl
+eez,90,Prince Edward Islands,Prince Edward Isl
+eez-ccamlr,213,Antarctica,Antarctica
+eez,93,Kerguelen Islands,Kerguelen Isl
+eez,95,Falkland Islands,Falkland Isl
+eez,94,Heard and McDonald Islands,Heard & McDonald Isl
+eez,89,South Georgia and the South Sandwich Islands,S Georgia & the S Sandwich Isl
+eez,105,Bouvet Island,Bouvet Isl
+eez,4,Macquarie Island,Macquarie Isl

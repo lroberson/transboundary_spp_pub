@@ -1,0 +1,352 @@
+---
+title: "combine_am_iucn_results"
+output: html_document
+---
+
+## Summary
+
+Here I combine the results from the separate IUCN and AM analyses, for species- countries and species - cells, as well as the sensitivity analyses 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(data.table)
+
+```
+
+## SPECIES
+
+These results have species information and the number of countries they occur in (using 10 cell cutoff)
+
+```{r combine spp results}
+
+## load results
+
+am_spp_summary<- fread(here("_data/am_spp_summary_10cells.csv"))
+
+iucn_spp_summary <- fread(here("_data/iucn_spp_summary_10cells.csv"))
+
+names(am_spp_summary)
+names(iucn_spp_summary)
+
+```
+
+# Combine species results
+
+```{r combine spp results}
+
+## some checks
+
+nrow(am_spp_summary) # n = 18353
+nrow(iucn_spp_summary) # n = 9900
+
+unique(am_spp_summary$kingdom)
+unique(iucn_spp_summary$kingdom) # no chromista or fungi 
+
+# organize and rename cols to bind
+str(am_spp_summary)
+am_spp_summary$category <- "None"
+am_spp_summary <- am_spp_summary %>% rename(num_eez = num_countries)
+
+names(iucn_spp_summary)
+iucn_spp_summary <- iucn_spp_summary %>% rename(species_id = iucn_sid)
+iucn_spp_summary$species_id <- as.character(iucn_spp_summary$species_id)
+
+combined_spp_summary <- bind_rows(am_spp_summary, iucn_spp_summary)
+nrow(combined_spp_summary) # n = 28253 (with cane toad still in there)
+
+### xbd spread
+
+table(combined_spp_summary$xbd)
+# singlecountry transboundary 
+  #     2691         25562
+
+head(combined_spp_summary)
+
+# Change kingdoms and phyla names to all caps
+combined_spp_summary<- combined_spp_summary %>% 
+  mutate(kingdom = toupper(kingdom), phylum = toupper(phylum), class = toupper(class))
+unique(combined_spp_summary$kingdom)
+unique(combined_spp_summary$phylum) 
+combined_spp_summary %>% arrange(class) %>% distinct(class) # 70 classes
+# NB difference in some class classificaiton between iucn and AM (e.g. elasmobranchii v chondricthyes)
+
+```
+
+## Wrangle taxon groupings and threat categories
+
+Using the 10 cell cutoff version. Protozoa, Bacteria, and Chromista were removed
+
+```{r taxonomic breakdown by country}
+
+## Make new taxa groups
+
+combined_spp_summary %>% distinct(kingdom, phylum, class) %>% arrange(kingdom)
+combined_spp_summary %>% distinct(kingdom, phylum, class) %>% arrange(class)
+  # 7 phyla of worms and sea slugs not assigned classes
+
+## identify vertebrates 
+combined_spp_summary %>% distinct(kingdom, phylum, class) %>% arrange(phylum)
+  # chordates but not verts: 
+    ## ASCIDIACEA (tunicates), THALIACEA (other tunicates), APPENDICULARIA (more tunicates), CEPHALOCHORDATA (lancelets)
+
+verts <- c("ACTINOPTERYGII","AMPHIBIA","AVES","CEPHALASPIDOMORPHI","CHONDRICHTHYES","ELASMOBRANCHII","HOLOCEPHALI","MAMMALIA","MYXINI","REPTILIA","SARCOPTERYGII") 
+# NB CEPHALASPIDOMORPHI are sometimes used for lampreys but others consider them an extinct class
+
+combined_spp_summary <- combined_spp_summary %>%
+  mutate(tax_group = case_when(
+    kingdom == "PLANTAE" ~ "Plant",
+    kingdom == "ANIMALIA" & class %in% verts ~ "Vertebrate",
+    TRUE ~ "Invertebrate"))
+
+table(combined_spp_summary$tax_group)
+# Invertebrate        Plant   Vertebrate 
+#     13239          316        14698 
+
+#<><><><><
+## change redlist cateogries 
+
+unique(combined_spp_summary$category)
+
+combined_spp_summary %>% filter(category %in% c("LR/lc","LR/nt")) %>% distinct(sciname, class)
+# only 5 species, so add to LC category
+combined_spp_summary$category <- combined_spp_summary$category %>% fct_collapse(LC = c("LC","LR/lc","LR/nt"))
+
+fwrite(combined_spp_summary, "_data/combined_spp_summary.csv")
+
+```
+
+## COUNTRIES
+
+These results have each country and the number of single country (sc) and tb species they have
+
+```{r combine country results}
+
+## Load data (10 cell cutoff results)
+
+iucn_eez_summary <- fread(here("_data/iucn_eez_summary_10cells.csv"))
+names(iucn_eez_summary)
+
+am_eez_summary <- fread(here("_data/am_eez_summary_10cells.csv"))
+names(am_eez_summary)
+```
+
+# Combine countries results
+
+```{r combine countries reults}
+
+#<><<> 10 cells
+
+names(am_eez_summary)
+names(iucn_eez_summary)
+
+# change AM col names for bind
+am_eez_summary <- am_eez_summary %>% rename(num_spp_tb = num_am_spp_tb, num_spp_sc = num_am_spp_sc)
+
+## join
+
+combined_eez_summary <- bind_rows(iucn_eez_summary, am_eez_summary) %>%
+  filter(!is.na(rgn_id_2)) %>%
+  replace_na(list(num_spp_tb = 0, num_spp_sc = 0)) %>%
+  group_by(rgn_id_2) %>%
+  summarise(num_spp_tb = sum(num_spp_tb),
+            num_spp_sc = sum(num_spp_sc))
+
+n_distinct(combined_eez_summary$rgn_id_2) # n = 228
+nrow(combined_eez_summary) # n = 228
+
+combined_eez_summary %>% select_if(function(x) any(is.na(x))) # none
+
+#<><><>
+## add region names
+
+rgn_lookup <- read_csv(here("_data/rgn_lookup.csv"))
+
+anti_join(rgn_lookup, combined_eez_summary, by = "rgn_id_2")
+#  rgn_id_2    rgn_nam_2
+#      188     Slovenia
+#      185       Monaco
+#       60    Gibraltar
+#      192         Iraq
+#      215       Jordan
+#      220 Sint Maarten
+
+combined_eez_summary <- left_join(combined_eez_summary, lookup, by = "rgn_id_2") %>% filter(!is.na(rgn_id_2))
+
+n_distinct(combined_eez_summary$rgn_id_2) # n = 228
+
+##<><<><
+# Add thraetened species counts
+
+eez_summary_10cells_thr <- fread(here("_data/eez_summary_10cells_thr.csv"))
+
+## Add th spp counts to combined summary
+  
+combined_eez_summary <- left_join(combined_eez_summary, eez_summary_10cells_thr, by="rgn_id_2") %>%
+    replace_na(list(num_spp_tb = 0, num_spp_sc = 0, num_spp_tb_th = 0, num_spp_sc_th= 0)) 
+names(combined_eez_summary)
+
+#<><><>><
+## quick explore
+
+combined_eez_summary %>% arrange(desc(num_spp_sc))
+combined_eez_summary %>% arrange(desc(num_spp_tb))
+combined_eez_summary %>% arrange(desc(num_spp_sc_th))
+combined_eez_summary %>% arrange(desc(num_spp_tb_th))
+
+## save 
+fwrite(combined_eez_summary, "_data/combined_eez_summary.csv")
+
+
+```
+
+## Sensitivity analyses
+
+5 percent cutoff scenario
+
+```{5 percent cutoff results}
+
+##<><>><<> 5% cutoff species summary
+
+iucn_spp_5perc <- fread(here("_data/cutoff_scenarios/iucn_spp_summary_5perc.csv"))
+
+am_spp_5perc <- fread(here("_data/cutoff_scenarios/am_spp_summary_5perc.csv"))
+
+# organize and rename cols to bind
+names(am_spp_5perc)
+nrow(am_spp_5perc) # n = 22410
+
+names(iucn_spp_5perc)
+nrow(iucn_spp_5perc) # n = 10340
+str(iucn_spp_5perc) # here the species id is just the number
+
+iucn_spp_5perc <- iucn_spp_5perc %>% rename(species_id = iucn_sid, cell_count_cutoff = cell_cutoff)
+
+iucn_spp_5perc$species_id <- as.character(iucn_spp_5perc$species_id)
+
+spp_summary_5perc <- bind_rows(am_spp_5perc, iucn_spp_5perc)
+nrow(spp_summary_5perc) # n = 32750
+
+# Change kingdoms and phyla names to all caps
+spp_summary_5perc <- spp_summary_5perc %>% 
+  mutate(kingdom = toupper(kingdom), phylum = toupper(phylum))
+unique(spp_summary_5perc$kingdom)
+unique(spp_summary_5perc$phylum)
+
+table(spp_summary_5perc$xbd)
+# singlecountry transboundary 
+ #        3201         29549
+
+
+#<><<> 5 percent cutoff Countries summary
+
+## load data
+
+iucn_countries_5perc <- fread(here("_data/cutoff_scenarios/iucn_country_summary_5perc.csv"))
+
+am_countries_5perc <- fread(here("_data/cutoff_scenarios/am_country_summary_5perc.csv"))
+
+## organize and rename cols to bind
+
+names(iucn_countries_5perc)
+iucn_countries_5perc <- iucn_countries_5perc %>% rename(iucn_num_sc = num_spp_sc, iucn_num_tb = num_spp_tb)
+
+names(am_countries_5perc)
+am_countries_5perc <- am_countries_5perc %>% rename(am_num_sc = num_spp_sc, am_num_tb = num_spp_tb)
+
+countries_summary_5perc <- full_join(iucn_countries_5perc, am_countries_5perc, by = "rgn_name", fill = 0)
+n_distinct(countries_summary_5perc$rgn_name) # n = 218
+nrow(countries_summary_5perc) 
+
+countries_summary_10cells %>% select_if(function(x) any(is.na(x))) # lots of NAs
+
+countries_summary_5perc <- countries_summary_5perc%>% 
+  replace_na(list(iucn_num_sc = 0, iucn_num_tb = 0, am_num_tb = 0, am_num_sc = 0))
+
+countries_summary_5perc <- countries_summary_5perc %>% rowwise() %>%
+  mutate(num_spp_sc = sum(iucn_num_sc,am_num_sc), num_spp_tb = sum(iucn_num_tb,am_num_tb)) %>%
+  select(-c(2:5))
+
+head(countries_summary_5perc) 
+countries_summary_5perc %>% arrange(desc(num_spp_sc))
+countries_summary_5perc %>% arrange(desc(num_spp_tb))
+
+```
+
+## compare to no cutoff for occurrence
+
+combine iucn and am results for A) species and B) countries without any cutoff for occurring in an EEZ
+
+```{r }
+
+#<><><><><< SPECIES SUMMARY
+
+iucn_spp <- fread(here("_data/cutoff_scenarios/iucn_spp_summary_nocutoff.csv"))
+am_spp <-  fread(here("_data/cutoff_scenarios/am_spp_summary_nocutoff.csv"))
+  
+## some checks
+nrow(am_spp) # n = 22410
+unique(am_spp$kingdom) 
+
+## organize and rename cols to bind
+names(am_spp)
+str(am_spp_10cells)
+am_spp$category <- "NA_AM"
+
+names(iucn_spp)
+unique(iucn_spp$kingdom) # no chromista or fungi so they must not have maps for them
+nrow(iucn_spp) # n = 10340
+str(iucn_spp) # here the species id is just the number and is numeric
+iucn_spp <- iucn_spp %>% rename(species_id = iucn_sid)
+iucn_spp$species_id <- as.character(iucn_spp$species_id)
+
+spp_summary_nocutoff <- bind_rows(am_spp, iucn_spp)
+nrow(spp_summary_nocutoff) # 32750
+
+table(spp_summary_nocutoff$xbd)
+# singlecountry transboundary 
+ #        2762         29988
+2762/(2762+29988)*100 # 8.43% sc
+
+## Fix different formats of factor levels>> Change kingdoms and phyla names to all caps
+spp_summary_nocutoff <- spp_summary_nocutoff %>% 
+  mutate(kingdom = toupper(kingdom), phylum = toupper(phylum))
+unique(spp_summary_nocutoff$kingdom)
+unique(spp_summary_nocutoff$phylum)
+
+table(spp_summary_nocutoff$xbd)
+# singlecountry transboundary 
+        # 2762         29988 
+         
+         
+#<><><>><<> COUNTRIES SUMMARY
+
+iucn_countries <- fread(here("_data/cutoff_scenarios/iucn_country_summary_nocutoff.csv"))
+am_countries <- fread(here("_data/cutoff_scenarios/am_country_summary_nocutoff.csv"))
+
+names(iucn_countries)
+iucn_countries <- iucn_countries %>% rename(iucn_num_sc = num_spp_sc, iucn_num_tb = num_spp_tb)
+
+names(am_countries)
+am_countries <- am_countries %>% rename(am_num_sc = num_spp_sc, am_num_tb = num_spp_tb)
+
+countries_summary_nocutoff <- full_join(iucn_countries, am_countries, by = "rgn_name", fill = 0)
+n_distinct(countries_summary_nocutoff$rgn_name) # n = 222
+nrow(countries_summary_nocutoff) # n = 222 >> with the cutoffs there were fewer regions
+
+countries_summary_nocutoff %>% select_if(function(x) any(is.na(x))) # lots of NAs
+
+countries_summary_nocutoff <- countries_summary_nocutoff %>% 
+  replace_na(list(iucn_num_sc = 0, iucn_num_tb = 0, am_num_tb = 0, am_num_sc = 0))
+
+countries_summary_nocutoff <- countries_summary_nocutoff %>% rowwise() %>%
+  mutate(num_spp_sc = sum(iucn_num_sc,am_num_sc), num_spp_tb = sum(iucn_num_tb,am_num_tb)) %>%
+  select(-c(2:5))
+
+head(countries_summary_nocutoff, 20)
+countries_summary_nocutoff %>% arrange(desc(num_spp_sc))
+countries_summary_nocutoff %>% arrange(desc(num_spp_tb))
+
+```
+
