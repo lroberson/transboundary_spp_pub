@@ -1,5 +1,5 @@
 ---
-title: "fig1_range_bygroup"
+title: "range_bygroup"
 output: html_document
 ---
 
@@ -12,6 +12,7 @@ library(scales) # for percentage scales
 library(RColorBrewer)
 library(gridExtra)
 library(cowplot)
+library(janitor)
 
 ```
 
@@ -94,6 +95,7 @@ eez_dat <- plot_dat %>%
          n_spp = sum(n_spp)) %>% # count species per species gorup
   ungroup()
 
+head(eez_dat)
 
 redlist_dat <- plot_dat %>% 
   group_by(tax_group_2, category) %>%
@@ -108,6 +110,7 @@ redlist_dat$category = forcats::as_factor(redlist_dat$category)
 levels(redlist_dat$category)
 redlist_dat$category <- fct_relevel(redlist_dat$category, "CR","EN","VU","NT","LC","DD","None")
 
+head(redlist_dat)
 ```
 
 ##  butterfly barplot with manual species groupings
@@ -245,3 +248,41 @@ plot_dat %>%
   ungroup()
 
 ```
+
+## Make a results table
+
+Request to output these results as a table with the percent of species in each species group in each redlist category and EEZ bin
+
+```{r table output}
+
+head(redlist_dat)
+head(eez_dat)
+
+## pivot wider
+
+rl.wide <- redlist_dat %>%
+  pivot_wider(id_cols=c(tax_group_2, n_spp), 
+              names_from=category,
+              names_prefix="RedList_",
+              values_from=perc_cat, # values are the percent of mapped species in each category 
+              values_fill=0)
+
+eez.wide <- eez_dat %>%
+  pivot_wider(id_cols=c(tax_group_2, n_spp), 
+              names_from=eez_bins_2,
+              names_prefix="EEZ_", # these columns are the bins, so eez_10_25 == 10-25 jurisdictions
+              values_from=perc_eez,
+              values_fill=0)
+head(eez.wide)
+eez.wide <- eez.wide %>% janitor::clean_names()
+
+comb.wide <- left_join(rl.wide, eez.wide, by = c("tax_group_2", "n_spp"))
+comb.wide
+
+comb.wide <- comb.wide %>%
+  rename(count_species=n_spp, species_group=tax_group_2)
+
+write_csv(comb.wide, "_results/fig2_resultstable.csv")
+
+```
+

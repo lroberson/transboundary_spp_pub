@@ -1,0 +1,108 @@
+---
+title: "fig_spp_records"
+author: "Leslie Roberson"
+date: "12/8/2020"
+output: html_document
+---
+
+## Figure 2 for for gCB submission
+
+hoirzontal bar plot with error bars for number of recorded species 
+
+```{r setup, include=FALSE}
+
+library(data.table)
+library(tidyverse)
+library(scales) # for percentage scales
+library(RColorBrewer)
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## load and prep data
+
+```{r prep data}
+
+## this was made from an excel file (the lit review/database search)
+dat <- read_csv("_data/xbd_spprecords_db_plot.csv")
+names(dat)
+
+## make plotdat
+# remove excluded groups
+plotdat <- dat %>% filter(taxon_3grps != "Excluded")
+unique(plotdat$taxon_3grps)
+
+plotdat <- plotdat %>%
+  distinct(my_group, taxon_3grps, n_maps, mygroup_lower) %>%
+  rename(n_obis = mygroup_lower)
+nrow(plotdat) # n = 16
+
+```
+
+## plot
+
+horizontal bar plot with error bars
+
+Just showing the OBIS records, not the Appleton estimate which is much higher for msot species
+
+```{r horz barplot}
+
+names(plotdat)
+
+## make colors for the 3 taxon groups
+
+plotdat$taxon_3grps <- as_factor(plotdat$taxon_3grps) %>% fct_drop()
+plotdat$taxon_3grps <- fct_relevel(plotdat$taxon_3grps, levels = c("Plants", "Chordates", "Invertebrates"))
+levels(plotdat$taxon_3grps)
+
+pal_3grps <- c("palegreen3", "lightpink4", "lightpink3")
+
+names(plotdat)
+str(plotdat)
+summary(plotdat)
+View(plotdat)
+
+p <- ggplot(plotdat, aes(x = reorder(my_group, n_maps), y = n_maps, fill = taxon_3grps)) + 
+  geom_col(mapping = aes(x = reorder(my_group, n_maps), y = n_maps, fill = taxon_3grps),
+           position = position_dodge(width = 0.05), width = 0.5, colour = "black", size = 0.1, alpha = 1) +
+  geom_errorbar(aes(ymin = n_maps, ymax = n_obis),
+                position = position_dodge(width = 0.05), width = 0.5, linetype = "solid") +
+  #geom_text(aes(label = n_maps, x = my_group, hjust = -1)) + # no do this in illusrtator
+  scale_fill_manual(values = pal_3grps) +
+  scale_y_continuous(limits = c(0, 32500), breaks = seq(0,30000, 5000), expand = c(0.02, 0.05)) +
+  coord_flip() +
+  labs(y = "Mapped and recorded species", fill = "", x = "") +
+  theme(panel.grid.minor = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.background = element_blank(),
+        panel.border = element_rect(fill = NA),
+        legend.position = c(0.8, 0.2),
+        axis.ticks.y = element_blank(),
+        axis.text.y=element_text(margin = margin(r = 0.1)))
+p
+ggsave(p, "_results/figs/gcb_submit/spp_records_9dec.eps", width = 6, height = 4, units = "in")
+
+
+## Try ordering by proportion mapped
+p2 <- ggplot(plotdat, aes(x = reorder(my_group, n_maps/n_obis), y = n_maps, fill = taxon_3grps)) + 
+  geom_col(mapping = aes(x = reorder(my_group, n_maps/n_obis), y = n_maps, fill = taxon_3grps),
+           position = position_dodge(width = 0.05), width = 0.5, colour = "black", size = 0.1, alpha = 1) +
+  geom_errorbar(aes(ymin = n_maps, ymax = n_obis),
+                position = position_dodge(width = 0.05), width = 0.5, linetype = "solid") +
+  #geom_text(aes(label = n_maps, x = my_group, hjust = -1)) + # no do this in illusrtator
+  scale_fill_manual(values = pal_3grps) +
+  scale_y_continuous(limits = c(0, 32500), breaks = seq(0,30000, 5000), expand = c(0.02, 0.1)) +
+  coord_flip() +
+  labs(y = "Mapped and recorded species", fill = "", x = "") +
+  theme(panel.grid.minor = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.background = element_blank(),
+        panel.border = element_rect(fill = NA),
+        legend.position = c(0.8, 0.89),
+        axis.ticks.y = element_blank(),
+        axis.text.y=element_text(margin = margin(r = 0.1)))
+p2 ## better this way
+
+ggsave(p2, "_results/figs/gcb_submit/spp_records_prop_9dec.eps", width = 6, height = 4, units = "in")
+```
+
