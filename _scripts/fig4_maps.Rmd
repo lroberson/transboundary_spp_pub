@@ -16,7 +16,26 @@ panel B) tb_rich_eez_mollpac.tif
 
 ```{r setup, include=FALSE}
 
+library(raster) 
+library(tidyverse)
+library(here)
+library(sf)
+library(sp)
+library(data.table)
+library(forcats)
+library(tmap)
 
 ```
 
+## Load rasters
+
+```{r load rasters}
+
+## get raster layer with edited rgn ids
+eez_rast <- raster::raster("_data/rasters/xbd_eez_rast.tif")
+eez_rast
+plot(eez_rast)
+
+
+```
 
