@@ -5,7 +5,7 @@ output: html_document
 
 ## Summary
 
-two-panel figure showing a map of A) the density of transboundary species PER CELL and B) the density of transboundary threatened species PER JURISDICTION
+three-panel figure showing a map of A) the density of transboundary species PER CELL; B) the density of transboundary threatened species PER JURISDICTION and c) the PERCENT of each jurisdiction's species that are transboundary
 
 The data was wrangled in R, rasterized, converted to Mollweide projection, and then the rasters were mapped/formatted into Figures in ArcMap 10.8
 
@@ -13,6 +13,9 @@ panel A) tb_cells_rich_rast_mollpac.tif
 
 panel B) tb_rich_eez_mollpac.tif
 
+panel C) tb_eez_perc_mollpac.tif
+
+This code is to make the rasters to pull into ArcMap.
 
 ```{r setup, include=FALSE}
 
@@ -27,15 +30,112 @@ library(tmap)
 
 ```
 
-## Load rasters
+## Load and prep data
 
 ```{r load rasters}
 
-## get raster layer with edited rgn ids
+## load cell ID raster
+cell_id_rast <- raster::raster("_data/rasters/cell_id_rast.tif")
+cell_id_rast
+plot(cell_id_rast)
+
+## Load species-cell summary (panel A)
+cell_summary <- fread("_data/fig4_cell_summary.csv") # large file (50 Mb)
+names(cell_summary)
+# "cell_id" = unique cell ID (10x10km cells, same as IUCN range maps)   
+# "num_spp_tb" =  number of transboundary species  
+# "num_spp_sc" = number single jurisdiction speices  
+
+## load EEZ raster layer with edited rgn ids
 eez_rast <- raster::raster("_data/rasters/xbd_eez_rast.tif")
 eez_rast
 plot(eez_rast)
 
+## Load species-EEZ summary (Panels B and C)
+countries <- fread("_data/combined_eez_summary.csv") 
+names(countries)
+# "rgn_id_2" = jurisdiction id    
+# "num_spp_tb" = number of transboundary species  
+# "num_spp_sc"  = number single jurisdiction speices  
+# "rgn_nam_2" = jurisdiction name
+# "num_spp_tb_th" = number of threatnened (CR, EN, VU) transboundary species
+# "num_spp_sc_th"  = number of threatnened (CR, EN, VU) single jurisdiction species
+## Didn't end up using the threatened species maps
+
+## some checks
+n_distinct(countries$rgn_id_2) # n = 228
+n_distinct(countries$rgn_nam_2) # n = 228
+nrow(countries) # n = 228
+
+```
+
+## Make raster A: transboundary species per CELL
+
+```{panel A}
+
+cells_tb_spp_rich <- cell_summary %>%
+  dplyr::select(cell_id, num_spp_tb) %>%
+  as.data.frame()
+
+## rasterize
+subs(cell_id_rast, cells_tb_spp_rich, by = 1, which = 2, subsWithNA=T, filename= "_data/rasters/tb_cells_rich_rast.tif")
+
+## reproject
+cells_rast <- raster::raster("_data/rasters/tb_cells_rich_rast.tif")
+mollweide_pac <- "+proj=moll +lon_0=150 +x_0=0 +y_0=0 +ellps=WGS84"
+cells_rast_tb_moll_pac <- projectRaster(cells_rast, crs = mollweide_pac, method = "ngb")
+cells_rast_tb_moll_pac
+plot(cells_rast_tb_moll_pac)
+writeRaster(cells_rast_tb_moll_pac, "_data/rasters/tb_cells_rich_rast_mollpac.tif")
+
+```
+
+## Panel B: count all TB species per EEZ
+
+```{r panel B}
+
+map_tb <- countries %>% dplyr::select(c(rgn_id_2, num_spp_tb))
+
+summary(map_tb) # range of tb spp: 1 - 11,234
+
+subs(eez_rast, map_tb, by = 1, which = 2, subsWithNA=T, filename= "_data/rasters/tb_rich_eez_rast.tif")
+
+## reproject to mollweide centered on pacific
+rast_tb <- raster::raster("_data/rasters/tb_rich_eez_rast.tif")
+rast_tb
+plot(rast_tb)
+mollweide_pac <- "+proj=moll +lon_0=150 +x_0=0 +y_0=0 +ellps=WGS84"
+rast_tb_moll_pac <- projectRaster(rast_tb, crs = mollweide_pac, method = "ngb")
+rast_tb_moll_pac
+plot(rast_tb_moll_pac)
+writeRaster(rast_tb_moll_pac, "_data/rasters/tb_rich_eez_mollpac.tif")
+
+```
+
+## Panel C: tb species/ total count species per EEZ
+
+```{r panel C}
+
+map_tb_perc <- countries %>%
+  group_by(rgn_id_2) %>%
+  rowwise() %>%
+  mutate(tot_spp = sum(num_spp_tb, num_spp_sc),
+         tb_perc = num_spp_tb/tot_spp) %>%
+  dplyr::select(c(rgn_id_2, tb_perc, tot_spp, rgn_nam_2)) %>%
+  ungroup()
+summary(map_tb_perc$tb_perc) # range is from 91 - 100% but 1st. Qu is 99.85%
+map_tb_perc %>% arrange(tb_perc)
+
+map_tb_perc <- map_tb_perc %>% dplyr::select(c(rgn_id_2, tb_perc))
+subs(eez_rast, map_tb_perc, by = 1, which = 2, subsWithNA=T, filename= "_data/rasters/tb_eez_perc_rast.tif")
+
+## reproject to mollweide centered on pacific
+rast_perc <- raster::raster("_data/rasters/tb_eez_perc_rast.tif")
+mollweide_pac <- "+proj=moll +lon_0=150 +x_0=0 +y_0=0 +ellps=WGS84"
+rast_perc_moll_pac <- projectRaster(rast_perc, crs = mollweide_pac, method = "ngb")
+rast_perc_moll_pac
+plot(rast_perc_moll_pac)
+writeRaster(rast_perc_moll_pac, "_data/rasters/tb_eez_perc_mollpac.tif")
 
 ```
 
