@@ -40,7 +40,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # load species lists to combine
 ```{r load spp lists}
 
-both <- read_excel(here("_data/lookup_spp_AM_v_iucn_2019_2.xls"), sheet=2)
+both <- read_excel(here("_data/species_lists/lookup_spp_AM_v_iucn_2019_2.xls"), sheet=2)
 glimpse(both) # 2568 species
 # has kingdom (CAPS) and class (Sentence)
 
@@ -48,14 +48,14 @@ glimpse(both) # 2568 species
 #glimpse(am) # 24,938
 # does not have class or kingdom. Don't need to use this one
 
-am.only <- read_csv(here("_data/am_only_spp_info.csv"))
+am.only <- read_csv(here("_data/species_lists/am_only_spp_info.csv"))
 glimpse(am.only) # 22,433
 # has kingdom (lower) and class (Sentence)
 22433 + 2568
 am.only$redlist_category <- "aquamaps_only"
 am.only$kingdom <- str_to_upper(am.only$kingdom)
 
-iucn <- read_csv(here("_data/iucn_spp_list_2019_2_marine_cleaned.csv"))
+iucn <- read_csv(here("_data/species_lists/iucn_spp_list_2019_2_marine_cleaned.csv"))
 glimpse(iucn) # 9,916
 iucn <- iucn %>% rename(iucn_sciname=sciname) # has kingdom (CAPS) and class (CAPS)
 unique(iucn$class)
