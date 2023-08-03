@@ -1,0 +1,239 @@
+---
+title: "species_lookup"
+author: "Leslie Roberson"
+date: "2023-07-26"
+output: html_document
+---
+
+## Summary
+
+lookup table created for a global analysis of marine species ranges for https://doi.org/10.1111/gcb.15844 (Roberson, L. A. et al. 2021. “Multinational Coordination Required for Conservation of over 90% of Marine Species.” Global Change Biology, 1–11). 
+Neither database has a lookup table to match a IUCN ID to an AM ID (as of 2020)
+Due to inconsistencies in taxonomy or spelling of species names, matching on species name misses matches
+Not all species with maps in AM have maps in IUCN, and visa versa
+Habitat (marine v terrestrial) delineations are subjective (e.g. for species that use both, estuarine or semi aquatic species) so there is no "marine" v "terrestrial" categorization given in IUCN that is consistent. AquaMaps focuses on marine and aquatic 
+For this analysis, which focused on marine/coastal species, some subjective decisions were made (e.g. not counting hippopotomous or cane toads as marine)
+
+*Here I also add the iucn and AM species that are unique to one of the databases*
+
+# comments on AM
+AM=AquaMaps
+Version 0816D
+
+# comments on IUCN
+version 2019.2
+Pulled all taxonomic groups that are entirely marine (e.g. cetaceans) and excluded groups that have no marine species (e.g. arachnids). For groups with both, used downloaded the larger group and then used a series of filtering steps to focus on marine and
+
+
+```{r setup, include=FALSE}
+
+library(here)
+library(tidyverse)
+library(readxl)
+library(data.table)
+library(pillar)
+library(janitor)
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# load species lists to combine
+```{r load spp lists}
+
+both <- read_csv(here("_data/species_lists/spp_am_v_iucn_2019_2 copy.csv"))
+glimpse(both) # 2568 species
+# has class (Sentence) but not kingdom (all marine IUCN species are animals)
+
+am <- read_csv(here("_data/species_lists/am_spp_list.csv"))
+glimpse(am) # 24,938
+# does not have class or kingdom, or whether the map was reviewed. Don't need to use this one
+
+am.only <- read_csv(here("_data/species_lists/am_only_spp_info.csv"))
+glimpse(am.only) # 22,433
+# has kingdom (lower) and class (Sentence)
+22433 + 2568
+am.only$redlist_category <- "aquamaps_only"
+am.only$kingdom <- str_to_upper(am.only$kingdom)
+
+iucn <- read_csv(here("_data/species_lists/iucn_spp_list_2019_2_marine_cleaned.csv"))
+glimpse(iucn) # 9,916
+iucn <- iucn %>% rename(iucn_sciname=sciname) # has kingdom (CAPS) and class (CAPS)
+unique(iucn$class)
+iucn %>% filter(is.na(class)) # 16, they're NAs in every col
+iucn$class <- str_to_sentence(iucn$class) 
+unique(iucn$class) # IUCN has seabirds, AM doesn't
+
+```
+
+# Make full lookup table
+including species that are only in one of hte databases
+```{r add to lookup}
+
+#<><>< sort out Aquamaps only 
+unique(am.only$kingdom)
+# [1] "ANIMALIA"  "BACTERIA"  "PLANTAE"   "CHROMISTA" "PROTOZOA" 
+# I ended up only using animals and plants, that's why the numbers don't add up to "am_spp_list"
+am.only.sub <- am.only %>% select(-phylum) %>% rename(am_sid=species_id, am_sciname=sciname)
+glimpse(am.only.sub) # 22,433
+am.only.sub %>% filter(is.na(am_sid)) # none
+am.only.sub %>% filter(is.na(redlist_category)) # none
+# since I dont have the "reviewed" column for the AM only species (it's in the raw data but not oging back to those now),
+# change that column
+am.only.sub$am_reviewed <- "unsure"
+
+#<><>< Now deal with Both: add redlist info
+glimpse(both)
+both <- both %>% rename(iucn_spp_group=spp_group)
+both <- both %>% rename(iucn_sciname=sciname)
+# why are there two iucn ID cols?
+both %>% filter(iucn_id != iucn_sid)
+# just pufferfish has two - note for later (iucn_sid==190193, iucn_id==12103)
+both <- both %>% select(-iucn_id)
+unique(both$iucn_spp_group)
+both %>% filter(is.na(iucn_spp_group)) # 236 - so some aren't in a group
+both %>% filter(is.na(iucn_spp_group)) %>% distinct(class) # 1 ACTINOPTERYGII 2 CHONDRICHTHYES 3 MAMMALIA
+both %>% filter(is.na(iucn_spp_group) & class=="MAMMALIA") # just the blue whale. This must be a mistake with the duplicate IDs
+
+both %>% filter(iucn_spp_group=="TERRESTRIAL_MAMMALS") # 2 species (sea otter and the Eurasian otter) are in AM but called terrestrial in IUCN
+
+both$kingdom <- "ANIMALIA"
+glimpse(both) # 2,568
+
+both %>% filter(is.na(class)) # none
+both %>% filter(is.na(kingdom)) # none
+# the species in both dbs now have class and kingdom, but no Redlist category
+glimpse(iucn)
+iucn %>% filter(is.na(class)) # deal with these 16 species later, they're also missing sciname
+iucn.sub <- iucn %>% select(c(iucn_sid, iucn_sciname, category)) %>% rename(redlist_category=category)
+iucn.missing.name <- iucn.sub %>% filter(is.na(iucn_sciname)) 
+iucn.missing.name
+
+iucn.sub <- iucn.sub %>% filter(!is.na(iucn_sciname))
+glimpse(iucn.sub) # 9,900
+# add redlist info from iucn to both
+both.rl <- left_join(both, iucn.sub, by=c("iucn_sid", "iucn_sciname"))
+glimpse(both.rl) # 2,568
+both.rl %>% filter(is.na(redlist_category))
+
+# make a column to note alternate or incorrect iucn SIDs
+both.rl$iucn_sid_other <- as.numeric(NA)
+# ad dthe other ID for pufferfish
+both.rl <- both.rl %>%
+  mutate(iucn_sid_other=case_when(
+         iucn_sid==190193~12103, TRUE~as.numeric(iucn_sid_other) ))
+
+n_distinct(both.rl$iucn_sciname) # 2563
+both.rl %>% hablar::find_duplicates(iucn_sciname) %>% arrange(iucn_sciname)# 5 problems, it's values in other columsn
+# and one that is two species in AM but one in IUCN (Microphis brachyurus ssp. aculeatus)
+both.rl <- both.rl %>%
+  mutate(iucn_sid_other=case_when(
+    iucn_sid==2467 & iucn_sciname=="Balaena mysticetus"~2468,
+    iucn_sid==64396 & iucn_sciname=="Epinephelus bruneus"~135381188,
+    iucn_sid==132823 & iucn_sciname=="Epinephelus chlorostigma"~118358386,
+    iucn_sid==132775 & iucn_sciname=="Actinopterygii Plectropomus pessuliferus"~118359431,
+    TRUE~as.numeric(iucn_sid)),
+  redlist_category=case_when(
+    iucn_sid==64396~"VU",
+    iucn_sid==132823~"LC",
+    iucn_sciname=="Microphis brachyurus ssp. aculeatus"~"DD",
+    iucn_sciname=="Plectropomus pessuliferus"~"LC",
+    TRUE~as.character(redlist_category))) %>%
+  # remove the duplicaets
+  filter(!iucn_sid %in% c(2468, 135381188, 118358386, 118359431))
+both.rl %>% hablar::find_duplicates(iucn_sciname) %>% arrange(iucn_sciname) # now it's just the one thats 2 species in AM
+
+# check that all have RL category
+both.rl %>% filter(is.na(redlist_category)) # 13 species
+# Check if these are in the IUCN list and should have matched
+missing.rl <- both.rl %>% filter(is.na(redlist_category)) 
+missing.rl
+
+##<><>> get iucn only list
+anti_join(iucn.sub, both, by="iucn_sciname") # 7,350
+iucn.only <- anti_join(iucn.sub, both, by=c("iucn_sid", "iucn_sciname"))
+glimpse(iucn.only) # 7,351
+# so there's one species in iucn that's not in AM that changed its IUCN SID
+## add class and kingdom back in
+glimpse(iucn) # 9,916
+iucn.only <- left_join(iucn.only, iucn, by=c("iucn_sciname", "iucn_sid"))
+glimpse(iucn.only)
+iucn.only %>% filter(is.na(redlist_category)) # none
+iucn.only %>% hablar::find_duplicates(iucn_sciname) # none
+iucn.only %>% hablar::find_duplicates(iucn_sid) # none
+# drop phylum to match with others
+iucn.only <- iucn.only %>% select(-phylum)
+# there are 2 RL cat cols
+iucn.only %>% filter(redlist_category!= category) # none
+iucn.only <- iucn.only %>% select(-category)
+
+## now check for the IUCN species with NA names 
+iucn.missing.name
+iucn.missing.matches <- inner_join(both.rl, iucn.missing.name, by=c("iucn_sid_other"="iucn_sid"))
+iucn.missing.matches # one species of grouper that's already in the "both" list
+# leave the others as missing
+
+iucn.only %>% filter(iucn_sciname %in% missing.rl) # only sousa chinensis
+# correct in both.rl and remove from iucn.only
+both.rl <- both.rl %>% 
+  mutate(redlist_category=case_when(
+    iucn_sciname=="Sousa chinensis"~"VU",
+    TRUE~as.character(redlist_category)
+  ))
+iucn.only <- iucn.only %>% filter(iucn_sciname!="Sousa chinensis")
+
+## add the other RL categories manually
+both.rl <- both.rl %>%
+  mutate(redlist_category=case_when(
+    iucn_sciname=="Crocodylus acutus"~"VU",
+    iucn_sciname=="Mesoplodon carlhubbsi"~"DD",
+    iucn_sciname=="Mesoplodon layardii"~"LC",
+    iucn_sciname=="Pontoporia blainvillei"~"VU",
+    iucn_sciname=="Astrotia stokesii"~"LC",
+    iucn_sciname=="Enhydrina schistosa"~"LC",
+    iucn_sciname=="Pelamis platura"~"LC",
+    iucn_sciname=="Lapemis curtus"~"LC",
+    iucn_sciname=="Acalyptophis peronii"~"LC",
+    iucn_sciname=="Acrochordus granulatus"~"LC",
+    iucn_sciname=="Hypleurochilus langi"~"LC",
+    iucn_sciname=="Dorosoma petenense"~"LC", 
+    TRUE~as.character(redlist_category)),
+    class=str_to_sentence(class))
+
+# update the am reviewed ol
+both.rl <- both.rl %>% 
+  mutate(am_reviewed=case_when(
+    reviewed==1~as.character("yes"),
+    TRUE~as.character("no")
+  ))
+both.rl <- both.rl %>% select(-reviewed)
+both.rl <- both.rl %>% select(-c(spatial_source, name_verified)) # these were specific to Roberson et al 2021 paper
+both.rl <- both.rl %>% select(-iucn_spp_group) # this one is incomplete
+
+##<><><><<
+##<><> Now bind am.only.sub, iucn.only, both
+glimpse(am.only.sub) # 22,433
+glimpse(iucn.only) # 7,350
+glimpse(both.rl) # 2,564
+2564 + 7350 + 22433 # 32347
+7350 + 22433  # 29783
+onlyone <- bind_rows(iucn.only, am.only.sub)
+glimpse(onlyone) # 29783
+onlyone$iucn_sid_other <- as.numeric(NA) 
+onlyone$am_sid_old <- as.character(NA) 
+# check
+onlyone %>% filter(is.na(am_sid)) # 7,350
+onlyone %>% filter(is.na(iucn_sid)) # 7,350
+
+# bind to both
+full <- bind_rows(both.rl, onlyone)
+glimpse(full) # 32,347
+
+table(full$redlist_category)
+# aquamaps_only            CR            DD            EN            LC         LR/lc         LR/nt            NT            VU 
+#         22433            82          1864           203          6685             1             3           452           624
+
+write_csv(full, here("_data/species_lists/spp_list_iucn_aquamaps.csv")) # will add metadata in excel
+
+
+```
+
