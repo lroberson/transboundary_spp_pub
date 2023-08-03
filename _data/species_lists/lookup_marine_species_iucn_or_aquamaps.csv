@@ -294,7 +294,7 @@ iucn_sid,class,iucn_sciname,am_sid,am_sciname,am_sid_old,kingdom,redlist_categor
 132931,Anthozoa,Acropora willisae,URM-Cn-4854,Acropora willisae,NA,ANIMALIA,VU,132931,no
 132933,Anthozoa,Acropora carduus,URM-Cn-4723,Acropora carduus,NA,ANIMALIA,NT,132933,no
 132935,Anthozoa,Acropora plumosa,URM-Cn-4807,Acropora plumosa,NA,ANIMALIA,VU,132935,no
-132936,Anthozoa,Favia pallida,SLB-190543,Dipsastraea pallida,NA,ANIMALIA,LC,132936,no
+132936,Anthozoa,Favia pallida,SLB-190543,Dipsastraea pallida,URM-Cn-5550,ANIMALIA,LC,132936,no
 132940,Anthozoa,Acropora acuminata,URM-Cn-4710,Acropora acuminata,NA,ANIMALIA,VU,132940,no
 132941,Anthozoa,Indophyllia macassarensis,URM-Cn-5862,Indophyllia macassarensis,NA,ANIMALIA,DD,132941,no
 132945,Anthozoa,Porites colonensis,URM-Cn-6043,Porites colonensis,NA,ANIMALIA,DD,132945,no
@@ -337,7 +337,6 @@ iucn_sid,class,iucn_sciname,am_sid,am_sciname,am_sid_old,kingdom,redlist_categor
 133031,Anthozoa,Montipora effusa,URM-Cn-4897,Montipora effusa,NA,ANIMALIA,NT,133031,no
 133032,Anthozoa,Lobophyllia flabelliformis,URM-Cn-5869,Lobophyllia flabelliformis,NA,ANIMALIA,VU,133032,no
 133033,Anthozoa,Acropora pulchra,URM-Cn-4813,Acropora pulchra,NA,ANIMALIA,LC,133033,no
-133034,Anthozoa,Fungia fragilis,SLB-189121,Cycloseris fragilis,NA,ANIMALIA,LC,133034,no
 133037,Anthozoa,Mycetophyllia reesi,URM-Cn-5885,Mycetophyllia reesi,NA,ANIMALIA,DD,133037,no
 133038,Anthozoa,Porites nigrescens,URM-Cn-6069,Porites nigrescens,NA,ANIMALIA,VU,133038,no
 133043,Anthozoa,Psammocora digitata,URM-Cn-6135,Psammocora digitata,NA,ANIMALIA,NT,133043,no
@@ -404,7 +403,7 @@ iucn_sid,class,iucn_sciname,am_sid,am_sciname,am_sid_old,kingdom,redlist_categor
 133195,Anthozoa,Acropora appressa,SLB-93690,Acropora appressa,NA,ANIMALIA,NT,133195,no
 133197,Anthozoa,Pocillopora verrucosa,URM-Cn-5984,Pocillopora verrucosa,NA,ANIMALIA,LC,133197,no
 133200,Anthozoa,Oulophyllia crispa,URM-Cn-5606,Oulophyllia crispa,NA,ANIMALIA,NT,133200,no
-133201,Anthozoa,Fungia scutaria,SLB-190518,Lobactis scutaria,NA,ANIMALIA,LC,133201,no
+133201,Anthozoa,Fungia scutaria,SLB-190518,Lobactis scutaria,URM-Cn-5771,ANIMALIA,LC,133201,no
 133203,Anthozoa,Acropora tenella,URM-Cn-4840,Acropora tenella,NA,ANIMALIA,VU,133203,no
 133206,Anthozoa,Acropora roseni,URM-Cn-4819,Acropora roseni,NA,ANIMALIA,EN,133206,no
 133209,Anthozoa,Favites pentagona,URM-Cn-5567,Favites pentagona,NA,ANIMALIA,LC,133209,no
@@ -456,7 +455,7 @@ iucn_sid,class,iucn_sciname,am_sid,am_sciname,am_sid_old,kingdom,redlist_categor
 133304,Anthozoa,Lobophyllia hataii,URM-Cn-5870,Lobophyllia hataii,NA,ANIMALIA,LC,133304,no
 133305,Anthozoa,Montipora verrilli,URM-Cn-4946,Montipora verrilli,NA,ANIMALIA,DD,133305,no
 133307,Anthozoa,Favia rotundata,URM-Cn-5553,Favia rotundata,NA,ANIMALIA,NT,133307,no
-133308,Anthozoa,Fungia scruposa,SLB-190516,Danafungia scruposa,NA,ANIMALIA,LC,133308,no
+133308,Anthozoa,Fungia scruposa,SLB-190516,Danafungia scruposa,URM-Cn-5770,ANIMALIA,LC,133308,no
 133309,Anthozoa,Pocillopora inflata,URM-Cn-5981,Pocillopora inflata,NA,ANIMALIA,VU,133309,no
 133311,Anthozoa,Acropora halmaherae,URM-Cn-4757,Acropora halmaherae,NA,ANIMALIA,DD,133311,no
 133313,Anthozoa,Acropora cytherea,URM-Cn-4733,Acropora cytherea,NA,ANIMALIA,LC,133313,no
@@ -503,7 +502,7 @@ iucn_sid,class,iucn_sciname,am_sid,am_sciname,am_sid_old,kingdom,redlist_categor
 133403,Anthozoa,Turbinaria stellulata,URM-Cn-5476,Turbinaria stellulata,NA,ANIMALIA,VU,133403,no
 133405,Anthozoa,Caulastrea tumida,SLB-62382,Caulastrea tumida,NA,ANIMALIA,NT,133405,no
 133406,Anthozoa,Psammocora haimeana,URM-Cn-6137,Psammocora haimeana,NA,ANIMALIA,LC,133406,no
-133407,Anthozoa,Pocillopora eydouxi,SLB-189370,Pocillopora grandis,NA,ANIMALIA,NT,133407,no
+133407,Anthozoa,Pocillopora eydouxi,SLB-189370,Pocillopora grandis,URM-Cn-5978,ANIMALIA,NT,133407,no
 133408,Anthozoa,Coscinaraea wellsi,URM-Cn-6130,Coscinaraea wellsi,NA,ANIMALIA,LC,133408,no
 133409,Anthozoa,Montipora verruculosus,URM-Cn-4948,Montipora verruculosus,NA,ANIMALIA,VU,133409,no
 133410,Anthozoa,Pachyseris speciosa,URM-Cn-4978,Pachyseris speciosa,NA,ANIMALIA,LC,133410,no
@@ -974,7 +973,7 @@ iucn_sid,class,iucn_sciname,am_sid,am_sciname,am_sid_old,kingdom,redlist_categor
 170094,Malacostraca,Panulirus regius,ITS-552980,Panulirus regius,NA,ANIMALIA,DD,170094,no
 170095,Malacostraca,Thaumastocheles zaleucus,ITS-553065,Thaumastocheles zaleucus,NA,ANIMALIA,LC,170095,no
 170096,Malacostraca,Thaumastocheles japonicus,ITS-553064,Thaumastocheles japonicus,NA,ANIMALIA,LC,170096,no
-170097,Malacostraca,Justitia longimanus,SLB-190081,Justitia longimana,NA,ANIMALIA,DD,170097,no
+170097,Malacostraca,Justitia longimanus,SLB-190081,Justitia longimana,ITS-97654,ANIMALIA,DD,170097,no
 170306,Actinopterygii,Scomber japonicus,Fis-29507,Scomber japonicus,NA,ANIMALIA,LC,170306,no
 170308,Actinopterygii,Grammatorcynus bicarinatus,Fis-21661,Grammatorcynus bicarinatus,NA,ANIMALIA,LC,170308,no
 170309,Actinopterygii,Kajikia audax,Fis-163398,Kajikia audax,NA,ANIMALIA,NT,170309,yes
@@ -1031,7 +1030,7 @@ iucn_sid,class,iucn_sciname,am_sid,am_sciname,am_sid_old,kingdom,redlist_categor
 176719,Reptilia,Enhydrina schistosa,SLB-88877,Enhydrina schistosa,NA,ANIMALIA,LC,176719,no
 176720,Reptilia,Emydocephalus annulatus,Rep-4964,Emydocephalus annulatus,NA,ANIMALIA,LC,176720,no
 176726,Reptilia,Hydrophis cyanocinctus,Rep-6239,Hydrophis cyanocinctus,NA,ANIMALIA,LC,176726,no
-176729,Reptilia,Hydrophis major,SLB-88872,Disteira major,NA,ANIMALIA,LC,176729,no
+176729,Reptilia,Hydrophis major,SLB-88872,Disteira major,Rep-6257,ANIMALIA,LC,176729,no
 176730,Reptilia,Hydrophis czeblukovi,Rep-6240,Hydrophis czeblukovi,NA,ANIMALIA,DD,176730,no
 176734,Reptilia,Hydrophis elegans,Rep-6242,Hydrophis elegans,NA,ANIMALIA,LC,176734,no
 176738,Reptilia,Pelamis platura,SLB-184619,Pelamis platura,NA,ANIMALIA,LC,176738,no
@@ -1699,7 +1698,7 @@ iucn_sid,class,iucn_sciname,am_sid,am_sciname,am_sid_old,kingdom,redlist_categor
 192424,Gastropoda,Conus obscurus,W-Msc-215476,Conus obscurus,NA,ANIMALIA,LC,192424,no
 192426,Gastropoda,Conus kimioi,W-Msc-430446,Conus kimioi,NA,ANIMALIA,LC,192426,no
 192428,Gastropoda,Conus rattus,W-Msc-215458,Conus rattus,NA,ANIMALIA,LC,192428,no
-192440,Gastropoda,Conus circumactus,SLB-100648,Conus circumactis,NA,ANIMALIA,LC,192440,no
+192440,Gastropoda,Conus circumactus,SLB-100648,Conus circumactis,W-Msc-426454,ANIMALIA,LC,192440,no
 192444,Gastropoda,Conus villepinii,W-Msc-420226,Conus villepinii,NA,ANIMALIA,LC,192444,no
 192447,Gastropoda,Conus armadillo,W-Msc-428976,Conus armadillo,NA,ANIMALIA,LC,192447,no
 192449,Gastropoda,Conus brunneus,W-Msc-426424,Conus brunneus,NA,ANIMALIA,LC,192449,no
@@ -1748,7 +1747,7 @@ iucn_sid,class,iucn_sciname,am_sid,am_sciname,am_sid_old,kingdom,redlist_categor
 192693,Gastropoda,Conus cancellatus,W-Msc-420206,Conus cancellatus,NA,ANIMALIA,LC,192693,no
 192694,Gastropoda,Conus varius,W-Msc-215511,Conus varius,NA,ANIMALIA,LC,192694,no
 192696,Gastropoda,Conus purpurascens,W-Msc-428255,Conus purpurascens,NA,ANIMALIA,LC,192696,no
-192697,Gastropoda,Conus chiangi,SLB-103803,Taranteconus chiangi,NA,ANIMALIA,LC,192697,no
+192697,Gastropoda,Conus chiangi,SLB-103803,Taranteconus chiangi,W-Msc-430142,ANIMALIA,LC,192697,no
 192699,Gastropoda,Conus striatellus,W-Msc-215543,Conus striatellus,NA,ANIMALIA,LC,192699,no
 192700,Gastropoda,Conus eburneus,W-Msc-215559,Conus eburneus,NA,ANIMALIA,LC,192700,no
 192701,Gastropoda,Conus marmoreus,W-Msc-215457,Conus marmoreus,NA,ANIMALIA,LC,192701,no
@@ -2480,89 +2479,89 @@ iucn_sid,class,iucn_sciname,am_sid,am_sciname,am_sid_old,kingdom,redlist_categor
 183097,Actinopterygii,Microphis brachyurus ssp. aculeatus,Fis-58490,Microphis brachyurus,NA,ANIMALIA,DD,183097,no
 183097,Actinopterygii,Microphis brachyurus ssp. aculeatus,Fis-19194,Microphis aculeatus,NA,ANIMALIA,DD,183097,no
 98471199,Actinopterygii,Clupea pallasii,Fis-153539,Clupea pallasii pallasii,NA,ANIMALIA,DD,98471199,no
-2059,Mammalia,Arctocephalus philippii,ITS-Mam-180635,Arctocephalus philippii,ITS-180635,ANIMALIA,LC,2059,yes
-4160,Mammalia,Cephalorhynchus eutropia,ITS-Mam-180450,Cephalorhynchus eutropia,ITS-180450,ANIMALIA,NT,4160,yes
-20424,Mammalia,Sousa chinensis,ITS-Mam-180419,Sousa chinensis,ITS-180419,ANIMALIA,VU,20424,yes
-41759,Mammalia,Mesoplodon perrini,ITS-Mam-612599,Mesoplodon perrini,ITS-612599,ANIMALIA,DD,41759,yes
-132860,Anthozoa,Psammocora stellata,URM-Cn-6141,Psammocora stellata,SLB-62998,ANIMALIA,VU,132860,no
-132902,Anthozoa,Fungia puishani,URM-Cn-5767,Fungia puishani,SLB-62642,ANIMALIA,DD,132902,no
-132927,Anthozoa,Leptoseris striata,URM-Cn-4971,Leptoseris striata,SLB-61850,ANIMALIA,NT,132927,no
-132942,Anthozoa,Montipora patula,URM-Cn-4926,Montipora patula,SLB-93057,ANIMALIA,VU,132942,no
-133004,Anthozoa,Simplastrea vesicularis,URM-Cn-5926,Simplastrea vesicularis,SLB-62804,ANIMALIA,DD,133004,no
-133111,Anthozoa,Montipora saudii,URM-Cn-4930,Montipora saudii,SLB-61810,ANIMALIA,NT,133111,no
-133115,Anthozoa,Acropora retusa,URM-Cn-4808,Acropora retusa,SLB-93474,ANIMALIA,VU,133115,no
-133120,Anthozoa,Acropora latistella,URM-Cn-4773,Acropora latistella,SLB-61654,ANIMALIA,LC,133120,no
-133121,Anthozoa,Siderastrea glynni,SLB-63002,Siderastrea glynni,URM-Cn-6145,ANIMALIA,CR,133121,no
-133124,Anthozoa,Dendrogyra cylindrus,URM-Cn-5812,Dendrogyra cylindrus,SLB-158750,ANIMALIA,VU,133124,yes
-133139,Anthozoa,Isopora palifera,URM-Cn-4797,Isopora palifera,SLB-184813,ANIMALIA,NT,133139,no
-133169,Anthozoa,Stylophora mamillata,SLB-62856,Stylophora mamillata,URM-Cn-5993,ANIMALIA,LC,133169,no
-133172,Anthozoa,Echinophyllia aspera,URM-Cn-5928,Echinophyllia aspera,SLB-62815,ANIMALIA,LC,133172,no
-133182,Anthozoa,Isopora brueggemanni,URM-Cn-4720,Isopora brueggemanni,SLB-184808,ANIMALIA,VU,133182,no
-133184,Anthozoa,Mussismilia hispida,URM-Cn-5880,Mussismilia hispida,SLB-62757,ANIMALIA,DD,133184,no
-133237,Anthozoa,Montastraea cavernosa,URM-Cn-5594,Montastraea cavernosa,SLB-62474,ANIMALIA,LC,133237,yes
-133252,Anthozoa,Acropora tortuosa,SLB-61727,Acropora tortuosa,URM-Cn-4846,ANIMALIA,LC,133252,no
-133439,Anthozoa,Agaricia tenuifolia,URM-Cn-4955,Agaricia tenuifolia,SLB-61834,ANIMALIA,NT,133439,no
-133470,Anthozoa,Micromussa amakusensis,URM-Cn-5844,Micromussa amakusensis,SLB-158790,ANIMALIA,NT,133470,no
-133476,Anthozoa,Madracis asperula,URM-Cn-5959,Madracis asperula,SLB-61883,ANIMALIA,DD,133476,no
-133484,Anthozoa,Anomastraea irregularis,URM-Cn-6121,Anomastraea irregularis,SLB-158735,ANIMALIA,VU,133484,no
-133488,Anthozoa,Pectinia africanus,URM-Cn-5949,Pectinia africanus,SLB-62813,ANIMALIA,VU,133488,no
-133493,Anthozoa,Platygyra ryukyuensis,URM-Cn-5615,Platygyra ryukyuensis,SLB-62496,ANIMALIA,NT,133493,no
-133538,Anthozoa,Herpolitha limax,URM-Cn-5783,Herpolitha limax,SLB-62658,ANIMALIA,LC,133538,no
-133545,Anthozoa,Paraclavarina triangularis,URM-Cn-5829,Paraclavarina triangularis,SLB-62704,ANIMALIA,NT,133545,no
-133582,Anthozoa,Oxypora crassispinosa,URM-Cn-5945,Oxypora crassispinosa,SLB-62826,ANIMALIA,LC,133582,no
-133597,Anthozoa,Cantharellus doederleini,SLB-62620,Cantharellus doederleini,URM-Cn-5746,ANIMALIA,LC,133597,no
-133614,Anthozoa,Seriatopora guttatus,URM-Cn-5989,Seriatopora guttatus,SLB-62852,ANIMALIA,LC,133614,no
-133642,Anthozoa,Acanthastrea hemprichii,SLB-62723,Acanthastrea hemprichii,URM-Cn-5848,ANIMALIA,VU,133642,no
-133645,Anthozoa,Porites somaliensis,URM-Cn-6078,Porites somaliensis,SLB-184819,ANIMALIA,NT,133645,no
-133660,Anthozoa,Isopora cuneata,URM-Cn-4731,Isopora cuneata,SLB-184810,ANIMALIA,VU,133660,no
-170005,Malacostraca,Nupalirus japonicus,ITS-552958,Nupalirus japonicus,SLB-184639,ANIMALIA,LC,170005,no
-170048,Malacostraca,Palinustus waguensis,SLB-11556,Palinustus waguensis,ITS-552969,ANIMALIA,LC,170048,no
-170055,Malacostraca,Petrarctus rugosus,ITS-553025,Petrarctus rugosus,SLB-184955,ANIMALIA,LC,170055,no
-176737,Reptilia,Hydrophis ornatus,SLB-88909,Hydrophis ornatus,Rep-6263,ANIMALIA,LC,176737,no
-180235,Holothuroidea,Holothuria hilla,W-Hol-529402,Holothuria hilla,SLB-92916,ANIMALIA,LC,180235,no
-180246,Holothuroidea,Holothuria difficilis,W-Hol-148752,Holothuria difficilis,W-Hol-732226,ANIMALIA,LC,180246,no
-180257,Holothuroidea,Holothuria scabra,W-Hol-210813,Holothuria scabra,SLB-66022,ANIMALIA,EN,180257,no
-180286,Holothuroidea,Holothuria pardalis,W-Hol-210893,Holothuria pardalis,W-Hol-732374,ANIMALIA,LC,180286,no
-180326,Holothuroidea,Holothuria nobilis,W-Hol-210835,Holothuria nobilis,SLB-65999,ANIMALIA,EN,180326,no
-180337,Holothuroidea,Actinopyga mauritiana,W-Hol-208956,Actinopyga mauritiana,SLB-88333,ANIMALIA,VU,180337,no
-180353,Holothuroidea,Actinopyga agassizi,W-Hol-241768,Actinopyga agassizi,SLB-65995,ANIMALIA,LC,180353,no
-180373,Holothuroidea,Isostichopus fuscus,W-Hol-529516,Isostichopus fuscus,SLB-156675,ANIMALIA,EN,180373,no
-180375,Holothuroidea,Holothuria leucospilota,W-Hol-210881,Holothuria leucospilota,SLB-88370,ANIMALIA,LC,180375,no
-180386,Holothuroidea,Bohadschia similis,SLB-88359,Bohadschia similis,W-Hol-210761,ANIMALIA,DD,180386,no
-180400,Holothuroidea,Holothuria edulis,W-Hol-210882,Holothuria edulis,SLB-88369,ANIMALIA,LC,180400,yes
-180414,Holothuroidea,Holothuria fuscopunctata,W-Hol-210854,Holothuria fuscopunctata,SLB-88397,ANIMALIA,LC,180414,no
-180421,Holothuroidea,Holothuria atra,W-Hol-148748,Holothuria atra,SLB-66003,ANIMALIA,LC,180421,no
-180437,Holothuroidea,Holothuria arenicola,W-Hol-210814,Holothuria arenicola,W-Hol-732217,ANIMALIA,DD,180437,no
-180443,Holothuroidea,Holothuria rigida,W-Hol-210880,Holothuria rigida,SLB-92934,ANIMALIA,LC,180443,no
-180455,Holothuroidea,Holothuria tubulosa,W-Hol-125182,Holothuria tubulosa,SLB-66024,ANIMALIA,LC,180455,no
-180492,Holothuroidea,Holothuria mexicana,W-Hol-125180,Holothuria mexicana,W-Hol-732363,ANIMALIA,LC,180492,no
-180494,Holothuroidea,Holothuria fuscocinerea,W-Hol-210873,Holothuria fuscocinerea,SLB-159332,ANIMALIA,LC,180494,no
-180504,Holothuroidea,Holothuria cinerascens,W-Hol-210846,Holothuria cinerascens,SLB-169637,ANIMALIA,LC,180504,no
-180512,Holothuroidea,Holothuria impatiens,W-Hol-125185,Holothuria impatiens,SLB-66013,ANIMALIA,DD,180512,no
-180525,Holothuroidea,Holothuria pervicax,W-Hol-210901,Holothuria pervicax,W-Hol-732377,ANIMALIA,LC,180525,no
-180534,Holothuroidea,Holothuria inhabilis,W-Hol-241825,Holothuria inhabilis,W-Hol-732701,ANIMALIA,LC,180534,no
-184997,Malacostraca,Eduarctus modestus,ITS-553043,Eduarctus modestus,SLB-184906,ANIMALIA,LC,184997,no
-185017,Malacostraca,Petrarctus demani,ITS-553036,Petrarctus demani,SLB-184954,ANIMALIA,LC,185017,no
-185023,Malacostraca,Stereomastis surda,ITS-660117,Stereomastis surda,SLB-184838,ANIMALIA,LC,185023,no
-185031,Malacostraca,Acantharctus ornatus,ITS-553044,Acantharctus ornatus,SLB-184850,ANIMALIA,LC,185031,no
-185035,Malacostraca,Bathyarctus rubens,ITS-553049,Bathyarctus rubens,SLB-184862,ANIMALIA,LC,185035,no
-185062,Malacostraca,Galearctus timidus,ITS-553052,Galearctus timidus,SLB-184916,ANIMALIA,LC,185062,no
-185076,Malacostraca,Galearctus aurora,ITS-553030,Galearctus aurora,SLB-184912,ANIMALIA,LC,185076,no
-185077,Malacostraca,Bathyarctus faxoni,ITS-97670,Bathyarctus faxoni,SLB-184857,ANIMALIA,LC,185077,no
-185089,Malacostraca,Biarctus pumilus,ITS-553048,Biarctus pumilus,SLB-184866,ANIMALIA,LC,185089,no
-185093,Malacostraca,Crenarctus bicuspidatus,ITS-553031,Crenarctus bicuspidatus,SLB-184897,ANIMALIA,LC,185093,no
-185096,Malacostraca,Eduarctus aesopius,ITS-553026,Eduarctus aesopius,SLB-184902,ANIMALIA,LC,185096,no
-190701,Actinopterygii,Nicholsina collettei,Fis-166563,Nicholsina usta collettei,Fis-52069,ANIMALIA,LC,190701,no
-192380,Gastropoda,Conus floridulus,W-Msc-426504,Conus floridulus,SLB-120088,ANIMALIA,LC,192380,no
-192425,Gastropoda,Conus flammeacolor,SLB-172880,Conus flammeacolor,W-Msc-426500,ANIMALIA,LC,192425,no
-192809,Gastropoda,Conus ceruttii,SLB-172939,Conus ceruttii,W-Msc-426448,ANIMALIA,LC,192809,no
-192870,Gastropoda,Conus arenatus,W-Msc-215482,Conus arenatus,SLB-100581,ANIMALIA,LC,192870,no
-200715,Holothuroidea,Holothuria fuscogilva,W-Hol-210874,Holothuria fuscogilva,W-Hol-732234,ANIMALIA,VU,200715,no
-173352,Magnoliopsida,Halophila decipiens,Kew-308072,Halophila decipiens,SLB-159390,ANIMALIA,LC,173352,no
-173372,Equisetopsida,Halodule wrightii,Kew-308065,Halodule wrightii,SLB-173431,ANIMALIA,LC,173372,no
-178806,Equisetopsida,Conocarpus erectus,wp-61409,Conocarpus erectus,SLB-183508,ANIMALIA,LC,178806,no
-178811,Magnoliopsida,Avicennia germinans,wp-136856,Avicennia germinans,SLB-172427,ANIMALIA,LC,178811,no
-180218,Holothuroidea,Holothuria coronopertusa,W-Hol-241861,Holothuria coronopertusa,SLB-189679,ANIMALIA,DD,180218,no
+2059,Mammalia,Arctocephalus philippii,ITS-Mam-180635,Arctocephalus philippii,NA,ANIMALIA,LC,2059,yes
+4160,Mammalia,Cephalorhynchus eutropia,ITS-Mam-180450,Cephalorhynchus eutropia,NA,ANIMALIA,NT,4160,yes
+20424,Mammalia,Sousa chinensis,ITS-Mam-180419,Sousa chinensis,NA,ANIMALIA,VU,20424,yes
+41759,Mammalia,Mesoplodon perrini,ITS-Mam-612599,Mesoplodon perrini,NA,ANIMALIA,DD,41759,yes
+132860,Anthozoa,Psammocora stellata,URM-Cn-6141,Psammocora stellata,NA,ANIMALIA,VU,132860,no
+132902,Anthozoa,Fungia puishani,URM-Cn-5767,Fungia puishani,NA,ANIMALIA,DD,132902,no
+132927,Anthozoa,Leptoseris striata,URM-Cn-4971,Leptoseris striata,NA,ANIMALIA,NT,132927,no
+132942,Anthozoa,Montipora patula,URM-Cn-4926,Montipora patula,NA,ANIMALIA,VU,132942,no
+133004,Anthozoa,Simplastrea vesicularis,URM-Cn-5926,Simplastrea vesicularis,NA,ANIMALIA,DD,133004,no
+133111,Anthozoa,Montipora saudii,URM-Cn-4930,Montipora saudii,NA,ANIMALIA,NT,133111,no
+133115,Anthozoa,Acropora retusa,URM-Cn-4808,Acropora retusa,NA,ANIMALIA,VU,133115,no
+133120,Anthozoa,Acropora latistella,URM-Cn-4773,Acropora latistella,NA,ANIMALIA,LC,133120,no
+133121,Anthozoa,Siderastrea glynni,SLB-63002,Siderastrea glynni,NA,ANIMALIA,CR,133121,no
+133124,Anthozoa,Dendrogyra cylindrus,URM-Cn-5812,Dendrogyra cylindrus,NA,ANIMALIA,VU,133124,yes
+133139,Anthozoa,Isopora palifera,URM-Cn-4797,Isopora palifera,NA,ANIMALIA,NT,133139,no
+133169,Anthozoa,Stylophora mamillata,SLB-62856,Stylophora mamillata,NA,ANIMALIA,LC,133169,no
+133172,Anthozoa,Echinophyllia aspera,URM-Cn-5928,Echinophyllia aspera,NA,ANIMALIA,LC,133172,no
+133182,Anthozoa,Isopora brueggemanni,URM-Cn-4720,Isopora brueggemanni,NA,ANIMALIA,VU,133182,no
+133184,Anthozoa,Mussismilia hispida,URM-Cn-5880,Mussismilia hispida,NA,ANIMALIA,DD,133184,no
+133237,Anthozoa,Montastraea cavernosa,URM-Cn-5594,Montastraea cavernosa,NA,ANIMALIA,LC,133237,yes
+133252,Anthozoa,Acropora tortuosa,SLB-61727,Acropora tortuosa,NA,ANIMALIA,LC,133252,no
+133439,Anthozoa,Agaricia tenuifolia,URM-Cn-4955,Agaricia tenuifolia,NA,ANIMALIA,NT,133439,no
+133470,Anthozoa,Micromussa amakusensis,URM-Cn-5844,Micromussa amakusensis,NA,ANIMALIA,NT,133470,no
+133476,Anthozoa,Madracis asperula,URM-Cn-5959,Madracis asperula,NA,ANIMALIA,DD,133476,no
+133484,Anthozoa,Anomastraea irregularis,URM-Cn-6121,Anomastraea irregularis,NA,ANIMALIA,VU,133484,no
+133488,Anthozoa,Pectinia africanus,URM-Cn-5949,Pectinia africanus,NA,ANIMALIA,VU,133488,no
+133493,Anthozoa,Platygyra ryukyuensis,URM-Cn-5615,Platygyra ryukyuensis,NA,ANIMALIA,NT,133493,no
+133538,Anthozoa,Herpolitha limax,URM-Cn-5783,Herpolitha limax,NA,ANIMALIA,LC,133538,no
+133545,Anthozoa,Paraclavarina triangularis,URM-Cn-5829,Paraclavarina triangularis,NA,ANIMALIA,NT,133545,no
+133582,Anthozoa,Oxypora crassispinosa,URM-Cn-5945,Oxypora crassispinosa,NA,ANIMALIA,LC,133582,no
+133597,Anthozoa,Cantharellus doederleini,SLB-62620,Cantharellus doederleini,NA,ANIMALIA,LC,133597,no
+133614,Anthozoa,Seriatopora guttatus,URM-Cn-5989,Seriatopora guttatus,NA,ANIMALIA,LC,133614,no
+133642,Anthozoa,Acanthastrea hemprichii,SLB-62723,Acanthastrea hemprichii,NA,ANIMALIA,VU,133642,no
+133645,Anthozoa,Porites somaliensis,URM-Cn-6078,Porites somaliensis,NA,ANIMALIA,NT,133645,no
+133660,Anthozoa,Isopora cuneata,URM-Cn-4731,Isopora cuneata,NA,ANIMALIA,VU,133660,no
+170005,Malacostraca,Nupalirus japonicus,ITS-552958,Nupalirus japonicus,NA,ANIMALIA,LC,170005,no
+170048,Malacostraca,Palinustus waguensis,SLB-11556,Palinustus waguensis,NA,ANIMALIA,LC,170048,no
+170055,Malacostraca,Petrarctus rugosus,ITS-553025,Petrarctus rugosus,NA,ANIMALIA,LC,170055,no
+176737,Reptilia,Hydrophis ornatus,SLB-88909,Hydrophis ornatus,NA,ANIMALIA,LC,176737,no
+180235,Holothuroidea,Holothuria hilla,W-Hol-529402,Holothuria hilla,NA,ANIMALIA,LC,180235,no
+180246,Holothuroidea,Holothuria difficilis,W-Hol-148752,Holothuria difficilis,NA,ANIMALIA,LC,180246,no
+180257,Holothuroidea,Holothuria scabra,W-Hol-210813,Holothuria scabra,NA,ANIMALIA,EN,180257,no
+180286,Holothuroidea,Holothuria pardalis,W-Hol-210893,Holothuria pardalis,NA,ANIMALIA,LC,180286,no
+180326,Holothuroidea,Holothuria nobilis,W-Hol-210835,Holothuria nobilis,NA,ANIMALIA,EN,180326,no
+180337,Holothuroidea,Actinopyga mauritiana,W-Hol-208956,Actinopyga mauritiana,NA,ANIMALIA,VU,180337,no
+180353,Holothuroidea,Actinopyga agassizi,W-Hol-241768,Actinopyga agassizi,NA,ANIMALIA,LC,180353,no
+180373,Holothuroidea,Isostichopus fuscus,W-Hol-529516,Isostichopus fuscus,NA,ANIMALIA,EN,180373,no
+180375,Holothuroidea,Holothuria leucospilota,W-Hol-210881,Holothuria leucospilota,NA,ANIMALIA,LC,180375,no
+180386,Holothuroidea,Bohadschia similis,SLB-88359,Bohadschia similis,NA,ANIMALIA,DD,180386,no
+180400,Holothuroidea,Holothuria edulis,W-Hol-210882,Holothuria edulis,NA,ANIMALIA,LC,180400,yes
+180414,Holothuroidea,Holothuria fuscopunctata,W-Hol-210854,Holothuria fuscopunctata,NA,ANIMALIA,LC,180414,no
+180421,Holothuroidea,Holothuria atra,W-Hol-148748,Holothuria atra,NA,ANIMALIA,LC,180421,no
+180437,Holothuroidea,Holothuria arenicola,W-Hol-210814,Holothuria arenicola,NA,ANIMALIA,DD,180437,no
+180443,Holothuroidea,Holothuria rigida,W-Hol-210880,Holothuria rigida,NA,ANIMALIA,LC,180443,no
+180455,Holothuroidea,Holothuria tubulosa,W-Hol-125182,Holothuria tubulosa,NA,ANIMALIA,LC,180455,no
+180492,Holothuroidea,Holothuria mexicana,W-Hol-125180,Holothuria mexicana,NA,ANIMALIA,LC,180492,no
+180494,Holothuroidea,Holothuria fuscocinerea,W-Hol-210873,Holothuria fuscocinerea,NA,ANIMALIA,LC,180494,no
+180504,Holothuroidea,Holothuria cinerascens,W-Hol-210846,Holothuria cinerascens,NA,ANIMALIA,LC,180504,no
+180512,Holothuroidea,Holothuria impatiens,W-Hol-125185,Holothuria impatiens,NA,ANIMALIA,DD,180512,no
+180525,Holothuroidea,Holothuria pervicax,W-Hol-210901,Holothuria pervicax,NA,ANIMALIA,LC,180525,no
+180534,Holothuroidea,Holothuria inhabilis,W-Hol-241825,Holothuria inhabilis,NA,ANIMALIA,LC,180534,no
+184997,Malacostraca,Eduarctus modestus,ITS-553043,Eduarctus modestus,NA,ANIMALIA,LC,184997,no
+185017,Malacostraca,Petrarctus demani,ITS-553036,Petrarctus demani,NA,ANIMALIA,LC,185017,no
+185023,Malacostraca,Stereomastis surda,ITS-660117,Stereomastis surda,NA,ANIMALIA,LC,185023,no
+185031,Malacostraca,Acantharctus ornatus,ITS-553044,Acantharctus ornatus,NA,ANIMALIA,LC,185031,no
+185035,Malacostraca,Bathyarctus rubens,ITS-553049,Bathyarctus rubens,NA,ANIMALIA,LC,185035,no
+185062,Malacostraca,Galearctus timidus,ITS-553052,Galearctus timidus,NA,ANIMALIA,LC,185062,no
+185076,Malacostraca,Galearctus aurora,ITS-553030,Galearctus aurora,NA,ANIMALIA,LC,185076,no
+185077,Malacostraca,Bathyarctus faxoni,ITS-97670,Bathyarctus faxoni,NA,ANIMALIA,LC,185077,no
+185089,Malacostraca,Biarctus pumilus,ITS-553048,Biarctus pumilus,NA,ANIMALIA,LC,185089,no
+185093,Malacostraca,Crenarctus bicuspidatus,ITS-553031,Crenarctus bicuspidatus,NA,ANIMALIA,LC,185093,no
+185096,Malacostraca,Eduarctus aesopius,ITS-553026,Eduarctus aesopius,NA,ANIMALIA,LC,185096,no
+190701,Actinopterygii,Nicholsina collettei,Fis-166563,Nicholsina usta collettei,NA,ANIMALIA,LC,190701,no
+192380,Gastropoda,Conus floridulus,W-Msc-426504,Conus floridulus,NA,ANIMALIA,LC,192380,no
+192425,Gastropoda,Conus flammeacolor,SLB-172880,Conus flammeacolor,NA,ANIMALIA,LC,192425,no
+192809,Gastropoda,Conus ceruttii,SLB-172939,Conus ceruttii,NA,ANIMALIA,LC,192809,no
+192870,Gastropoda,Conus arenatus,W-Msc-215482,Conus arenatus,NA,ANIMALIA,LC,192870,no
+200715,Holothuroidea,Holothuria fuscogilva,W-Hol-210874,Holothuria fuscogilva,NA,ANIMALIA,VU,200715,no
+173352,Magnoliopsida,Halophila decipiens,Kew-308072,Halophila decipiens,NA,ANIMALIA,LC,173352,no
+173372,Equisetopsida,Halodule wrightii,Kew-308065,Halodule wrightii,NA,ANIMALIA,LC,173372,no
+178806,Equisetopsida,Conocarpus erectus,wp-61409,Conocarpus erectus,NA,ANIMALIA,LC,178806,no
+178811,Magnoliopsida,Avicennia germinans,wp-136856,Avicennia germinans,NA,ANIMALIA,LC,178811,no
+180218,Holothuroidea,Holothuria coronopertusa,W-Hol-241861,Holothuria coronopertusa,NA,ANIMALIA,DD,180218,no
 222,Actinopterygii,Acipenser brevirostrum,NA,NA,NA,ANIMALIA,VU,NA,NA
 224,Actinopterygii,Acipenser naccarii,NA,NA,NA,ANIMALIA,CR,NA,NA
 225,Actinopterygii,Acipenser nudiventris,NA,NA,NA,ANIMALIA,CR,NA,NA
@@ -21236,7 +21235,7 @@ NA,Not assigned,NA,ITS-708803,Loxosomella nitschei,NA,ANIMALIA,aquamaps_only,NA,
 NA,Not assigned,NA,ITS-708804,Loxosoma murmanica,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Not assigned,NA,ITS-708805,Loxosomella phascolosomata,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Not assigned,NA,ITS-708887,Loxosomella obesa,NA,ANIMALIA,aquamaps_only,NA,unsure
-NA,Gastropoda,NA,ITS-73297,Nucella lapillus,NA,ANIMALIA,aquamaps_only,NA,unsure
+NA,Gastropoda,NA,ITS-73297,Nucella lapillus,W-Msc-140403,ANIMALIA,aquamaps_only,NA,unsure
 NA,Sipunculidea,NA,ITS-772518,Onchnesoma magnibathum,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Sipunculidea,NA,ITS-772520,Phascolion caupo,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Sipunculidea,NA,ITS-772521,Phascolion cirratum,NA,ANIMALIA,aquamaps_only,NA,unsure
@@ -21651,7 +21650,6 @@ NA,Malacostraca,NA,ITS-97195,Aegaeon lacazei,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Malacostraca,NA,ITS-97198,Pontocaris pennata,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Malacostraca,NA,ITS-97297,Stenopus scutellatus,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Malacostraca,NA,ITS-97298,Stenopus hispidus,NA,ANIMALIA,aquamaps_only,NA,unsure
-NA,Malacostraca,NA,ITS-97654,Justitia longimana,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Malacostraca,NA,ITS-97657,Palinurus elephas,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Malacostraca,NA,ITS-97665,Scyllarus chacei,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Malacostraca,NA,ITS-97680,Scyllarides latus,NA,ANIMALIA,aquamaps_only,NA,unsure
@@ -21734,7 +21732,6 @@ NA,Reptilia,NA,Rep-2093,Boa constrictor,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Reptilia,NA,Rep-2410,Caiman crocodilus,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Reptilia,NA,Rep-455,Amblyrhynchus cristatus,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Reptilia,NA,Rep-6256,Hydrophis macdowelli,NA,ANIMALIA,aquamaps_only,NA,unsure
-NA,Reptilia,NA,Rep-6257,Disteira major,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Reptilia,NA,Rep-6935,Lepidochelys kempii,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Reptilia,NA,Rep-8732,Natator depressa,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Eurotatoria,NA,Rot-31707,Synchaeta baltica,NA,ANIMALIA,aquamaps_only,NA,unsure
@@ -24026,7 +24023,7 @@ NA,Gastropoda,NA,SLB-76464,Fossarus bellus,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,SLB-76465,Fossarus compactus,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,SLB-76467,Fossarus orbignyi,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,SLB-76473,Supplanaxis nucleus,NA,ANIMALIA,aquamaps_only,NA,unsure
-NA,Gastropoda,NA,SLB-76656,Cymatium aquatile,NA,ANIMALIA,aquamaps_only,NA,unsure
+NA,Gastropoda,NA,SLB-76656,Cymatium aquatile,W-Msc-141103,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,SLB-76657,Cymatium cingulatum,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,SLB-76658,Cymatium comptum,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,SLB-76661,Cymatium cynocephalum,NA,ANIMALIA,aquamaps_only,NA,unsure
@@ -25502,7 +25499,6 @@ NA,Anthozoa,NA,URM-Cn-5541,Favia helianthoides,NA,ANIMALIA,aquamaps_only,NA,unsu
 NA,Anthozoa,NA,URM-Cn-5545,Favia lizardensis,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Anthozoa,NA,URM-Cn-5547,Favia marshae,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Anthozoa,NA,URM-Cn-5548,Favia matthaii,NA,ANIMALIA,aquamaps_only,NA,unsure
-NA,Anthozoa,NA,URM-Cn-5550,Dipsastraea pallida,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Anthozoa,NA,URM-Cn-5551,Favia rosaria,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Anthozoa,NA,URM-Cn-5555,Favia stelligera,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Anthozoa,NA,URM-Cn-5558,Favia vietnamensis,NA,ANIMALIA,aquamaps_only,NA,unsure
@@ -25535,13 +25531,11 @@ NA,Anthozoa,NA,URM-Cn-5747,Cantharellus jebbi,NA,ANIMALIA,aquamaps_only,NA,unsur
 NA,Anthozoa,NA,URM-Cn-5748,Cantharellus noumeae,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Anthozoa,NA,URM-Cn-5749,Ctenactis albitentaculata,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Anthozoa,NA,URM-Cn-5753,Lithophyllon concinna,NA,ANIMALIA,aquamaps_only,NA,unsure
-NA,Anthozoa,NA,URM-Cn-5758,Cycloseris fragilis,NA,ANIMALIA,aquamaps_only,NA,unsure
+NA,Anthozoa,NA,URM-Cn-5758,Cycloseris fragilis,SLB-189121,ANIMALIA,aquamaps_only,NA,unsure
 NA,Anthozoa,NA,URM-Cn-5760,Fungia fungites,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Anthozoa,NA,URM-Cn-5763,Cycloseris hexagonalis,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Anthozoa,NA,URM-Cn-5768,Lithophyllon repanda,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Anthozoa,NA,URM-Cn-5769,Lithophyllon scabra,NA,ANIMALIA,aquamaps_only,NA,unsure
-NA,Anthozoa,NA,URM-Cn-5770,Danafungia scruposa,NA,ANIMALIA,aquamaps_only,NA,unsure
-NA,Anthozoa,NA,URM-Cn-5771,Lobactis scutaria,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Anthozoa,NA,URM-Cn-5781,Halomitra pileus,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Anthozoa,NA,URM-Cn-5784,Cycloseris mokai,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Anthozoa,NA,URM-Cn-5792,Polyphyllia talpina,NA,ANIMALIA,aquamaps_only,NA,unsure
@@ -27851,7 +27845,6 @@ NA,Bivalvia,NA,W-Msc-140349,Atactodea striata,NA,ANIMALIA,aquamaps_only,NA,unsur
 NA,Bivalvia,NA,W-Msc-140365,Devonia perrieri,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-140389,Bolinus brandaris,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-140396,Hexaplex trunculus,NA,ANIMALIA,aquamaps_only,NA,unsure
-NA,Gastropoda,NA,W-Msc-140403,Nucella lapillus,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-140415,Rapana rapiformis,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-140416,Rapana venosa,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-140417,Stramonita haemastoma,NA,ANIMALIA,aquamaps_only,NA,unsure
@@ -27960,7 +27953,6 @@ NA,Gastropoda,NA,W-Msc-141054,Turbonilla amoena,NA,ANIMALIA,aquamaps_only,NA,uns
 NA,Cephalopoda,NA,W-Msc-141097,Pterygioteuthis giardi,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-141101,Charonia lampas,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-141102,Charonia tritonis,NA,ANIMALIA,aquamaps_only,NA,unsure
-NA,Gastropoda,NA,W-Msc-141103,Cymatium aquatile,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-141115,Ranella olearius,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-141125,Pyrunculus ovatus,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-141134,Retusa obtusa,NA,ANIMALIA,aquamaps_only,NA,unsure
@@ -29875,7 +29867,6 @@ NA,Gastropoda,NA,W-Msc-426318,Conus andamanensis,NA,ANIMALIA,aquamaps_only,NA,un
 NA,Gastropoda,NA,W-Msc-426372,Conus aurisiacus,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-426417,Conus bozzettii,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-426449,Conus cervus,NA,ANIMALIA,aquamaps_only,NA,unsure
-NA,Gastropoda,NA,W-Msc-426454,Conus circumactis,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-426455,Conus circumcisus,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-426469,Conus cuvieri,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-426487,Conus encaustus,NA,ANIMALIA,aquamaps_only,NA,unsure
@@ -29899,7 +29890,6 @@ NA,Gastropoda,NA,W-Msc-428940,Conus biliosus,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-428986,Conus raoulensis,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-428994,Conus saecularis,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-429011,Conus visagenus,NA,ANIMALIA,aquamaps_only,NA,unsure
-NA,Gastropoda,NA,W-Msc-430142,Taranteconus chiangi,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-430319,Turritella variegata,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-430327,Conus cedonulli,NA,ANIMALIA,aquamaps_only,NA,unsure
 NA,Gastropoda,NA,W-Msc-430397,Cadlina sparsa,NA,ANIMALIA,aquamaps_only,NA,unsure

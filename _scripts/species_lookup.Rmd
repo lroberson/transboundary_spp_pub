@@ -228,9 +228,28 @@ onlyone %>% filter(is.na(iucn_sid)) # 7,350
 full <- bind_rows(both.rl, onlyone)
 glimpse(full) # 32,347
 
+## some final checks
+full %>% filter(am_sciname!="NA") %>% hablar::find_duplicates(am_sciname) %>% arrange(am_sciname) %>% View()
+# ugh there are a few more ID problems
+full <- full %>%
+  mutate(am_sid_old=case_when(
+    am_sid=="SLB-100648"~"W-Msc-426454",
+    am_sid=="URM-Cn-5758"~"SLB-189121",
+    am_sid=="SLB-76656"~ "W-Msc-141103",
+    am_sid=="SLB-190516" ~"URM-Cn-5770",
+    am_sid=="SLB-190543"~"URM-Cn-5550",
+    am_sid=="SLB-88872" ~"Rep-6257",
+    am_sid=="SLB-190081" ~"ITS-97654",
+    am_sid=="SLB-190518"~"URM-Cn-5771",
+    am_sid=="ITS-73297"~"W-Msc-140403",
+    am_sid=="SLB-189370"~"URM-Cn-5978",
+    am_sid=="SLB-103803"~"W-Msc-430142",
+    TRUE~as.character("NA"))) %>%
+  filter(!am_sid %in% c("W-Msc-426454", "SLB-189121", "W-Msc-141103","URM-Cn-5770","URM-Cn-5550", "Rep-6257", "ITS-97654", "URM-Cn-5771", "W-Msc-140403", "	URM-Cn-5978", "W-Msc-430142"))
+
 table(full$redlist_category)
 # aquamaps_only            CR            DD            EN            LC         LR/lc         LR/nt            NT            VU 
-#         22433            82          1864           203          6685             1             3           452           624
+#         22424            82          1864           203          6684             1             3           452           624
 
 write_csv(full, here("_data/species_lists/lookup_marine_species_iucn_or_aquamaps.csv")) # will add metadata in excel
 
