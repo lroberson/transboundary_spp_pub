@@ -232,7 +232,7 @@ table(full$redlist_category)
 # aquamaps_only            CR            DD            EN            LC         LR/lc         LR/nt            NT            VU 
 #         22433            82          1864           203          6685             1             3           452           624
 
-write_csv(full, here("_data/species_lists/spp_list_iucn_aquamaps.csv")) # will add metadata in excel
+write_csv(full, here("_data/species_lists/lookup_marine_species_iucn_or_aquamaps.csv")) # will add metadata in excel
 
 
 ```
