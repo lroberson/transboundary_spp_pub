@@ -33,6 +33,7 @@ library(readxl)
 library(data.table)
 library(pillar)
 library(janitor)
+library(writexl) # install.packages("writexl")
 
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -416,7 +417,18 @@ glimpse(full2)
 
 full2 <- full2 %>% select(kingdom, phylum, class_iucn, iucn_sid, iucn_sciname, iucn_sid_other, redlist_category, am_sid, am_sciname, class_am, am_sid_old)
 
-write_csv(full2, here("_data/species_lists/lookup_marine_species_iucn_or_aquamaps.csv")) # will add metadata in excel
+write.xlsx(full2, path=here("_data/species_lists/lookup_marine_species_iucn_or_aquamaps.xlsx")) # will add metadata tab
 
+```
+
+# Found a few that have been added to IUCN
+(chonds)
+doing EPBC analysis
+```{r manual update}
+
+lookup <- read_excel(here("_data/species_lists/lookup_marine_species_iucn_or_aquamaps.xlsx"), sheet=2)
+glimpse(lookup)
+
+lookup <- lookup %>% filter(am_sciname=="Pristis pristis")
 ```
 
