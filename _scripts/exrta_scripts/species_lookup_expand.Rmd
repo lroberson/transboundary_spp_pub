@@ -1,0 +1,519 @@
+---
+title: "species_lookup"
+author: "Leslie Roberson"
+date: "2023-07-26"
+output: html_document
+---
+
+## Summary
+
+lookup table created for a global analysis of marine species ranges for https://doi.org/10.1111/gcb.15844 (Roberson, L. A. et al. 2021. “Multinational Coordination Required for Conservation of over 90% of Marine Species.” Global Change Biology, 1–11). 
+Neither database has a lookup table to match a IUCN ID to an AM ID (as of 2020)
+Due to inconsistencies in taxonomy or spelling of species names, matching on species name misses matches
+Not all species with maps in AM have maps in IUCN, and visa versa
+Habitat (marine v terrestrial) delineations are subjective (e.g. for species that use both, estuarine or semi aquatic species) so there is no "marine" v "terrestrial" categorization given in IUCN that is consistent. AquaMaps focuses on marine and aquatic 
+For this analysis, which focused on marine/coastal species, some subjective decisions were made (e.g. not counting hippopotomous or cane toads as marine)
+
+*Here I also add the iucn and AM species that are unique to one of the databases*
+
+# comments on AM
+AM=AquaMaps
+Version 0816D
+
+# comments on IUCN
+version 2019.2
+Pulled all taxonomic groups that are entirely marine (e.g. cetaceans) and excluded groups that have no marine species (e.g. arachnids). For groups with both, used downloaded the larger group and then used a series of filtering steps to focus on marine and aquatic species
+
+
+```{r setup, include=FALSE}
+
+library(here)
+library(tidyverse)
+library(readxl)
+library(data.table)
+library(pillar)
+library(janitor)
+library(writexl) # install.packages("writexl")
+library(openxlsx) # install.packages("openxlsx")
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# load species lists to combine
+```{r load spp lists}
+
+both <- read_csv(here("_data/species_lists/spp_am_v_iucn_2019_2 copy.csv"))
+glimpse(both) # 2568 species
+# has class (Sentence) but not kingdom (all marine IUCN species are animals)
+
+am <- read_csv(here("_data/species_lists/am_spp_list.csv"))
+glimpse(am) # 24,938
+# does not have class or kingdom, or whether the map was reviewed. Don't need to use this one
+
+am.only <- read_csv(here("_data/species_lists/am_only_spp_info.csv"))
+glimpse(am.only) # 22,433
+# has kingdom (lower) and class (Sentence)
+22433 + 2568
+#am.only$kingdom <- str_to_upper(am.only$kingdom)
+am.only <- am.only %>% rename(kingdom_am="kingdom", phylum_am="phylum", class_am="class")
+
+iucn <- read_csv(here("_data/species_lists/iucn_spp_list_2019_2_marine_cleaned.csv"))
+glimpse(iucn) # 9,916
+iucn <- iucn %>% rename(redlist_category=sciname) # has kingdom (CAPS) and class (CAPS)
+unique(iucn$class)
+iucn %>% filter(is.na(class)) # 16, they're NAs in every col
+#iucn$class <- str_to_sentence(iucn$class) 
+unique(iucn$class) # IUCN has seabirds, AM doesn't
+iucn <- iucn%>%
+  rename(kingdom_iucn="kingdom", phylum_iucn="phylum", class_iucn="class")
+
+```
+
+# Make full lookup table
+including species that are only in one of hte databases
+```{r add to lookup}
+
+## remake the "both" dataframe with species that match on the name first round
+matches1 <- inner_join(am.only, iucn, by="sciname")
+glimpse(matches1) # 4027... turns out these are NOT AM only
+matches1
+# try to sort out the taxa cols
+matches1$class_iucn <- str_to_sentence(matches1$class_iucn) 
+matches1 %>% filter(class_am!=class_iucn) # oh right the chonds v elasmos problem
+matches1 %>% filter(class_am!=class_iucn) %>% distinct(class_am, class_iucn)
+#   class_am       class_iucn    
+# 1 Elasmobranchii Chondrichthyes
+# 2 Holocephali    Chondrichthyes
+# 3 Equisetopsida  Liliopsida    
+# 4 Magnoliopsida  Liliopsida  
+
+matches1$kingdom_iucn <- str_to_sentence(matches1$kingdom_iucn) 
+matches1 %>% filter(kingdom_am!=kingdom_iucn) # none, good - can remove one of these
+matches1 <- matches1 %>% select(-kingdom_am) %>% rename(kingdom=kingdom_iucn)
+
+matches1$phylum_iucn <- str_to_sentence(matches1$phylum_iucn) 
+matches1 %>% filter(phylum_am!=phylum_iucn) # none, good - can remove one of these
+matches1 <- matches1 %>% select(-phylum_am) %>% rename(phylum=phylum_iucn)
+
+glimpse(matches1)
+
+## clean col names
+matches1 <- matches1 %>% rename(am_sid=species_id, sciname_both=sciname)
+
+# from the first "both" file, find species that have different names in the two databases
+diffnames <- both %>% filter(sciname!=am_sciname)
+diffnames
+diffnames.toadd <- diffnames %>% select(c(iucn_sid, class, sciname, am_sid, am_sciname, iucn_id, am_sid_old))
+unique(diffnames.toadd$class)
+# these look like the AM classes
+diffnames.toadd <- diffnames.toadd %>%
+  rename(iucn_sid_other=iucn_id, redlist_category=sciname, class_am=class) %>%
+  mutate(class_am=str_to_sentence(class_am))
+glimpse(diffnames.toadd)
+diffnames.toadd %>% filter(iucn_sid!=iucn_sid_other) # none
+diffnames.toadd$iucn_sid_other <- "NA"
+# add the redlist category frmo iucn
+glimpse(iucn)
+unique(iucn$kingdom_iucn)
+infotoadd <- iucn %>% select(sciname, category, phylum_iucn, kingdom_iucn) %>% rename(redlist_category=category)
+diffnames.toadd <- left_join(diffnames.toadd, infotoadd, by=c("redlist_category"="sciname"))
+diffnames.toadd %>% filter(is.na(redlist_category)) # oh that fish taht's weirdly listed in IUCN
+diffnames.toadd <- diffnames.toadd %>% 
+  mutate(redlist_category=case_when(redlist_category=="Microphis brachyurus ssp. aculeatus"~"DD", TRUE~as.character(redlist_category))) 
+
+## bind to matches1
+glimpse(matches1)
+glimpse(diffnames.toadd)
+
+matches1 <- matches1 %>% rename(redlist_category=category)
+matches1$redlist_category <- matches1$sciname_both
+matches1$am_sciname <- matches1$sciname_both
+matches1 <- matches1 %>% select(-sciname_both)
+diffnames.toadd$class_iucn <- diffnames.toadd$class_am
+matches1$am_sid_old <- "NA"
+matches1$iucn_sid_other <- "NA"
+diffnames.toadd <- diffnames.toadd %>% 
+  mutate(phylum=str_to_sentence(phylum_iucn),
+         kingdom=str_to_sentence(kingdom_iucn)) %>%
+  select(-c(kingdom_iucn, phylum_iucn))
+
+matches2 <- bind_rows(diffnames.toadd, matches1)
+glimpse(matches2)
+matches2 %>% filter(is.na(redlist_category)) # none
+
+
+#<><>< sort out Aquamaps only 
+glimpse(am.only)
+toremove.am <- matches2 %>% distinct(am_sciname)
+am.only.clean <- anti_join(am.only, toremove.am, by=c("sciname"="am_sciname")) #  18,397 am only species
+
+am.only.clean <- am.only.clean %>% rename(am_sid=species_id, am_sciname=sciname, kingdom=kingdom_am, phylum=phylum_am)
+am.only.clean %>% filter(is.na(am_sid)) # none
+am.only.clean$redlist_category <- "aquamaps_only"
+am.only.clean %>% filter(is.na(redlist_category)) # none
+n_distinct(am.only.clean$am_sciname) # 18395
+am.only.clean %>% hablar::find_duplicates(am_sciname) # 2 species with changed IDs
+am.only.clean <- am.only.clean %>%
+  mutate(am_sid_old=case_when(
+           am_sid=="ITS-73297"~"W-Msc-140403",
+           am_sid=="SLB-76656"~"W-Msc-141103",
+           TRUE~as.character(am_sid))) %>%
+  filter(!am_sid %in% c("W-Msc-140403", "W-Msc-141103"))
+
+##<><>> get iucn only list
+glimpse(iucn)
+glimpse(matches2)
+
+toremove.iucn <- matches2 %>% distinct(redlist_category)
+iucn.only <- anti_join(iucn, toremove.iucn, by=c("sciname"="redlist_category")) #
+glimpse(iucn.only) # 5,851
+n_distinct(iucn.only$sciname) # 5836
+iucn.only %>% hablar::find_duplicates(sciname) # oh it's the 16 with NAs
+# remove these
+iucn.only <- iucn.only %>% filter(!is.na(sciname))
+# names
+iucn.only <- iucn.only %>%  rename(redlist_category=sciname, redlist_category=category, kingdom=kingdom_iucn, phylum=phylum_iucn)
+iucn.only %>% filter(is.na(redlist_category)) # none
+iucn.only %>% hablar::find_duplicates(iucn_sid) # none
+
+# check the ones that had duplication problems before
+iucn.only %>% filter(redlist_category=="Balaena mysticetus")
+am.only.clean %>% filter(am_sciname=="Balaena mysticetus") # none
+iucn.only %>% filter(redlist_category=="Epinephelus bruneus")
+am.only.clean %>% filter(am_sciname=="Epinephelus bruneus") # none
+iucn.only %>% filter(redlist_category=="Epinephelus chlorostigma")
+am.only.clean %>% filter(am_sciname=="Epinephelus chlorostigma") # none
+iucn.only %>% filter(redlist_category=="Plectropomus pessuliferus")
+am.only.clean %>% filter(am_sciname=="Plectropomus pessuliferus") # none
+# ok these were iucn only
+iucn.only %>% filter(redlist_category=="Sousa chinensis")
+am.only.clean %>% filter(am_sciname=="Sousa chinensis") # not in AM
+iucn.only %>% filter(redlist_category=="Crocodylus acutus") # none
+am.only.clean %>% filter(am_sciname=="Crocodylus acutus") #none
+matches2 %>% filter(am_sciname=="Crocodylus acutus")
+iucn %>% filter(sciname=="Crocodylus acutus")
+am.only %>% filter(sciname=="Crocodylus acutus") # hmm these problem ones have disappeared
+# come back to this
+
+##<><>< check the matches
+glimpse(matches2)
+matches2 %>% hablar::find_duplicates(redlist_category) %>% arrange(redlist_category)
+# the one that is two species in AM but one in IUCN (Microphis brachyurus ssp. aculeatus)
+matches2 %>% hablar::find_duplicates(am_sciname) %>% arrange(am_sciname) # none
+matches2 %>% filter(redlist_category=="Balaena mysticetus")
+
+
+#########################
+##### document the ones taht had problem IDs before, just in case
+both.rl <- both.rl %>%
+  mutate(iucn_sid_other=case_when(
+    iucn_sid==2467 & redlist_category=="Balaena mysticetus"~2468,
+    iucn_sid==64396 & redlist_category=="Epinephelus bruneus"~135381188,
+    iucn_sid==132823 & redlist_category=="Epinephelus chlorostigma"~118358386,
+    iucn_sid==132775 & redlist_category=="Plectropomus pessuliferus"~118359431,
+    TRUE~as.numeric(iucn_sid)),
+  redlist_category=case_when(
+    iucn_sid==64396~"VU",
+    iucn_sid==132823~"LC",
+    redlist_category=="Microphis brachyurus ssp. aculeatus"~"DD",
+    redlist_category=="Plectropomus pessuliferus"~"LC",
+    TRUE~as.character(redlist_category)))
+############################################################ 
+
+# check that all have RL category
+matches2 %>% filter(is.na(redlist_category)) # none
+
+## Find the species that were previously missing redlist categories and have now been dropped entirely
+lookup.old <- read_csv(here("_data/species_lists/temp_lookup_marine_species_iucn_or_aquamaps.csv"))
+glimpse(lookup.old)
+missing <- lookup.old %>%
+  filter(redlist_category %in% c("Crocodylus acutus", "Mesoplodon carlhubbsi", "Mesoplodon layardii", "Pontoporia blainvillei", "Astrotia stokesii","Enhydrina schistosa", "Pelamis platura", "Lapemis curtus", "Acalyptophis peronii", "Acrochordus granulatus", "Hypleurochilus langi", "Dorosoma petenense"))
+missing   
+
+
+##<><><><<
+##<><> Now bind am.only.clean, iucn.only, matches2, and missing
+glimpse(am.only.clean) # 18,395
+glimpse(iucn.only) # 5,835
+glimpse(matches2) # 4,067
+glimpse(missing) # 12
+18395 + 5835 + 4067 + 12  # 28309
+
+names(am.only.clean)
+names(iucn.only)
+18395 + 5835 # 24230
+iucn.only <- iucn.only %>%
+  mutate(am_sciname="NA",
+         class_am="NA",
+         am_sid="NA",
+         am_sid_old="NA")
+am.only.clean <- am.only.clean %>%
+  mutate(redlist_category="NA", iucn_sid="NA", class_iucn="NA")
+iucn.only <- iucn.only %>% mutate(iucn_sid=as.character(iucn_sid))
+onlyone <- bind_rows(iucn.only, am.only.clean)
+glimpse(onlyone) # 24,230
+# check
+onlyone %>% hablar::find_duplicates() # none
+
+# bind to both
+matches2 %>% filter(iucn_sid_other!="NA") # none
+matches2 <- matches2 %>% select(-iucn_sid_other) %>% mutate(iucn_sid=as.character(iucn_sid))
+full <- bind_rows(matches2, onlyone)
+glimpse(full) # 28,297
+
+########################################
+#################### Document these previous problems
+full <- full %>%
+  mutate(am_sid_old=case_when(
+    am_sid=="SLB-100648"~"W-Msc-426454",
+    am_sid=="URM-Cn-5758"~"SLB-189121",
+    am_sid=="SLB-76656"~ "W-Msc-141103",
+    am_sid=="SLB-190516" ~"URM-Cn-5770",
+    am_sid=="SLB-190543"~"URM-Cn-5550",
+    am_sid=="SLB-88872" ~"Rep-6257",
+    am_sid=="SLB-190081" ~"ITS-97654",
+    am_sid=="SLB-190518"~"URM-Cn-5771",
+    am_sid=="ITS-73297"~"W-Msc-140403",
+    am_sid=="SLB-189370"~"URM-Cn-5978",
+    am_sid=="SLB-103803"~"W-Msc-430142",
+    TRUE~as.character("NA"))) %>%
+  filter(!am_sid %in% c("W-Msc-426454", "SLB-189121", "W-Msc-141103","URM-Cn-5770","URM-Cn-5550", "Rep-6257", "ITS-97654", "URM-Cn-5771", "W-Msc-140403", "	URM-Cn-5978", "W-Msc-430142"))
+########################################
+
+full %>% filter(redlist_category==am_sciname) # 4027
+## there are still some where names didn't match correctly 
+full %>%
+  filter(redlist_category!="NA" & am_sciname!="NA") %>%
+  filter(redlist_category != am_sciname) # 40 species with different spellings - lots of corals
+full %>% filter(redlist_category=="NA" & am_sciname=="NA") # ok good there shouldn't be
+
+### Check one last time for missing species
+glimpse(lookup.old)
+iucn.old <- lookup.old %>% distinct(redlist_category)
+glimpse(iucn.old) # 9913
+missing.iucn <- anti_join(iucn.old, full, by="redlist_category")
+missing.iucn 
+missing %>% distinct(redlist_category) # these are the 12 I already knew about
+#   redlist_category          
+# 1 Crocodylus acutus     
+# 2 Mesoplodon carlhubbsi 
+# 3 Mesoplodon layardii   
+# 4 Pontoporia blainvillei
+# 5 Astrotia stokesii     
+# 6 Enhydrina schistosa   
+# 7 Pelamis platura       
+# 8 Lapemis curtus        
+# 9 Acalyptophis peronii  
+#10 Acrochordus granulatus
+#11 Hypleurochilus langi  
+#12 Dorosoma petenense 
+
+
+am.old <- lookup.old %>% distinct(am_sciname)
+glimpse(am.old) # 24985
+glimpse(full)
+missing.am <- anti_join(am.old, full, by="am_sciname") # 2,523 - these should not have been dropped 
+full %>% filter(am_sciname=="Arctocephalus australis")
+glimpse(missing.am)
+distinct(missing.am)
+View(missing.am)
+missing.am <- missing.am %>% filter(am_sciname!="NA") # 2,522
+toadd.am <- inner_join(missing.am, lookup.old, by="am_sciname") # ohh this was an NA problem... 
+glimpse(toadd.am) # these are also missing phylum, but I won't fix that now
+
+
+## Add the missing IUCN species
+glimpse(missing.iucn)
+View(missing)
+names(missing)
+names(full)
+full$iucn_sid_other <- "NA"
+unique(missing$class)
+missing <- missing %>%
+  mutate(class_am=class) %>%
+  rename(class_iucn=class) %>%
+  select(-am_reviewed)
+missing <- missing %>% mutate(phylum="NA")
+
+## add the missing AM species
+names(toadd.am)
+2522 + 12 # 2534
+toadd.am <- toadd.am %>%
+  select(-am_reviewed) %>%
+  rename(class_am=class) %>%
+  mutate(class_iucn=class_am,
+         phylum="NA")
+missing.all <- bind_rows(missing, toadd.am) # 2534, good
+
+## now add to full
+glimpse(missing.all)
+missing.all <- missing.all %>%
+  mutate(iucn_sid_other=as.character(iucn_sid_other),
+         iucn_sid=as.character(iucn_sid),
+         am_sid_old=as.character(am_sid_old))
+
+glimpse(full)
+names(full) # 28,297
+names(missing.all)
+28297 + 2534 # 30831
+full %>% hablar::find_duplicates(redlist_category) %>% arrange(redlist_category)
+full %>% filter(redlist_category=="Abudefduf concolor")
+
+full2 <- bind_rows(full, missing.all)
+glimpse(full2) # 30,831
+
+# check duplicates
+full2 %>% filter(redlist_category!="NA") %>% hablar::find_duplicates(redlist_category) %>% arrange(redlist_category) %>% View()# some issues
+full2 <- distinct(full2) # 30,819
+full2 %>% filter(redlist_category!="NA") %>% hablar::find_duplicates(redlist_category) %>% arrange(redlist_category) %>% View() # it's an issue with teh phylum
+full2 %>% filter(am_sciname!="NA") %>% hablar::find_duplicates(am_sciname) %>% arrange(am_sciname) # none, so it's an IUCN name/ phylum issue
+# lose the phylum col, it was incomplete anyways
+full2 <- full2 %>%
+  mutate(remove=case_when(
+    redlist_category!="NA" & duplicated(redlist_category) ~ "yes",
+    TRUE~"no"
+  ))
+table(full2$remove)
+# no   yes 
+# 28308  2511
+full2 <- full2 %>% filter(remove!="yes") %>% select(-remove)
+
+glimpse(full2)
+
+# some checks
+full2 %>% filter(am_sciname=="Cymatium aquatile")
+full2 %>% filter(am_sciname=="Nucella lapillus")
+
+# check the problem species from EPBC match
+full2 %>% filter(redlist_category=="Balaenoptera musculus")
+full2 %>% filter(redlist_category=="Centrophorus harrissoni")
+full2 %>% filter(redlist_category=="Sphyrna lewini")
+full2 %>% filter(redlist_category=="Hoplostethus atlanticus") # nope
+full2 %>% filter(am_sciname=="Hoplostethus atlanticus") # yep
+full2 %>% filter(am_sciname=="Seriolella brama")
+ 
+
+table(full2$redlist_category)
+# aquamaps_only            CR            DD            EN            LC         LR/lc         LR/nt            NT            VU 
+#         18395            82          1863           203          6685             1             3           452           624
+
+glimpse(full2)
+
+## final things
+unique(full2$phylum)
+full2 <- full2 %>% mutate(phylum=str_to_sentence(phylum))
+full2 %>% filter(phylum=="Na") %>% distinct(class_iucn) # all chordates
+full2 %>% filter(is.na(phylum)) # oh that stupid fish
+full2 <- full2 %>% 
+  mutate(
+    phylum=case_when(
+    redlist_category=="Microphis brachyurus ssp. aculeatus"~"Chordata", 
+    phylum=="Na"~"Chordata",
+    TRUE~as.character(phylum)),
+    kingdom=case_when(
+    redlist_category=="Microphis brachyurus ssp. aculeatus"~"Animalia", TRUE~as.character(kingdom))
+    )
+full2 <- full2 %>% mutate(kingdom=str_to_upper(kingdom))
+glimpse(full2)
+
+full2 <- full2 %>% select(kingdom, phylum, class_iucn, iucn_sid, redlist_category, iucn_sid_other, redlist_category, am_sid, am_sciname, class_am, am_sid_old)
+
+write.xls(full2, path=here("_data/species_lists/lookup_marine_species_iucn_or_aquamaps.xlsx")) # will add metadata tab
+
+```
+
+# Found a few that have been added to IUCN
+(chonds)
+doing EPBC analysis
+```{r update sharks}
+
+lookup <- read_excel(here("_data/species_lists/lookup_marine_species_iucn_or_aquamaps.xlsx"), sheet=2)
+glimpse(lookup) # 28,308
+lookup <- lookup %>% mutate(across(where(is.character), ~na_if(., "NA")))
+lookup <- lookup %>% mutate(class_iucn=str_to_sentence(class_iucn))
+lookup %>% filter(redlist_category!=am_sciname) %>% distinct(redlist_category, am_sciname, class_iucn) %>% View() # good, no chodns
+lookup %>% filter(is.na(class_iucn)) %>% distinct(class_am) # elasmos in here
+lookup %>% filter(is.na(class_iucn) & is.na(class_am)) # none, good
+
+chonds.assess <- read_csv(here("_data/extra_data/redlist_species_data_CHONDRICHTHYES_2022_2/assessments.csv"))
+glimpse(chonds.assess) # 1,234
+summary(chonds.assess$yearPublished)
+chonds.tax <- read_csv(here("_data/extra_data/redlist_species_data_CHONDRICHTHYES_2022_2/taxonomy.csv"))
+glimpse(chonds.tax) #  1,234
+
+chonds.assess <- chonds.assess %>%
+  janitor::clean_names(case="snake") %>%
+  select(c(internal_taxon_id, scientific_name, redlist_category, year_published))
+chonds.tax <- chonds.tax %>%
+  janitor::clean_names(case="snake") %>%
+  select(c(internal_taxon_id, scientific_name, kingdom_name, phylum_name, class_name))
+
+chonds <- inner_join(chonds.assess, chonds.tax, by=c("internal_taxon_id", "scientific_name"))
+glimpse(chonds) # 1,234
+
+chonds %>% filter(year_published >= 2019) # 887
+
+chonds.2022 <- chonds %>% pull(scientific_name)
+lookup %>% filter(redlist_category %in% chonds.2022) # 1016 already in here
+lookup %>% filter(am_sciname %in% chonds.2022) # 732 match with AM name
+lookup %>% filter(am_sciname %in% chonds.2022 & redlist_category=="aquamaps_only") # only 26 were previously AM only and have been added to IUCN
+
+chonds <- chonds %>% 
+  rename(kingdom=kingdom_name, phylum=phylum_name, class_iucn=class_name, iucn_sid=internal_taxon_id, redlist_category=scientific_name) %>%
+  mutate(phylum=str_to_sentence(phylum), class_iucn=str_to_sentence(class_iucn))
+1016+887 # 1903
+chonds <- chonds %>% mutate(download_date=2023) %>% select(-year_published)
+
+## merge and update
+lookup.new <- lookup %>% mutate(download_date=2019)
+
+glimpse(lookup.new)
+glimpse(chonds)
+
+lookup.new <- merge(lookup.new, chonds, by =c("iucn_sid", "redlist_category", "kingdom", "phylum", "class_iucn"), suffixes = c("_v2019", "_v2022"), all.x = TRUE)
+glimpse(lookup.new) # 28,308
+
+# Update the IUCNcolumns with values from new chonds where available
+lookup.new$download_date <- ifelse(is.na(lookup.new$download_date_v2022), lookup.new$download_date_v2019, lookup.new$download_date_v2022)
+lookup.new$redlist_category <- ifelse(is.na(lookup.new$redlist_category_v2022), lookup.new$redlist_category_v2019, lookup.new$redlist_category_v2022)
+
+# Remove the duplicate columns from the merge
+lookup.new <- lookup.new[, !grepl("_v2019", names(lookup.new))]
+lookup.new <- lookup.new[, !grepl("_v2022", names(lookup.new))]
+
+# checks
+lookup.new %>% filter(!is.na(iucn_sciname)) %>% hablar::find_duplicates(iucn_sciname) # none
+lookup.new %>% filter(!is.na(am_sciname)) %>% hablar::find_duplicates(am_sciname)
+lookup.new %>% filter(iucn_sciname=="Microphis brachyurus ssp. aculeatus") # I think the separate AM species got dropped 
+
+am.only %>% filter(str_detect(sciname, "Microphis", regex = TRUE))
+am.only %>% filter(str_detect(sciname, "(?i)^aculeatus"))
+am.only %>% filter(str_detect(sciname, "(?i)^brachyurus"))
+
+## check chond species that are new to IUCN and weren't in AM
+sciname <- union(lookup.new$iucn_sciname, lookup.new$am_sciname)
+new.chonds <- setdiff(chonds.2022, sciname)
+glimpse(new.chonds) # 192 species
+
+to.add <- chonds %>% filter(iucn_sciname %in% new.chonds)
+summary(to.add$download_date) # all 2023 downloads, makes sense
+names(lookup.new)
+names(to.add)
+to.add <- to.add %>%
+  mutate(am_sciname=NA, am_sid=NA, class_am=NA, am_sid=NA, am_sid_old=NA, iucn_sid_other=NA)
+28308 + 192 # should end up with  28500
+lookup.new <- bind_rows(lookup.new, to.add)
+glimpse(lookup.new) # Rows: 28,500
+
+##<><><><<> save update
+# load workbook
+lookup <- loadWorkbook(here("_data/species_lists/lookup_marine_species_iucn_or_aquamaps.xlsx"))
+# Create a new sheet and name it
+new_sheet_name <- "lookup with 2022 sharks"
+addWorksheet(lookup, sheetName = new_sheet_name)
+# Write the data from lookup.new to the new sheet
+writeData(lookup, new_sheet_name, lookup.new)
+saveWorkbook(lookup, here("_data/species_lists/lookup_marine_species_iucn_or_aquamaps.xlsx"), overwrite = TRUE)
+
+```
+
