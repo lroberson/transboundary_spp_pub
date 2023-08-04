@@ -459,7 +459,7 @@ lookup %>% filter(am_sciname %in% chonds.2022) # 732 match with AM name
 lookup %>% filter(am_sciname %in% chonds.2022 & redlist_category=="aquamaps_only") # only 26 were previously AM only and have been added to IUCN
 
 chonds <- chonds %>% 
-  rename(kingdom=kingdom_name, phylum=phylum_name, class_iucn=class_name, iucn_sid=internal_taxon_id, redlist_category=scientific_name) %>%
+  rename(kingdom=kingdom_name, phylum=phylum_name, class_iucn=class_name, iucn_sid=internal_taxon_id, iucn_sciname=scientific_name) %>%
   mutate(phylum=str_to_sentence(phylum), class_iucn=str_to_sentence(class_iucn))
 1016+887 # 1903
 chonds <- chonds %>% mutate(download_date=2023) %>% select(-year_published)
@@ -470,7 +470,9 @@ lookup.new <- lookup %>% mutate(download_date=2019)
 glimpse(lookup.new)
 glimpse(chonds)
 
-lookup.new <- merge(lookup.new, chonds, by =c("iucn_sid", "redlist_category", "kingdom", "phylum", "class_iucn"), suffixes = c("_v2019", "_v2022"), all.x = TRUE)
+chonds %>% filter(iucn_sciname=="Pristis pristis")
+
+lookup.new <- merge(lookup.new, chonds, by =c("iucn_sid", "iucn_sciname", "kingdom", "phylum", "class_iucn"), suffixes = c("_v2019", "_v2022"), all.x = TRUE)
 glimpse(lookup.new) # 28,308
 
 # Update the IUCNcolumns with values from new chonds where available
@@ -490,6 +492,29 @@ am.only %>% filter(str_detect(sciname, "Microphis", regex = TRUE))
 am.only %>% filter(str_detect(sciname, "(?i)^aculeatus"))
 am.only %>% filter(str_detect(sciname, "(?i)^brachyurus"))
 
+## now repeat for species that were previously in AM but not in IUCN
+lookup.int <- lookup.new %>% select(c(iucn_sciname, am_sciname)) %>% filter(is.na(iucn_sciname) & !is.na(am_sciname))
+glimpse(lookup.int)
+newiucnchonds <- inner_join(chonds, lookup.int, by=c("iucn_sciname"="am_sciname"))
+glimpse(newiucnchonds) # tjhe 26 new ones
+newiucnchonds %>% filter(iucn_sciname=="Pristis pristis") # There is is
+
+newiucnchonds <- newiucnchonds %>% select(-iucn_sciname.y)
+newiucnchonds <- newiucnchonds %>% rename(sciname=iucn_sciname)
+glimpse(lookup.new)
+matched_indices <- match(lookup.new$am_sciname, newiucnchonds$sciname)
+# Update "iucn_sid", "iucn_sciname", "redlist_category", "class_iucn", and "download_date" in "lookup.new"
+lookup.new$iucn_sid <- ifelse(is.na(lookup.new$iucn_sid), newiucnchonds$iucn_sid[matched_indices], lookup.new$iucn_sid)
+lookup.new$iucn_sciname <- ifelse(is.na(lookup.new$iucn_sciname), newiucnchonds$sciname[matched_indices], lookup.new$iucn_sciname)
+lookup.new$redlist_category <- ifelse(lookup.new$redlist_category %in% c("aquamaps_only", NA), 
+                                      newiucnchonds$redlist_category[matched_indices], 
+                                      lookup.new$redlist_category)
+lookup.new$class_iucn <- ifelse(is.na(lookup.new$class_iucn), newiucnchonds$class_iucn[matched_indices], lookup.new$class_iucn)
+lookup.new$download_date <- ifelse(is.na(lookup.new$download_date), newiucnchonds$download_date[matched_indices], lookup.new$download_date)
+
+glimpse(lookup.new) 
+lookup.new %>% filter(iucn_sciname=="Pristis pristis")
+
 ## check chond species that are new to IUCN and weren't in AM
 sciname <- union(lookup.new$iucn_sciname, lookup.new$am_sciname)
 new.chonds <- setdiff(chonds.2022, sciname)
@@ -504,6 +529,8 @@ to.add <- to.add %>%
 28308 + 192 # should end up with  28500
 lookup.new <- bind_rows(lookup.new, to.add)
 glimpse(lookup.new) # Rows: 28,500
+
+lookup.new %>% filter(iucn_sciname=="Pristis pristis")
 
 ##<><><><<> save update
 # load workbook
